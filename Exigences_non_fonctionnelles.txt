@@ -1,0 +1,9 @@
+1. Répondre à n'importe quelle demande de l'utilisateur dans un délai acceptable (quelques secondes)
+
+2. Avoir assez d'espace dans le server pour stocker les données de chaque robot de chaque utilisateur
+
+3. Compatibilité avec plusieurs méthodes de paiement (Visa, Mastercard, Paypal, etc) lors de l'achat de composants.
+
+4. Compatibilité avec plusieurs types de robots, pour que l'utilisateur peut assigner des tâches aux robots et contrôler leurs movements peu importe le fournisseur des composantes.
+
+5. Sécurité de l'informations des utilisateurs telles que l'adresse courriel, numéro de téléphone et surtout les détails saisies lors du paiement des composants.
