@@ -1,0 +1,41 @@
+-ressources d'un robot: CPU & Mémoire du robot
+
+-type d'un robot: qualificateur permettant de classifier un robot selon son utilisation régulière. 
+
+-efficacité énergétique: quantificateur d'énergie par tâche effectué
+
+-composantes: toute pièce hardware pouvant être incorporé à un robot, obligatoires(CPU) et optionnelles.
+
+-mécanisme d'inventorisation: processus par lesquels un robot effectue une collecte de données externes afin d'améliorer son efficacité.
+
+-numéro de série (UUID): numéro fourni par le fournisseur, unique pour chaque composante du système, et qui permet ainsi l'identification des différentes pièces.
+
+-flotte: ensemble de robots attribuables à un seul utilisateur.
+
+-ordres de déplacement: ordres issus par le système qui permet aux robots de se déplacer en fonction de leur composantes.
+
+-actions des robots: créées indépendamment des robots, puis implémentés(attribuées) aux robot, représentent une seule action quelconque effectuée. 
+
+-tâche: séquence d'actions d'un robot.
+
+-propriété de transition: caractéristique propre à une tâche, indiquant si elle s'effectue en même temps ou après le précédent.
+
+-exécution en parallèle: mode d'éxécution ou les tâches sont exécutées en même temps.
+
+-exécution en séquence: mode d'éxécution ou les tâches sont exécutées un après l'autre.
+
+-état d'un robot: qualifié par la position, la vitesse, le niveau de batterie ainsi que la consommation CPU et mémoire d'un robot. 
+
+-usage: évolution périodique de l'état d'un robot.
+
+-historique: trace de l'usage.
+
+-métriques: quantificateurs (indicateurs, ratios agrégés par période)
+
+-activités: série de tâches qui peut être assigné à n'importe quel robot pour atteindre un objectif spécifique et doit avoir une date de début et une date de fin. Listes d'activités non exhaustive: Jeux, Éducation, Création.
+
+-robot: composé d'au moins un CPU et une autre composante non-obligatoire. Classé par son type ainsi que son numéro de série unique. Exécute des tâches pour réaliser une activité.
+
+-anomalies: motif qui dévie de la norme suite à l'analyse de métriques
+
+-Capacité de fabrication: métrique quantifiant la production d'objets par unité de temps
