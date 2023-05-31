@@ -1,0 +1,10 @@
+1. Risque de confidentialité des données.
+
+Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
+Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.
+
+
+2. Défaillance du système
+
+Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
+ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
