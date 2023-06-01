@@ -51,40 +51,43 @@
         4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
          4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
         <span style="font-weight: bold;">Postconditions :</span> 
-        Le système enregistre les informations suivantes:
-        -La date et l'heure à laquelle la commande à été envoyée
-        -La date et l'heure à laquelle la commande fut complétée
-        -Les informations propre à la commande(composante id, quantité, prix)
-        -L'identifiant du client ayant passé la commande
-        -L'identifiant du fournisseur ayant complété la commande
+        Le système enregistre les informations suivantes:<br>
+        -La date et l'heure à laquelle la commande à été envoyée<br>
+        -La date et l'heure à laquelle la commande fut complétée<br>
+        -Les informations propre à la commande(composante id, quantité, prix)<br>
+        -L'identifiant du client ayant passé la commande<br>
+        -L'identifiant du fournisseur ayant complété la commande<br>
         <br>
     </p>
 
-    <p id="sell-component">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
-        <span style="font-weight: bold;">But :</span> Un utilisateur quelconque du service souhaite se procurer les composantes
-        nécessaires afin de contruire son robot.<br>
+    <p id="list-component-on-market">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Lister une composante sur le marché.<br>
+        <span style="font-weight: bold;">But :</span> Un fournisseur quelconque souhaite lister une composante sur le service pour le vendre.<br>
         <span style="font-weight: bold;">Préconditions :</span> <br>
-        1. L'utilisateur est inscrit et connecté sur le système Robotix<br>
-        2. Le(s) fournisseur(s) est/sont inscrit(s) sur le système Robotix<br>
+        1. Le fournisseur est inscrit sur le système Robotix<br>
+        2. Le fournisseur est en mesure de fournir toutes les informations propres à la composante<br>
         <br>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur
-        (secondaire).<br>
+        <span style="font-weight: bold;">Acteurs :</span> Fournisser (principal).<br>
         <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
         ordonnée numériquement<br>
-        1. L'utilisateur se connecte au marché<br>
-         1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche<br>
-        2. Le système recherche à travers sa base de données pour les pièces mises en ligne par les fournisseurs satisfaisant la recherche<br>
-         2.2 
-        3. L'utilisateur ajoute le ou les composantes désirées dans son panier<br>
-
+        1. Le fournisseur se connecte à son compte<br>
+         1.1. Il accède à la page de ses produits<br>
+         1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
+         1.3. Il envoie la demande de lister le nouveau produit au système.
+        2. Le système reçoit la demande et identifie le fournisseur<br>
+         2.2 Le sytème rajoute dans sa base de données le produit ainsi que toutes les informations ratachées.<br>
+         2.3 Le fournisseur reçoit une alerte comme quoi sa composante à été mise sur le marché.<br>
+        <br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
         principal, alternatives possibles à certaines étapes<br>
-        1a.1. remplace étape 1 du scenario principal<br>
-        1b.1. autre remplacement de la même étape<br>
-        1b.2. suit 1b.1 indépendamment du scénario principal<br>
+        1.3a. Les détails fournis sont invalides(vides ou ne suivent pas REGEX)<br>
+        1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
         <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
         principal achève avec succès.<br>
+        Le système enregistre les informations suivantes:
+        -L'identifiant du fournisseur ratachée à la composante<br>
+        -Les informations propres à la composante, notamment: Le prix unitaire, La stock disponible, La description ainsi que l'id.<br>
+        <br>
     </p>
 
     <p id="inscription-utilisateur">
