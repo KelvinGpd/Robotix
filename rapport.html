@@ -135,6 +135,34 @@
     </p>
 
     <p id="assigner taches et actions a un robot">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Assigner une série d'actions(une tâche) à un robot<br>
+        <span style="font-weight: bold;">But :</span> Un utilisateur du système souhaite attribuer une tâche à un de ses robots.<br>
+        <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
+        d'entammer le scénario principal.<br>
+        1. L'utilisateur est inscrit et sur le système Robotix.<br>
+        2. L'utilisateur possède au moins un robot dans sa flotte.<br>
+        3. L'utilisateur à dèjà crée plusieurs actions assignables.<br>
+        <br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur.<br>
+        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+        ordonnée numériquement<br>
+        1. L'utilisateur rentre dans la page "gérer mes robots"<br>
+         1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
+         1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
+        2. Le système récupère la liste de tous les actions prédéfinis par l'utilisateur et les affiche.<br>
+        3. L'utilisateur ordonne une liste séquentielle d'actions à partir du Gui. Optionnellement, il choisit aussi un horaire et/ou une action déclencheur.<br>
+         3.1 L'utilisateur sélectionne "create & assign task".<br>
+         3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
+        4. Le système attribue la tâche dans sa base de données à l'identifiant du robot.<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+        principal, alternatives possibles à certaines étapes<br>
+        1.1a. tous les robots de l'utilisateur sont occupés<br>
+         1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
+        3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
+         3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
+        3.2b. La liste séquentielle d'actions est invalide, car la liste d'actions spécifée par l'utilisateur est vide.<br>
+         3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+        <br>
     </p>
 
     <p id="etats-robots">
