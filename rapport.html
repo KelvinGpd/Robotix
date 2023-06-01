@@ -22,13 +22,53 @@
         principal achève avec succès.<br>
     </p>
 
-    <p id="register as user">
+    <p id="inscription-utilisateur">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d'un utilisateur<br>
+        <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
+        <span style="font-weight: bold;">Préconditions :</span><br>
+        1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
+        2. L'utilisateur travaille pour une compagnie<br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+        <span style="font-weight: bold;">Scénario principal :</span><br>
+        1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
+        1.1. L'utilisateur saisit les informations.<br>
+        2. Le système vérifie que les informations sont valides.<br>
+        2.1. Pseudo est unique?<br>
+        2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+        2.3. La compagnie existe?<br>
+        3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+        2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
+        2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+        2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
+        2a.3. Le scénario recommence à l'étape 1
+        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrés dans le système.<br>
     </p>
 
     <p id="register robot to fleet">
     </p>
 
     <p id="create-action">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Création d'un action<br>
+        <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
+        <span style="font-weight: bold;">Préconditions :</span><br>
+        1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
+        2. L'utilisateur travaille pour une compagnie<br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+        <span style="font-weight: bold;">Scénario principal :</span><br>
+        1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
+        1.1. L'utilisateur saisit les informations.<br>
+        2. Le système vérifie que les informations sont valides.<br>
+        2.1. Pseudo est unique?<br>
+        2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+        2.3. La compagnie existe?<br>
+        3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+        2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
+        2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+        2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
+        2a.3. Le scénario recommence à l'étape 1
+        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrés dans le système.<br>
     </p>
 
     <p id="assigner taches et actions a un robot">
