@@ -1,218 +1,301 @@
-<div>
-    <p id="CU template">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
-        <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
-        nécessaires.<br>
-        <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-        d'entammer le scéanrio principal.<br>
-        <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
-        (secondaire).<br>
-        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-        ordonnée numériquement<br>
-        1. Étape 1<br>
-         1.1. Étape 1.1<br>
-        2. Étape 2<br>
-        3. Étape 3<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-        principal, alternatives possibles à certaines étapes<br>
-        1a.1. remplace étape 1 du scenario principal<br>
-        1b.1. autre remplacement de la même étape<br>
-        1b.2. suit 1b.1 indépendamment du scénario principal<br>
-        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-        principal achève avec succès.<br>
-    </p>
+<html>
+    <head>
+        <title>IFT2255 Tache 1</title>
+        <style type="text/css">
+            table
+            {
+                border: outset 2px black;
+                border-collapse: collapse;
+            }
+            th
+            {
+                border-bottom: double 2px black;
+            }
+            td
+            { 
+                border-bottom: solid 1px black;
+            }
+            .first_col
+            {
+                border-right: double 2px black;
+            }
+        </style>
+    </head>
 
-    <p id="buy-component">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
-        <span style="font-weight: bold;">But :</span> Un utilisateur quelconque du service souhaite se procurer les composantes
-        nécessaires afin de contruire son robot.<br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        1. L'utilisateur est inscrit et connecté sur le système Robotix<br>
-        2. L'utilisateur est capable d'effectuer une transaction par carte en ligne<br>
-        3. Le fournisseur est inscrit au système et peut recevoir une commande<br>
-        <br>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire)<br>
-        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-        ordonnée numériquement<br>
-        1. L'utilisateur se connecte au marché.<br>
-         1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
-        2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
-         2.1 Il y renvoie a lutilisateur une liste.<br>
-        3. L'utilisateur ajoute le ou les composantes désirées dans son panier.<br>
-         3.2. Il procède au paiement sécurisé.<br>
-        4. Le système reçoit la requête et les détails de la commande.<br>
-         4.1 le système confirme la commande et l'envoie au fournisseur.<br>
-        5. le fournisseur complète la commande en envoyant les produits à l'utilisateur.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-        principal, alternatives possibles à certaines étapes<br>
-        2a. Le système ne trouve aucune composante pouvant satisfaire la recherche de l'utilisateur.<br>
-         2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
-         2a.2. Le scénario recommence à l'étape 1.<br>
-        4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
-         4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
-        <span style="font-weight: bold;">Postconditions :</span> 
-        Le système enregistre les informations suivantes:<br>
-        -La date et l'heure à laquelle la commande à été envoyée<br>
-        -La date et l'heure à laquelle la commande fut complétée<br>
-        -Les informations propre à la commande(composante id, quantité, prix)<br>
-        -L'identifiant du client ayant passé la commande<br>
-        -L'identifiant du fournisseur ayant complété la commande<br>
-        <br>
-    </p>
+    <body>
+        <h1 style="text-align: center;">IFT 2255 - Été 2023 - Devoir 1</h1>
 
-    <p id="list-component-on-market">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Lister une composante sur le marché.<br>
-        <span style="font-weight: bold;">But :</span> Un fournisseur quelconque souhaite lister une composante sur le service pour le vendre.<br>
-        <span style="font-weight: bold;">Préconditions :</span> <br>
-        1. Le fournisseur est inscrit sur le système Robotix<br>
-        2. Le fournisseur est en mesure de fournir toutes les informations propres à la composante<br>
-        <br>
-        <span style="font-weight: bold;">Acteurs :</span> Fournisser (principal).<br>
-        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-        ordonnée numériquement<br>
-        1. Le fournisseur se connecte à son compte<br>
-         1.1. Il accède à la page de ses produits<br>
-         1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
-         1.3. Il envoie la demande de lister le nouveau produit au système.
-        2. Le système reçoit la demande et identifie le fournisseur<br>
-         2.2 Le sytème rajoute dans sa base de données le produit ainsi que toutes les informations ratachées.<br>
-         2.3 Le fournisseur reçoit une alerte comme quoi sa composante à été mise sur le marché.<br>
-        <br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-        principal, alternatives possibles à certaines étapes<br>
-        1.3a. Les détails fournis sont invalides(vides ou ne suivent pas REGEX)<br>
-        1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
-        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-        principal achève avec succès.<br>
-        Le système enregistre les informations suivantes:<br>
-        -L'identifiant du fournisseur ratachée à la composante<br>
-        -Les informations propres à la composante, notamment: Le prix unitaire, La stock disponible, La description ainsi que l'id.<br>
-        <br>
-    </p>
+        <div id="Information générale">
+            <h2>Information générale</h2>
+            <p>
+                <span style="font-weight: bold;">Nom de l'équipe: </span>First In Last Out
+            </p>
+            <p>
+                <a href="https://github.com/KelvinGpd/Robotix">Lien vers dépôt GitHub</a><br>
+                <a href="example.vpp">Lien vers fichiers Visual Paradigm</a>
+            </p>
+            <p>
+                <span style="font-weight: bold;">Nom: </span>Kelvin Chen
+                <br>
+                <span style="font-weight: bold;">Matricule: </span>20238788
+                <br>
+                <span style="font-weight: bold;">Courriel: </span>kelvin.chen@umontreal.ca
+                <br>
+                <span style="font-weight: bold;">temps mis: </span>-
+            </p>
+            <p>
+                <span style="font-weight: bold;">Nom: </span>-
+                <br>
+                <span style="font-weight: bold;">Matricule: </span>-
+                <br>
+                <span style="font-weight: bold;">Courriel: </span>-
+                <br>
+                <span style="font-weight: bold;">temps mis: </span>-
+            </p>
+        </div>
 
-    <p id="inscription-utilisateur">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire au système comme utilisateur<br>
-        <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
-        <span style="font-weight: bold;">Préconditions :</span><br>
-        1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
-        2. L'utilisateur travaille pour une compagnie<br>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
-        <span style="font-weight: bold;">Scénario principal :</span><br>
-        1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
-         1.1. L'utilisateur saisit les informations.<br>
-        2. Le système vérifie que les informations sont valides.<br>
-         2.1. Pseudo est unique?<br>
-         2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
-         2.3. La compagnie existe?<br>
-        3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
-         2a.1. Les informations ne sont pas enregistrés dans le système.<br>
-         2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
-         2a.3. Le scénario recommence à l'étape 1
-        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrées dans le système.<br>
-    </p>
+        <div id="Distribution des taches">
+            <h2>Distribution des taches</h2>
+        </div>
 
-    <p id="register robot to fleet">
-    </p>
+        <div id="Hypotheses">
+            <h2>Hypotheses</h2>
+        </div>
+        
+        <div id="taches">
+            <h2>Taches</h2>
+            
+            <div id="glossaire"></div>
 
-    <p id="create-action">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Créer une action<br>
-        <span style="font-weight: bold;">But :</span> L'utilisateur crée une action pour ses robots.<br>
-        <span style="font-weight: bold;">Préconditions :</span><br>
-        1. L'utilisateur est inscrit dans le système Robotix<br>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
-        <span style="font-weight: bold;">Scénario principal :</span><br>
-        1. L'utilisateur saisit les instructions pour effectuer une action.<br>
-        2. Le système vérifie que ces instructions ne contiennent pas d'erreurs et sont possibles à effectuer avec les composantes offerts par Robotix.<br>
-        3. Les instructions pour cette action sont enregistrées dans le système.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        2a. Les instructions sont impossibles à effectuer ou contient des erreurs.<br>
-         2a.1. Le système indique à l'utilisateur que les instructions ne sont pas bonnes. <br>
-         2a.2. L'utilisateur corrige les instructions et le système les vérifie une autre fois.<br>
+            <div id="UML Diagram"></div>
 
-        <span style="font-weight: bold;">Postconditions :</span> Les instructions pour l'action sont enregistrés dans le système.<br>
-    </p>
+            <div id="useCases">
+                <p id="CU template">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
+                    <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
+                    nécessaires.<br>
+                    <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
+                    d'entammer le scéanrio principal.<br>
+                    <span style="font-weight: bold;">Acteurs :</span> Acteur 1 (principal), Acteur 2
+                    (secondaire).<br>
+                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+                    ordonnée numériquement<br>
+                    1. Étape 1<br>
+                     1.1. Étape 1.1<br>
+                    2. Étape 2<br>
+                    3. Étape 3<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+                    principal, alternatives possibles à certaines étapes<br>
+                    1a.1. remplace étape 1 du scenario principal<br>
+                    1b.1. autre remplacement de la même étape<br>
+                    1b.2. suit 1b.1 indépendamment du scénario principal<br>
+                    <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+                    principal achève avec succès.<br>
+                </p>
+    
+                <p id="buy-component">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
+                    <span style="font-weight: bold;">But :</span> Un utilisateur quelconque du service souhaite se procurer les composantes
+                    nécessaires afin de contruire son robot.<br>
+                    <span style="font-weight: bold;">Préconditions :</span> <br>
+                    1. L'utilisateur est inscrit et connecté sur le système Robotix<br>
+                    2. L'utilisateur est capable d'effectuer une transaction par carte en ligne<br>
+                    3. Le fournisseur est inscrit au système et peut recevoir une commande<br>
+                    <br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire)<br>
+                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+                    ordonnée numériquement<br>
+                    1. L'utilisateur se connecte au marché.<br>
+                     1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
+                    2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
+                    2.1 Il y renvoie a lutilisateur une liste.<br>
+                    3. L'utilisateur ajoute le ou les composantes désirées dans son panier.<br>
+                    3.2. Il procède au paiement sécurisé.<br>
+                    4. Le système reçoit la requête et les détails de la commande.<br>
+                    4.1 le système confirme la commande et l'envoie au fournisseur.<br>
+                    5. le fournisseur complète la commande en envoyant les produits à l'utilisateur.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+                    principal, alternatives possibles à certaines étapes<br>
+                    2a. Le système ne trouve aucune composante pouvant satisfaire la recherche de l'utilisateur.<br>
+                    2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
+                    2a.2. Le scénario recommence à l'étape 1.<br>
+                    4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
+                    4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
+                    <span style="font-weight: bold;">Postconditions :</span> 
+                    Le système enregistre les informations suivantes:<br>
+                    -La date et l'heure à laquelle la commande à été envoyée<br>
+                    -La date et l'heure à laquelle la commande fut complétée<br>
+                    -Les informations propre à la commande(composante id, quantité, prix)<br>
+                    -L'identifiant du client ayant passé la commande<br>
+                    -L'identifiant du fournisseur ayant complété la commande<br>
+                    <br>
+                </p>
+    
+                <p id="list-component-on-market">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Lister une composante sur le marché.<br>
+                    <span style="font-weight: bold;">But :</span> Un fournisseur quelconque souhaite lister une composante sur le service pour le vendre.<br>
+                    <span style="font-weight: bold;">Préconditions :</span> <br>
+                    1. Le fournisseur est inscrit sur le système Robotix<br>
+                    2. Le fournisseur est en mesure de fournir toutes les informations propres à la composante<br>
+                    <br>
+                    <span style="font-weight: bold;">Acteurs :</span> Fournisser (principal).<br>
+                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+                    ordonnée numériquement<br>
+                    1. Le fournisseur se connecte à son compte<br>
+                     1.1. Il accède à la page de ses produits<br>
+                    1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
+                    1.3. Il envoie la demande de lister le nouveau produit au système.
+                    2. Le système reçoit la demande et identifie le fournisseur<br>
+                    2.2 Le sytème rajoute dans sa base de données le produit ainsi que toutes les informations ratachées.<br>
+                    2.3 Le fournisseur reçoit une alerte comme quoi sa composante à été mise sur le marché.<br>
+                    <br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+                    principal, alternatives possibles à certaines étapes<br>
+                    1.3a. Les détails fournis sont invalides(vides ou ne suivent pas REGEX)<br>
+                    1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
+                    <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+                    principal achève avec succès.<br>
+                    Le système enregistre les informations suivantes:<br>
+                    -L'identifiant du fournisseur ratachée à la composante<br>
+                    -Les informations propres à la composante, notamment: Le prix unitaire, La stock disponible, La description ainsi que l'id.<br>
+                    <br>
+                </p>
+    
+                <p id="inscription-utilisateur">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire au système comme utilisateur<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
+                    2. L'utilisateur travaille pour une compagnie<br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
+                    1.1. L'utilisateur saisit les informations.<br>
+                    2. Le système vérifie que les informations sont valides.<br>
+                    2.1. Pseudo est unique?<br>
+                    2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+                    2.3. La compagnie existe?<br>
+                    3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
+                    2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+                    2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
+                    2a.3. Le scénario recommence à l'étape 1
+                    <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrées dans le système.<br>
+                </p>
+    
+                <p id="register robot to fleet">
+                </p>
+    
+                <p id="create-action">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Créer une action<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur crée une action pour ses robots.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur est inscrit dans le système Robotix<br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. L'utilisateur saisit les instructions pour effectuer une action.<br>
+                    2. Le système vérifie que ces instructions ne contiennent pas d'erreurs et sont possibles à effectuer avec les composantes offerts par Robotix.<br>
+                    3. Les instructions pour cette action sont enregistrées dans le système.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    2a. Les instructions sont impossibles à effectuer ou contient des erreurs.<br>
+                    2a.1. Le système indique à l'utilisateur que les instructions ne sont pas bonnes. <br>
+                    2a.2. L'utilisateur corrige les instructions et le système les vérifie une autre fois.<br>
+    
+                    <span style="font-weight: bold;">Postconditions :</span> Les instructions pour l'action sont enregistrés dans le système.<br>
+                </p>
+    
+                <p id="assigner taches et actions a un robot">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Assigner une série d'actions(une tâche) à un robot<br>
+                    <span style="font-weight: bold;">But :</span> Un utilisateur du système souhaite attribuer une tâche à un de ses robots.<br>
+                    <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
+                    d'entammer le scénario principal.<br>
+                    1. L'utilisateur est inscrit et sur le système Robotix.<br>
+                    2. L'utilisateur possède au moins un robot dans sa flotte.<br>
+                    3. L'utilisateur à dèjà crée plusieurs actions assignables.<br>
+                    <br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur.<br>
+                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+                    ordonnée numériquement<br>
+                    1. L'utilisateur rentre dans la page "gérer mes robots"<br>
+                     1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
+                     1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
+                    2. Le système récupère la liste de tous les actions prédéfinis par l'utilisateur et les affiche.<br>
+                    3. L'utilisateur ordonne une liste séquentielle d'actions à partir du Gui. Optionnellement, il choisit aussi un horaire et/ou une action déclencheur.<br>
+                    3.1 L'utilisateur sélectionne "create & assign task".<br>
+                    3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
+                    4. Le système attribue la tâche dans sa base de données à l'identifiant du robot.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+                    principal, alternatives possibles à certaines étapes<br>
+                    1.1a. tous les robots de l'utilisateur sont occupés<br>
+                    1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
+                    3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
+                    3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
+                    3.2b. La liste séquentielle d'actions est invalide, car la liste d'actions spécifée par l'utilisateur est vide.<br>
+                    3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         
+                    <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+                    principal achève avec succès.<br>
+                    Le système enregistre les informations suivantes:<br>
+                    -Les informations principales de la tâche(liste d'actions) et ceux optionnels (horaire et action déclencheur)<br>
+                    -L'identifiant du robot dans la flotte de l'utilisateur ayant été attribué la tâche.<br>
+                    <br>
+                </p>
+    
+                <p id="etats-robots">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Voir l'état de ses robots<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, vitesse, etc.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur est inscrit dans le système Robotix.<br>
+                    2. L'utilisateur a des robots enregistrés au système.<br>
+                    3. Les robots sont connectés à un résau WiFi/Bluetooth et ils sont capable de communiquer avec le système.<br>
+                    4. Les robots ont des capteurs pour savoir son état.
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. L'utilisateur indique les robots dont il/elle veut voir l'état. <br>
+                    2. Le système envoie des requètes aux robots indiqués.<br>
+                    3. Les robots répondent au système et renvoient leur état.<br>
+                    4. Le système affiche l'information reçu à l'utilisateur.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    1a. L'utilisateur n'a pas de robots enregistrés.<br>
+                    1a.1 Le système indique à l'utilisateur qu'il faut d'abord enregistrer des robots.<br>
+                    2a. Un ou plusieurs robots ne peuvent pas communiquer avec le système dans le moment.<br>
+                    2a.1. Le système indique à l'utilisateur qu'il n'était pas capable de communiquer avec ces robots.<br>
+                    2a.2. Le scénario continue à l'étape 3.<br>
+                    3a. Un ou plusieurs robots n'ont pas de capteurs.<br>
+                    3a.1. Le système indique à l'utilisateur que ces robots-là n'ont pas de capteurs.<br>
+                    3a.2. Le scénario continue à l'étape 4.<br>
+                    
+                    <span style="font-weight: bold;">Postconditions :</span> L'utilisateur connaît l'état de ses robots.<br>
+                </p>
+    
+                <p id="voir le metriques d'un robot">
+                </p>
+    
+                <p id="S'inscrire comme fournisseur">
+                </p>
+    
+                <p id="trouver un fournisseur">
+                </p>
+    
+                <p id="se joindre a une communaute">
+                </p>
+    
+                <p id="gerer les anomalies">
+                </p>
+    
+                <p id="participer a une activite avec ses robots">
+                </p>
+    
+            </div>
 
-    <p id="assigner taches et actions a un robot">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Assigner une série d'actions(une tâche) à un robot<br>
-        <span style="font-weight: bold;">But :</span> Un utilisateur du système souhaite attribuer une tâche à un de ses robots.<br>
-        <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-        d'entammer le scénario principal.<br>
-        1. L'utilisateur est inscrit et sur le système Robotix.<br>
-        2. L'utilisateur possède au moins un robot dans sa flotte.<br>
-        3. L'utilisateur à dèjà crée plusieurs actions assignables.<br>
-        <br>
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur.<br>
-        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-        ordonnée numériquement<br>
-        1. L'utilisateur rentre dans la page "gérer mes robots"<br>
-         1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
-         1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
-        2. Le système récupère la liste de tous les actions prédéfinis par l'utilisateur et les affiche.<br>
-        3. L'utilisateur ordonne une liste séquentielle d'actions à partir du Gui. Optionnellement, il choisit aussi un horaire et/ou une action déclencheur.<br>
-         3.1 L'utilisateur sélectionne "create & assign task".<br>
-         3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
-        4. Le système attribue la tâche dans sa base de données à l'identifiant du robot.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-        principal, alternatives possibles à certaines étapes<br>
-        1.1a. tous les robots de l'utilisateur sont occupés<br>
-         1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
-        3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
-         3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
-        3.2b. La liste séquentielle d'actions est invalide, car la liste d'actions spécifée par l'utilisateur est vide.<br>
-         3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         
-        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
-        principal achève avec succès.<br>
-        Le système enregistre les informations suivantes:<br>
-        -Les informations principales de la tâche(liste d'actions) et ceux optionnels (horaire et action déclencheur)<br>
-        -L'identifiant du robot dans la flotte de l'utilisateur ayant été attribué la tâche.<br>
-        <br>
-    </p>
+            <div id="Risque"></div>
 
-    <p id="etats-robots">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Voir l'état de ses robots<br>
-        <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, vitesse, etc.<br>
-        <span style="font-weight: bold;">Préconditions :</span><br>
-        1. L'utilisateur est inscrit dans le système Robotix.<br>
-        2. L'utilisateur a des robots enregistrés au système.<br>
-        3. Les robots sont connectés à un résau WiFi/Bluetooth et ils sont capable de communiquer avec le système.<br>
-        4. Les robots ont des capteurs pour savoir son état.
-        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
-        <span style="font-weight: bold;">Scénario principal :</span><br>
-        1. L'utilisateur indique les robots dont il/elle veut voir l'état. <br>
-        2. Le système envoie des requètes aux robots indiqués.<br>
-        3. Les robots répondent au système et renvoient leur état.<br>
-        4. Le système affiche l'information reçu à l'utilisateur.<br>
-        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        1a. L'utilisateur n'a pas de robots enregistrés.<br>
-         1a.1 Le système indique à l'utilisateur qu'il faut d'abord enregistrer des robots.<br>
-        2a. Un ou plusieurs robots ne peuvent pas communiquer avec le système dans le moment.<br>
-         2a.1. Le système indique à l'utilisateur qu'il n'était pas capable de communiquer avec ces robots.<br>
-         2a.2. Le scénario continue à l'étape 3.<br>
-        3a. Un ou plusieurs robots n'ont pas de capteurs.<br>
-         3a.1. Le système indique à l'utilisateur que ces robots-là n'ont pas de capteurs.<br>
-         3a.2. Le scénario continue à l'étape 4.<br>
-         
-        <span style="font-weight: bold;">Postconditions :</span> L'utilisateur connaît l'état de ses robots.<br>
-    </p>
+            <div id="Exigences non-fonctionnelles"></div>
 
-    <p id="voir le metriques d'un robot">
-    </p>
+            <div id="Prototype java"></div>
 
-    <p id="S'inscrire comme fournisseur">
-    </p>
+        </div>
 
-    <p id="trouver un fournisseur">
-    </p>
+    </body>
 
-    <p id="se joindre a une communaute">
-    </p>
-
-    <p id="gerer les anomalies">
-    </p>
-
-    <p id="participer a une activite avec ses robots">
-    </p>
-
-</div>
+</html>
