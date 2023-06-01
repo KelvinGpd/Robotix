@@ -1,5 +1,5 @@
 <div>
-    <p id="buy-component">
+    <p id="CU template">
         <span style="font-weight: bold;">Cas d'utilisation :</span> nom du CU en expression verbale.<br>
         <span style="font-weight: bold;">But :</span> mise en contexte, description brève, préconditions
         nécessaires.<br>
@@ -13,6 +13,71 @@
          1.1. Étape 1.1<br>
         2. Étape 2<br>
         3. Étape 3<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+        principal, alternatives possibles à certaines étapes<br>
+        1a.1. remplace étape 1 du scenario principal<br>
+        1b.1. autre remplacement de la même étape<br>
+        1b.2. suit 1b.1 indépendamment du scénario principal<br>
+        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+        principal achève avec succès.<br>
+    </p>
+
+    <p id="buy-component">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
+        <span style="font-weight: bold;">But :</span> Un utilisateur quelconque du service souhaite se procurer les composantes
+        nécessaires afin de contruire son robot.<br>
+        <span style="font-weight: bold;">Préconditions :</span> <br>
+        1. L'utilisateur est inscrit et connecté sur le système Robotix<br>
+        2. L'utilisateur est capable d'effectuer une transaction par carte en ligne<br>
+        3. Le fournisseur est inscrit au système et peut recevoir une commande<br>
+        <br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire)<br>
+        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+        ordonnée numériquement<br>
+        1. L'utilisateur se connecte au marché.<br>
+         1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
+        2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
+         2.1 Il y renvoie a lutilisateur une liste.<br>
+        3. L'utilisateur ajoute le ou les composantes désirées dans son panier.<br>
+         3.2. Il procède au paiement sécurisé.<br>
+        4. Le système reçoit la requête et les détails de la commande.<br>
+         4.1 le système confirme la commande et l'envoie au fournisseur.<br>
+        5. le fournisseur complète la commande en envoyant les produits à l'utilisateur.<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
+        principal, alternatives possibles à certaines étapes<br>
+        2a. Le système ne trouve aucune composante pouvant satisfaire la recherche de l'utilisateur.<br>
+         2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
+         2a.2. Le scénario recommence à l'étape 1.<br>
+        4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
+         4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
+        <span style="font-weight: bold;">Postconditions :</span> 
+        Le système enregistre les informations suivantes:
+        -La date et l'heure à laquelle la commande à été envoyée
+        -La date et l'heure à laquelle la commande fut complétée
+        -Les informations propre à la commande(composante id, quantité, prix)
+        -L'identifiant du client ayant passé la commande
+        -L'identifiant du fournisseur ayant complété la commande
+        <br>
+    </p>
+
+    <p id="sell-component">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
+        <span style="font-weight: bold;">But :</span> Un utilisateur quelconque du service souhaite se procurer les composantes
+        nécessaires afin de contruire son robot.<br>
+        <span style="font-weight: bold;">Préconditions :</span> <br>
+        1. L'utilisateur est inscrit et connecté sur le système Robotix<br>
+        2. Le(s) fournisseur(s) est/sont inscrit(s) sur le système Robotix<br>
+        <br>
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur
+        (secondaire).<br>
+        <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
+        ordonnée numériquement<br>
+        1. L'utilisateur se connecte au marché<br>
+         1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche<br>
+        2. Le système recherche à travers sa base de données pour les pièces mises en ligne par les fournisseurs satisfaisant la recherche<br>
+         2.2 
+        3. L'utilisateur ajoute le ou les composantes désirées dans son panier<br>
+
         <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
         principal, alternatives possibles à certaines étapes<br>
         1a.1. remplace étape 1 du scenario principal<br>
@@ -77,7 +142,7 @@
     <p id="voir l'etat des robots">
     </p>
 
-    <p id="voir le metriques d'un robot/flotte">
+    <p id="voir le metriques d'un robot">
     </p>
 
     <p id="S'inscrire comme fournisseur">
