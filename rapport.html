@@ -84,7 +84,7 @@
         1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
         <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
         principal achève avec succès.<br>
-        Le système enregistre les informations suivantes:
+        Le système enregistre les informations suivantes:<br>
         -L'identifiant du fournisseur ratachée à la composante<br>
         -Les informations propres à la composante, notamment: Le prix unitaire, La stock disponible, La description ainsi que l'id.<br>
         <br>
@@ -161,7 +161,12 @@
         3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
          3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
         3.2b. La liste séquentielle d'actions est invalide, car la liste d'actions spécifée par l'utilisateur est vide.<br>
-         3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+         3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         
+        <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
+        principal achève avec succès.<br>
+        Le système enregistre les informations suivantes:<br>
+        -Les informations principales de la tâche(liste d'actions) et ceux optionnels (horaire et action déclencheur)<br>
+        -L'identifiant du robot dans la flotte de l'utilisateur ayant été attribué la tâche.<br>
         <br>
     </p>
 
