@@ -44,11 +44,11 @@
                 <span style="font-weight: bold;">temps mis: </span>-
             </p>
             <p>
-                <span style="font-weight: bold;">Nom: </span>-
+                <span style="font-weight: bold;">Nom: </span> Samue Maltais
                 <br>
-                <span style="font-weight: bold;">Matricule: </span>-
+                <span style="font-weight: bold;">Matricule: </span> 20244617
                 <br>
-                <span style="font-weight: bold;">Courriel: </span>-
+                <span style="font-weight: bold;">Courriel: </span>samuel.maltais@umontreal.ca
                 <br>
                 <span style="font-weight: bold;">temps mis: </span>-
             </p>
@@ -243,7 +243,7 @@
     
                 <p id="etats-robots">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Voir l'état de ses robots<br>
-                    <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, vitesse, etc.<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, condition, vitesse, etc.<br>
                     <span style="font-weight: bold;">Préconditions :</span><br>
                     1. L'utilisateur est inscrit dans le système Robotix.<br>
                     2. L'utilisateur a des robots enregistrés au système.<br>
@@ -269,6 +269,35 @@
                 </p>
     
                 <p id="voir le metriques d'un robot">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Voir les métriques de ses robots<br>
+                    <span style="font-weight: bold;">But :</span> Un utilisateur souhaite voir un resume de l'acomplissement de ses robots. Distance
+                    parcourue, energie utilisee, historique de taches, performance, rendement, etc. Des données globablement utile pour planifier des
+                    ajustements. 
+                    <br>
+                    <span style="font-weight: bold;">Préconditions :</span> 
+                    L'utilisateur doit être inscrit
+                    Il doit au moins un robot
+                    <br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span>
+                    1. L'utilisateur choisit son critère de selection, soit un robo individuel, tous les robots d'un même type, selon le fournisseur, etc<br>
+                     1.1. Étape 1.1<br>
+                    2. L'utilisateur choisit une métrique a visionner. Une des metriques mentionée dans le but<br>
+                    3. L'application fait un requete d'historique a ces robots<br>
+                    4. Les données sont reçues et montrée en graphique ou format visuel plaisant dependant de la métrique<br>
+                    5. L'utilisateur peut changer le time frame des données, elle ont le time frame maximal par défault.
+                    6. L'utilisateur peut telecharger les données en format CSV
+
+
+
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    1a. Il n'y a aucun Robot qui correspond au critère de recherche<br>
+                    4a 1. Certains robots ne sont pas connectés. L'application propose d'ignorer les robots non connectés dans les données <br>
+                    4a 2. Si les robots non connectés sont ignorés, les données restent les memes mais il y a une liste dans le UI qui montre quels robots ont échoués.<br>
+                    4b 1. Le critère de recherche est N/A a certains robots, par example distance parcourure pour un robot immobile. L'interface demande a l'usager si il veut ces données nulles ou NULL considérée.
+                    <span style="font-weight: bold;">Postconditions :</span> 
+                    L'utilisateur a des données CSV de l'information qu'il recherchait sur le groupe qu'il voulait.
+                    <br>
                 </p>
     
                 <p id="S'inscrire comme fournisseur">
