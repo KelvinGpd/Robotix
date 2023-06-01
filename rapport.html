@@ -88,7 +88,7 @@
     </p>
 
     <p id="inscription-utilisateur">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Inscription d'un utilisateur<br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire au système comme utilisateur<br>
         <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
         <span style="font-weight: bold;">Préconditions :</span><br>
         1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
@@ -96,50 +96,69 @@
         <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
         <span style="font-weight: bold;">Scénario principal :</span><br>
         1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
-        1.1. L'utilisateur saisit les informations.<br>
+         1.1. L'utilisateur saisit les informations.<br>
         2. Le système vérifie que les informations sont valides.<br>
-        2.1. Pseudo est unique?<br>
-        2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
-        2.3. La compagnie existe?<br>
+         2.1. Pseudo est unique?<br>
+         2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+         2.3. La compagnie existe?<br>
         3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
         2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
-        2a.1. Les informations ne sont pas enregistrés dans le système.<br>
-        2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
-        2a.3. Le scénario recommence à l'étape 1
-        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrés dans le système.<br>
+         2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+         2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
+         2a.3. Le scénario recommence à l'étape 1
+        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrées dans le système.<br>
     </p>
 
     <p id="register robot to fleet">
     </p>
 
     <p id="create-action">
-        <span style="font-weight: bold;">Cas d'utilisation :</span> Création d'un action<br>
-        <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Créer une action<br>
+        <span style="font-weight: bold;">But :</span> L'utilisateur crée une action pour ses robots.<br>
         <span style="font-weight: bold;">Préconditions :</span><br>
-        1. L'utilisateur a une adresse courriel et un numéro de téléphone<br>
-        2. L'utilisateur travaille pour une compagnie<br>
+        1. L'utilisateur est inscrit dans le système Robotix<br>
         <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
         <span style="font-weight: bold;">Scénario principal :</span><br>
-        1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
-        1.1. L'utilisateur saisit les informations.<br>
-        2. Le système vérifie que les informations sont valides.<br>
-        2.1. Pseudo est unique?<br>
-        2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
-        2.3. La compagnie existe?<br>
-        3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
+        1. L'utilisateur saisit les instructions pour effectuer une action.<br>
+        2. Le système vérifie que ces instructions ne contiennent pas d'erreurs et sont possibles à effectuer avec les composantes offerts par Robotix.<br>
+        3. Les instructions pour cette action sont enregistrées dans le système.<br>
         <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-        2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
-        2a.1. Les informations ne sont pas enregistrés dans le système.<br>
-        2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides.<br>
-        2a.3. Le scénario recommence à l'étape 1
-        <span style="font-weight: bold;">Postconditions :</span> Les informations de l'utilisateur sont enregistrés dans le système.<br>
+        2a. Les instructions sont impossibles à effectuer ou contient des erreurs.<br>
+         2a.1. Le système indique à l'utilisateur que les instructions ne sont pas bonnes. <br>
+         2a.2. L'utilisateur corrige les instructions et le système les vérifie une autre fois.<br>
+
+        <span style="font-weight: bold;">Postconditions :</span> Les instructions pour l'action sont enregistrés dans le système.<br>
     </p>
 
     <p id="assigner taches et actions a un robot">
     </p>
 
-    <p id="voir l'etat des robots">
+    <p id="etats-robots">
+        <span style="font-weight: bold;">Cas d'utilisation :</span> Voir l'état de ses robots<br>
+        <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, vitesse, etc.<br>
+        <span style="font-weight: bold;">Préconditions :</span><br>
+        1. L'utilisateur est inscrit dans le système Robotix.<br>
+        2. L'utilisateur a des robots enregistrés au système.<br>
+        3. Les robots sont connectés à un résau WiFi/Bluetooth et ils sont capable de communiquer avec le système.<br>
+        4. Les robots ont des capteurs pour savoir son état.
+        <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
+        <span style="font-weight: bold;">Scénario principal :</span><br>
+        1. L'utilisateur indique les robots dont il/elle veut voir l'état. <br>
+        2. Le système envoie des requètes aux robots indiqués.<br>
+        3. Les robots répondent au système et renvoient leur état.<br>
+        4. Le système affiche l'information reçu à l'utilisateur.<br>
+        <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+        1a. L'utilisateur n'a pas de robots enregistrés.<br>
+         1a.1 Le système indique à l'utilisateur qu'il faut d'abord enregistrer des robots.<br>
+        2a. Un ou plusieurs robots ne peuvent pas communiquer avec le système dans le moment.<br>
+         2a.1. Le système indique à l'utilisateur qu'il n'était pas capable de communiquer avec ces robots.<br>
+         2a.2. Le scénario continue à l'étape 3.<br>
+        3a. Un ou plusieurs robots n'ont pas de capteurs.<br>
+         3a.1. Le système indique à l'utilisateur que ces robots-là n'ont pas de capteurs.<br>
+         3a.2. Le scénario continue à l'étape 4.<br>
+         
+        <span style="font-weight: bold;">Postconditions :</span> L'utilisateur connaît l'état de ses robots.<br>
     </p>
 
     <p id="voir le metriques d'un robot">
