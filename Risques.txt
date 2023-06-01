@@ -1,0 +1,25 @@
+1. Risque de confidentialité des données.
+
+Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
+Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.
+
+
+2. Défaillance du système
+
+Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
+ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
+
+
+3.Manque d'adoption des utilisateurs
+
+Il existe un risque que les utilisateurs ne trouvent pas l'outil Robotix suffisamment convivial, intuitif ou utile, ce qui pourrait entraîner un manque d'adoption de l'outil. Si les utilisateurs ne voient pas de valeur ajoutée significative à utiliser l'outil ou s'ils rencontrent des difficultés techniques ou fonctionnelles, ils pourraient décider de ne pas l'utiliser, ce qui pourrait compromettre le succès du projet.
+
+
+4. Risque de mauvaise utilisation des robots
+
+Les utilisateurs pourraient utiliser les robots de manière inappropriée ou contraire aux consignes de sécurité, ce qui pourrait entraîner des accidents, des blessures ou des dommages matériels. 
+
+
+5. Depassement du budget
+
+Le développement de l'outil Robotix pourrait prendre plus de temps que prévu ou dépasser le budget alloué. Des problèmes techniques, des changements de spécifications ou des ressources insuffisantes pourraient contribuer à ces retards et dépassements budgétaires, impactant la satisfaction des utilisateurs et la rentabilité globale du projet.
