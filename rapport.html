@@ -301,15 +301,60 @@
                 </p>
     
                 <p id="S'inscrire comme fournisseur">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire au système comme fournisseur<br>
+                    <span style="font-weight: bold;">But :</span> Le fournisseur s'inscrit au système en saisant les informations nécessaires.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. Le fournisseur a une adresse courriel et un numéro de téléphone<br>
+                    2. La companie du fournisseur est enregistrée légalement<br>
+                    <span style="font-weight: bold;">Acteurs :</span> Fournisseur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. Le système demande au fournisseur de saisir les informations nécessaires.<br>
+                    1.1.Le fournisseur les informations nécessaires.<br>
+                    1.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+                    2. Un background check est performé sur la companie. La permission de vendre est accordée par un moderateur qui juge la compagnie fiable<br>
+                    3. Le moderateur accepte la compangnie<br>
+                    4. Le fournisseur reçoit un email indiquant qu'il est inscrit et peut lister des items/services <br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    2a. Les informations saisies par le fournisseur ne sont pas valides.<br>
+                    2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+                    2a.2. Le système avertit le fournisseur que les informations ne sont pas valides.<br>
+                    2a.3. Le scénario recommence à l'étape 1
+                    3a 1. Le moderateur ne juge pas que la compangnie est fiable, il envoie un email avec ce qu'il faut faire pour pouvoir vendre
+                    3a 2. Une fois des preuves additionelles de légitimité envoyée, on passe à l'étape 4.
+                    <span style="font-weight: bold;">Postconditions :</span> Les informations du fournisseur sont enregistrées dans le système.<br>
                 </p>
     
                 <p id="trouver un fournisseur">
+                    
                 </p>
     
                 <p id="se joindre a une communaute">
                 </p>
     
                 <p id="gerer les anomalies">
+                    <span style="font-weight: bold;">Cas d'utilisation :</span> Un robot cesse de fonctionner / anomalies<br>
+                    <span style="font-weight: bold;">But :</span> L'.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur est inscript et a au moins un robot<br>
+                    2. Le robot defectueux a des moyens de détecter lorsqu'il fonctionne mal<br>
+                    3. Le fournisseur tag les possibles défections selon leur niveau d'importance<br>
+                    <span style="font-weight: bold;">Acteurs :</span> Principal: Systeme<br>
+                    Secondaire: Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. Un robot défectueux, il envoie un <br>
+                    1.1.Le fournisseur les informations nécessaires.<br>
+                    1.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+                    2. Un background check est performé sur la companie. La permission de vendre est accordée par un moderateur qui juge la compagnie fiable<br>
+                    3. Le moderateur accepte la compangnie<br>
+                    4. Le fournisseur reçoit un email indiquant qu'il est inscrit et peut lister des items/services <br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
+                    1a. Le robot n'est pas connecté a un réseau, il ne peut pas rien faire<br>
+                    2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+                    2a.2. Le système avertit le fournisseur que les informations ne sont pas valides.<br>
+                    2a.3. Le scénario recommence à l'étape 1
+                    3a 1. Le moderateur ne juge pas que la compangnie est fiable, il envoie un email avec ce qu'il faut faire pour pouvoir vendre
+                    3a 2. Une fois des preuves additionelles de légitimité envoyée, on passe à l'étape 4.
+                    <span style="font-weight: bold;">Postconditions :</span> Les informations du fournisseur sont enregistrées dans le système.<br>
                 </p>
     
                 <p id="participer a une activite avec ses robots">
