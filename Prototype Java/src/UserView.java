@@ -24,11 +24,21 @@ public class UserView {
         System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
                 "4. Créer un action\n5. Interagir avec vos robots");
         switch (controller.choice(5)) {
-            case "1" -> addRobot();
-            case "2" -> robotInfo();
-            case "3" -> buyComponents();
-            case "4" -> createAction();
-            case "5" -> interact();
+            case "1":
+                addRobot();
+                break;
+            case "2":
+                robotInfo();
+                break;
+            case "3":
+                buyComponents();
+                break;
+            case "4":
+                createAction();
+                break;
+            case "5":
+                interact();
+                break;
         }
     }
 
