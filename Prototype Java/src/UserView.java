@@ -90,29 +90,76 @@ public class UserView {
             case "4" -> type = "Manager";
             case "5" -> type = "Drone";
         }
-        System.out.println("En premier lieu, achetez un CPU, puis achetez les autres components plus tard");
+        System.out.println("En premier lieu, achetez un CPU de Robotix, puis achetez les autres components plus tard");
+        System.out.println("Choisissez la generation de CPU:");
+        int gen = 0;
+        System.out.println("1. Gen 1 1ghz\n2. Gen 2 2ghz\n Gen 3 3ghz\n" +
+                "4. Gen 4 4ghz\nGen 5 5ghz");
 
-        Robot robot = new Robot(type);
+        switch (controller.choice(5)) {
+            case "1" -> type = "Gen 1";
+            case "2" -> type = "Gen 2";
+            case "3" -> type = "Gen 3";
+            case "4" -> type = "Gen 4";
+            case "5" -> type = "Gen 5";
+        }
+        System.out.println("Choisissez le nom de votre Robot:");
+        String name = scanner.nextLine();
+
+        Robot robot = new Robot(type, name);
+        robot.addPart(type, "Robotix");
+        System.out.println("Robot cree !");
+        nosRobots.add(robot);
 
     }
 
     private void robotInfo() {
-        // TODO
-        // voir état, métriques
+        System.out.println("Voici l'information de nos robots:");
+        for (int i = 0; i < nosRobots.size(); i++) {
+            System.out.print(nosRobots.get(i).name + "   ");
+            System.out.println(nosRobots.get(i).getUUID());
+            System.out.println(nosRobots.get(i).type);
+            System.out.println("Composantes:");
+            for (int j = 0; j < nosRobots.get(i).getParts().size(); j++) {
+                System.out.println(nosRobots.get(i).getParts().get(j));
+            }
+
+        }
+        this.run();
     }
 
     private void buyComponents() {
-        // TODO
-        // trouver fournisseur, acheter composantes
+        System.out.println("Pour quel robot voulez vous acheter un component ?");
+        for (int i = 0; i < nosRobots.size(); i++) {
+            System.out.println(String.valueOf(i) + "       " + nosRobots.get(i).name);
+        }
+        Scanner scanner = new Scanner(System.in);
+        String wtv = scanner.nextLine();
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(wtv);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        if (choice >= nosRobots.size()) {
+            System.out.println("Choix invalide");
+            this.buyComponents();
+        }
+        System.out.println("Ecrire le nom du component a ajouter");
+        wtv = scanner.nextLine();
+        nosRobots.get(choice).addPart(wtv, "Robotix");
+        System.out.println("Done !");
+        this.run();
     }
 
     private void createAction() {
-        // TODO
-        // créer actions, activités
+        System.out.println("Choisissez la nouvelle position x y z de votre robot");
+        this.run();
     }
 
     private void interact() {
         // TODO
         // assigner tâches, participer à des activités
+        this.run();
     }
 }
