@@ -1,8 +1,7 @@
 //the user interface
 
-import java.util.Scanner;
 public class Main {
-    public void main(String[] args){
+    public static void main(String[] args){
         Controller controller = new Controller();
         UserView userView = new UserView();
         SellerView sellerView = new SellerView();
