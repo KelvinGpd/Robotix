@@ -1,12 +1,20 @@
 
 //UI for user
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserView {
     Controller controller;
+    ArrayList<String> fournisseurs = new ArrayList<String>();
+    ArrayList<Robot> nosRobots = new ArrayList<Robot>();
 
     public UserView() {
         controller = new Controller();
+        fournisseurs.add("Fournisseur A");
+        fournisseurs.add("Fournisseur B");
+        fournisseurs.add("Fournisseur C");
+        fournisseurs.add("Fournisseur D");
+        fournisseurs.add("Robotix");
     }
 
     public void run() {
@@ -29,30 +37,30 @@ public class UserView {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for email
-        System.out.print("Enter email: ");
+        System.out.print("Entrez votre email: ");
         String email = scanner.nextLine();
 
         // Check email with regex
         if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-            System.out.println("Invalid email format!");
+            System.out.println("Format de email invalide !");
             return this.register();
         }
-        System.out.print("Enter username: ");
+        System.out.print("Entrez votre nom d'usager: ");
         String username = scanner.nextLine();
 
         // Check username with regex
         if (!username.matches("^[A-Za-z0-9_]+$")) {
-            System.out.println("Invalid username format!");
+            System.out.println("Format d'usager invalide !");
             return this.register();
         }
 
         // Prompt for phone number
-        System.out.print("Enter phone number: ");
+        System.out.print("Entrez votre numero de telephone: ");
         String phoneNumber = scanner.nextLine();
 
         // Check phone number with regex
         if (!phoneNumber.matches("^[0-9]{10}$")) {
-            System.out.println("Invalid phone number format!");
+            System.out.println("Format invalide !");
             return this.register();
         }
         User user = new User(email, username, phoneNumber);
@@ -60,8 +68,22 @@ public class UserView {
     }
 
     private void addRobot() {
-        // TODO
-        // ajouter robot à la flotte
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Quel type de robot voulez vous ?");
+        System.out.println("1. Amusement\n2. Controlleur\n 3. Ouvrier\n" +
+                "4. Manager\n5. Drone");
+        String type = "";
+        switch (controller.choice(5)) {
+            case "1" -> type = "Amusement";
+            case "2" -> type = "Controlleur";
+            case "3" -> type = "Ouvrier";
+            case "4" -> type = "Manager";
+            case "5" -> type = "Drone";
+        }
+        System.out.println("En premier lieu, achetez un CPU, puis achetez les autres components plus tard");
+
+        Robot robot = new Robot(type);
+
     }
 
     private void robotInfo() {
