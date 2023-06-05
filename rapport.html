@@ -279,15 +279,13 @@
                 <p id="assigner taches et actions a un robot">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Assigner une série d'actions(une tâche) à un robot<br>
                     <span style="font-weight: bold;">But :</span> Un utilisateur du système souhaite attribuer une tâche à un de ses robots.<br>
-                    <span style="font-weight: bold;">Préconditions :</span> préconditions nécessaires avant
-                    d'entammer le scénario principal.<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
                     1. L'utilisateur est inscrit et sur le système Robotix.<br>
                     2. L'utilisateur possède au moins un robot dans sa flotte.<br>
                     3. L'utilisateur à dèjà crée plusieurs actions assignables.<br>
                     <br>
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur.<br>
-                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-                    ordonnée numériquement<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'utilisateur rentre dans la page "gérer mes robots"<br>
                      1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
                      1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
@@ -296,8 +294,7 @@
                     3.1 L'utilisateur sélectionne "create & assign task".<br>
                     3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
                     4. Le système attribue la tâche dans sa base de données à l'identifiant du robot.<br>
-                    <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
-                    principal, alternatives possibles à certaines étapes<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     1.1a. tous les robots de l'utilisateur sont occupés<br>
                     1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
                     3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
@@ -377,7 +374,7 @@
                     <span style="font-weight: bold;">Acteurs :</span> Fournisseur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Le système demande au fournisseur de saisir les informations nécessaires.<br>
-                    1.1.Le fournisseur les informations nécessaires.<br>
+                    1.1.Le fournisseur entre les informations nécessaires.<br>
                     1.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
                     2. Un background check est performé sur la companie. La permission de vendre est accordée par un moderateur qui juge la compagnie fiable<br>
                     3. Le moderateur accepte la compangnie<br>
@@ -393,7 +390,20 @@
                 </p>
     
                 <p id="trouver un fournisseur">
-                    
+                    <span style="font-weight: bold;">Cas d'utilisation:</span> Trouver un fournisseur<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur trouve un fournisseur pour faire des achats<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur possède un compte de Robotix.
+                    2. Il y a des fournisseurs enregistrés
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur(principal) <br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. L'usager navigue dans la section pour trouver des fournisseurs.<br>
+                    2. L'usager ajoute des filtres permettant de spécifier le fournisseur recherché.<br>
+                    2.1 Les filtres peuvent être la localisation géographique, fournisseur d'une pièce spécifique ou d'un robot complet.<br>
+                    3. La page affiche les fournisseurs respectant le filtre.<br>
+                    4. L'usager choisi le fournisseur à sa discrétion.<br>
+                    5. L'usager peut commander des pièces<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
                 </p>
     
                 <p id="se joindre a une communaute">
