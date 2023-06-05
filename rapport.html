@@ -78,45 +78,45 @@
 
                 -ressources d'un robot: CPU & Mémoire du robot <br>
 
--type d'un robot: qualificateur permettant de classifier un robot selon son utilisation régulière. <br>
+                -type d'un robot: qualificateur permettant de classifier un robot selon son utilisation régulière. <br>
 
--efficacité énergétique: quantificateur d'énergie par tâche effectué <br>
+                -efficacité énergétique: quantificateur d'énergie par tâche effectué <br>
 
--composantes: toute pièce hardware pouvant être incorporé à un robot, obligatoires(CPU) et optionnelles. <br>
+                -composantes: toute pièce hardware pouvant être incorporé à un robot, obligatoires(CPU) et optionnelles. <br>
 
--mécanisme d'inventorisation: processus par lesquels un robot effectue une collecte de données externes afin d'améliorer son efficacité. <br>
+                -mécanisme d'inventorisation: processus par lesquels un robot effectue une collecte de données externes afin d'améliorer son efficacité. <br>
 
--numéro de série (UUID): numéro fourni par le fournisseur, unique pour chaque composante du système, et qui permet ainsi l'identification des différentes pièces.<br>
+                -numéro de série (UUID): numéro fourni par le fournisseur, unique pour chaque composante du système, et qui permet ainsi l'identification des différentes pièces.<br>
 
--flotte: ensemble de robots attribuables à un seul utilisateur. <br>
+                -flotte: ensemble de robots attribuables à un seul utilisateur. <br>
 
--ordres de déplacement: ordres issus par le système qui permet aux robots de se déplacer en fonction de leur composantes.<br>
+                -ordres de déplacement: ordres issus par le système qui permet aux robots de se déplacer en fonction de leur composantes.<br>
 
--actions des robots: créées indépendamment des robots, puis implémentés(attribuées) aux robot, représentent une seule action quelconque effectuée. <br>
+                -actions des robots: créées indépendamment des robots, puis implémentés(attribuées) aux robot, représentent une seule action quelconque effectuée. <br>
 
--tâche: séquence d'actions d'un robot.<br>
+                -tâche: séquence d'actions d'un robot.<br>
 
--propriété de transition: caractéristique propre à une tâche, indiquant si elle s'effectue en même temps ou après le précédent.<br>
+                -propriété de transition: caractéristique propre à une tâche, indiquant si elle s'effectue en même temps ou après le précédent.<br>
 
--exécution en parallèle: mode d'éxécution ou les tâches sont exécutées en même temps.<br>
+                -exécution en parallèle: mode d'éxécution ou les tâches sont exécutées en même temps.<br>
 
--exécution en séquence: mode d'éxécution ou les tâches sont exécutées un après l'autre.<br>
+                -exécution en séquence: mode d'éxécution ou les tâches sont exécutées un après l'autre.<br>
 
--état d'un robot: qualifié par la position, la vitesse, le niveau de batterie ainsi que la consommation CPU et mémoire d'un robot. <br>
+                -état d'un robot: qualifié par la position, la vitesse, le niveau de batterie ainsi que la consommation CPU et mémoire d'un robot. <br>
 
--usage: évolution périodique de l'état d'un robot.<br>
+                -usage: évolution périodique de l'état d'un robot.<br>
 
--historique: trace de l'usage.<br>
+                -historique: trace de l'usage.<br>
 
--métriques: quantificateurs (indicateurs, ratios agrégés par période)<br>
+                -métriques: quantificateurs (indicateurs, ratios agrégés par période)<br>
 
--activités: série de tâches qui peut être assigné à n'importe quel robot pour atteindre un objectif spécifique et doit avoir une date de début et une date de fin. Listes d'activités non exhaustive: Jeux, Éducation, Création.<br>
+                -activités: série de tâches qui peut être assigné à n'importe quel robot pour atteindre un objectif spécifique et doit avoir une date de début et une date de fin. Listes d'activités non exhaustive: Jeux, Éducation, Création.<br>
 
--robot: composé d'au moins un CPU et une autre composante non-obligatoire. Classé par son type ainsi que son numéro de série unique. Exécute des tâches pour réaliser une activité.<br>
+                -robot: composé d'au moins un CPU et une autre composante non-obligatoire. Classé par son type ainsi que son numéro de série unique. Exécute des tâches pour réaliser une activité.<br>
 
--anomalies: motif qui dévie de la norme suite à l'analyse de métriques<br>
+                -anomalies: motif qui dévie de la norme suite à l'analyse de métriques<br>
 
--Capacité de fabrication: métrique quantifiant la production d'objets par unité de temps<br>
+                -Capacité de fabrication: métrique quantifiant la production d'objets par unité de temps<br>
 
             </div>
 
@@ -404,6 +404,7 @@
                     4. L'usager choisi le fournisseur à sa discrétion.<br>
                     5. L'usager peut commander des pièces<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
+                <p id="trouver un fournisseur de composantes">
                 </p>
     
                 <p id="se joindre a une communaute">
@@ -462,39 +463,40 @@
     
             </div>
 
-<div id="Risque"></div>
-<h2>Risques</h2>            
-<h3>1. Risque de confidentialité des données.</h3>
+            <div id="Risques">
+                <h2>Risques</h2>            
+                <h3>1. Risque de confidentialité des données.</h3>
 
-<p>Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
-Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.</p>
+                <p>Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
+                Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.</p>
 
 
-<h3>2. Défaillance du système</h3>
-<p>
-Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
-ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
-</p>
-<h3>
-3.Manque d'adoption des utilisateurs
-</h3>
-<p>
-Il existe un risque que les utilisateurs ne trouvent pas l'outil Robotix suffisamment convivial, intuitif ou utile, ce qui pourrait entraîner un manque d'adoption de l'outil. Si les utilisateurs ne voient pas de valeur ajoutée significative à utiliser l'outil ou s'ils rencontrent des difficultés techniques ou fonctionnelles, ils pourraient décider de ne pas l'utiliser, ce qui pourrait compromettre le succès du projet.
-</p>
-<h3>
-4. Risque de mauvaise utilisation des robots
-</h3>
-<p>
-Les utilisateurs pourraient utiliser les robots de manière inappropriée ou contraire aux consignes de sécurité, ce qui pourrait entraîner des accidents, des blessures ou des dommages matériels. 
-</p>
-<h3>
-5. Depassement du budget
-</h3>
-<p>
-Le développement de l'outil Robotix pourrait prendre plus de temps que prévu ou dépasser le budget alloué. Des problèmes techniques, des changements de spécifications ou des ressources insuffisantes pourraient contribuer à ces retards et dépassements budgétaires, impactant la satisfaction des utilisateurs et la rentabilité globale du projet.
-</p>
+                <h3>2. Défaillance du système</h3>
+                <p>
+                Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
+                ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
+                </p>
+                <h3>
+                3.Manque d'adoption des utilisateurs
+                </h3>
+                <p>
+                Il existe un risque que les utilisateurs ne trouvent pas l'outil Robotix suffisamment convivial, intuitif ou utile, ce qui pourrait entraîner un manque d'adoption de l'outil. Si les utilisateurs ne voient pas de valeur ajoutée significative à utiliser l'outil ou s'ils rencontrent des difficultés techniques ou fonctionnelles, ils pourraient décider de ne pas l'utiliser, ce qui pourrait compromettre le succès du projet.
+                </p>
+                <h3>
+                4. Risque de mauvaise utilisation des robots
+                </h3>
+                <p>
+                Les utilisateurs pourraient utiliser les robots de manière inappropriée ou contraire aux consignes de sécurité, ce qui pourrait entraîner des accidents, des blessures ou des dommages matériels. 
+                </p>
+                <h3>
+                5. Depassement du budget
+                </h3>
+                <p>
+                Le développement de l'outil Robotix pourrait prendre plus de temps que prévu ou dépasser le budget alloué. Des problèmes techniques, des changements de spécifications ou des ressources insuffisantes pourraient contribuer à ces retards et dépassements budgétaires, impactant la satisfaction des utilisateurs et la rentabilité globale du projet.
+                </p>
+            </div>
 
-            <div id="Exigences non-fonctionnelles"></div>
+            <div id="Exigences non-fonctionnelles">
             <h2>Exigences non-fonctionnelles</h2>
             1. Répondre à n'importe quelle demande de l'utilisateur dans un délai acceptable (quelques secondes)<br>
 
@@ -505,8 +507,9 @@ Le développement de l'outil Robotix pourrait prendre plus de temps que prévu o
             4. Compatibilité avec plusieurs types de robots, pour que l'utilisateur peut assigner des tâches aux robots et contrôler leurs movements peu importe le fournisseur des composantes.<br>
             
             5. Sécurité de l'informations des utilisateurs telles que l'adresse courriel, numéro de téléphone et surtout les détails saisies lors du paiement des composants.<br>
-            <div id="Prototype java"></div>
+            </div>
 
+            <div id="Prototype java"></div>
         </div>
 
     </body>
