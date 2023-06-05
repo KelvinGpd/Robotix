@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class SellerView {
     Controller controller;
+    Seller seller;
     public SellerView() {
         controller = new Controller();
     }
 
     public void run(){
-        Seller seller = register();
+        seller = register();
 
         System.out.println("Bienvenue à Robotix "+ seller.getName() +". Veuillez choisir une option:");
         System.out.println("1. Vendre des composantes 2. Voir vos composantes");
@@ -19,6 +20,15 @@ public class SellerView {
                 break;
             case "2":
                 viewComp();
+                break;
+        }
+        System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
+        switch (controller.choice(2)){
+            case "1":
+                run();
+                break;
+            case "2":
+                System.exit(0);
                 break;
         }
     }
@@ -42,9 +52,17 @@ public class SellerView {
     }
 
     private void sellComp(){
-        //TODO
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez saisir le nom de la composante que vous voulez vendre:");
+        String component = scanner.next();
+
+        System.out.println("La composante \"" + component + "\" a été listé sur le marché.");
+
     }
     private void viewComp(){
-        //TODO
+        System.out.println("Vous vendez les composantes suivantes:");
+        for(String component : seller.getComponents()){
+            System.out.println(component);
+        }
     }
 }

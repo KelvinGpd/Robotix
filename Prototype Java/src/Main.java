@@ -1,9 +1,14 @@
 //the user interface
 
+<<<<<<< HEAD
+public class Main {
+    public static void main(String[] args){
+=======
 import java.util.Scanner;
 
 public class Main {
     public void main(String[] args) {
+>>>>>>> 19419e188f66d79922188c671b2996fab37584e2
         Controller controller = new Controller();
         UserView userView = new UserView();
         SellerView sellerView = new SellerView();

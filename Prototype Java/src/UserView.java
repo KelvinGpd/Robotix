@@ -40,6 +40,16 @@ public class UserView {
                 interact();
                 break;
         }
+
+        System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
+        switch (controller.choice(2)){
+            case "1":
+                run();
+                break;
+            case "2":
+                System.exit(0);
+                break;
+        }
     }
 
     private User register() {
@@ -79,6 +89,25 @@ public class UserView {
 
     private void addRobot() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez entrer les informations suivantes sur le robot:");
+        System.out.print("Numéro de série:");
+        String number = scanner.next();
+
+        System.out.print("Nom du robot:");
+        String name = scanner.next();
+
+        System.out.print("Type de robot:");
+        scanner.next();
+
+        System.out.println("Le robot \""+ name + "\" avec numéro "+ number +" a été enregistré avec succès.");
+    }
+
+    private void robotInfo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Veuillez saisir le nom du robot dont vous voulez voir les informations:");
+        String name = scanner.next();
+        System.out.println("Voici les informations sur "+name+":");
+        System.out.println("Position: (155.12, 245.4, 32.0)\nVitesse: 7.5km/h\nBatterie: 67%\nConsommation CPU: 84%");
         System.out.println("Quel type de robot voulez vous ?");
         System.out.println("1. Amusement\n2. Controlleur\n 3. Ouvrier\n" +
                 "4. Manager\n5. Drone");
