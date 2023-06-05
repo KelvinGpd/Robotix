@@ -32,7 +32,7 @@
             </p>
             <p>
                 <a href="https://github.com/KelvinGpd/Robotix">Lien vers dépôt GitHub</a><br>
-                <a href="example.vpp">Lien vers fichiers Visual Paradigm</a>
+                <a href="UML_DIAGRAMS\vpp_files">Lien vers fichiers Visual Paradigm</a>
             </p>
             <p>
                 <span style="font-weight: bold;">Nom: </span>Kelvin Chen
@@ -41,7 +41,7 @@
                 <br>
                 <span style="font-weight: bold;">Courriel: </span>kelvin.chen@umontreal.ca
                 <br>
-                <span style="font-weight: bold;">temps mis: </span>-
+                <span style="font-weight: bold;">temps mis: </span>3h
             </p>
             <p>
                 <span style="font-weight: bold;">Nom: </span> Samuel Maltais
@@ -50,16 +50,25 @@
                 <br>
                 <span style="font-weight: bold;">Courriel: </span>samuel.maltais@umontreal.ca
                 <br>
-                <span style="font-weight: bold;">temps mis: </span>-
+                <span style="font-weight: bold;">temps mis: </span>3h
             </p>
             <p>
-                span style="font-weight: bold;">Nom: </span> Yan Shek
+                <span style="font-weight: bold;">Nom: </span> Yan Shek
                 <br>
                 <span style="font-weight: bold;">Matricule: </span> 20244110
                 <br>
                 <span style="font-weight: bold;">Courriel: </span>yan.shek@umontreal.ca
                 <br>
-                <span style="font-weight: bold;">temps mis: </span>-
+                <span style="font-weight: bold;">temps mis: </span>3h
+            </p>
+            <p>
+                <span style="font-weight: bold;">Nom: </span> Leo Tremblay
+                <br>
+                <span style="font-weight: bold;">Matricule: </span> 20247961
+                <br>
+                <span style="font-weight: bold;">Courriel: </span>leo.tremblay@umontreal.ca
+                <br>
+                <span style="font-weight: bold;">temps mis: </span>3h
             </p>
         </div>
 
@@ -67,22 +76,11 @@
             <h2>Distribution des taches</h2>
         </div>
 
-        <div id="Hypotheses">
-            <h2>Hypotheses</h2>
-            <p>Premierement, nous pensons que ce projet est extremement difficile a faire pour de vrai, et que une approche avec moins de requis
-                et un ajout lent de features comme AGILE serait plus appropriés. Nous pensons aussi qu'elle est irrealisable car les robots sont
-                trop différents pour être traités avec le même software. Créer une action avec plusieurs types de robots et de fournisseurs crée une
-                infinité de possibilités. Si ce projet devait etre realité, les robots devraient tous etre standardisé et les fournisseurs devraient subir
-                des contraintes tres strictes, un peu comme un fournisseur qui veut vendre a McDonald. Finalement, nous pensons que le scénario factorio ou
-                l'interface ultime centralisée de gestion de robot n'existera pas, principalement car le besoin d'une telle platforme n'est pas nécéssaire.
-                Souvent les tâches ou actions programmables viennent déja avec le robot, comme par example les electromenagers.
-            </p>
-        </div>
-        
         <div id="taches">
             <h2>Taches</h2>
             
             <div id="glossaire" style="display: flex; flex-wrap: wrap;">
+                <h2>glossaire</h2>
 
                 -ressources d'un robot: CPU & Mémoire du robot <br>
 
@@ -128,9 +126,13 @@
 
             </div>
 
-            <div id="UML Diagram"></div>
+            <div id="UML Diagram">
+                <h2>Diagrammes de cas d'utilisation</h2>
+                <img src="UML_DIAGRAMS\use_cases.svg" style="width: 100%; height: 100%;">
+            </div>
 
             <div id="useCases">
+                <h2>cas d'utilisation</h2>
 
                 <p id="buy-component">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
@@ -146,19 +148,19 @@
                     1. L'utilisateur se connecte au marché.<br>
                      1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
                     2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
-                    2.1 Il y renvoie a lutilisateur une liste.<br>
+                     2.1 Il y renvoie a lutilisateur une liste.<br>
                     3. L'utilisateur ajoute le ou les composantes désirées dans son panier.<br>
-                    3.2. Il procède au paiement sécurisé.<br>
+                     3.2. Il procède au paiement sécurisé.<br>
                     4. Le système reçoit la requête et les détails de la commande.<br>
-                    4.1 le système confirme la commande et l'envoie au fournisseur.<br>
+                     4.1 le système confirme la commande et l'envoie au fournisseur.<br>
                     5. le fournisseur complète la commande en envoyant les produits à l'utilisateur.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
                     principal, alternatives possibles à certaines étapes<br>
                     2a. Le système ne trouve aucune composante pouvant satisfaire la recherche de l'utilisateur.<br>
-                    2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
-                    2a.2. Le scénario recommence à l'étape 1.<br>
+                     2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
+                     2a.2. Le scénario recommence à l'étape 1.<br>
                     4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
-                    4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
+                     4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
                     <span style="font-weight: bold;">Postconditions :</span> 
                     Le système enregistre les informations suivantes:<br>
                     -La date et l'heure à laquelle la commande à été envoyée<br>
@@ -389,75 +391,64 @@
                     <span style="font-weight: bold;">But :</span> L'utilisateur se joint à une communauté partageant des activités similaires<br>
                     <span style="font-weight: bold;">Préconditions :</span><br>
                     1. L'utilisateur possède un compte de Robotix.
-                    2. L'utilisateur possède des robots avec des activités prédéfinis.
+                    2. L'utilisateur possède des robots avec des activités.
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur <br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
-                    1. La page affiche les activités en cours.
+                    1. L'utilisateur ouvre l'onglet de communauté d'activités.<br>
+                     1.1 Le système obtient une liste de toutes les activités des robots de l'utilisateur.<br> 
                     2. L'usager sélectionne l'activité pour laquelle il veut joindre une communauté<br>
-                    3. Une requête est envoyée au groupe.
+                     2.1 Le système obtient une liste de toutes les communautés publiques (en sautant ceux privées) avec des activités similaires.<br>
+                    3. L'utilisateur choisit une communauté à laquelle se joindre.<br>
+                     3.1 Le système inscrit l'identifiant de l'utilisateur à la communauté.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
-                    1a. L'utilisateur ne possède aucune activité en cours.<br>
-                    1a.1 L'utilisateur n'a pas accès à la page et ce scénario n'a pas lieu.<br>
-                    3a. Le groupe est public. <br>
-                    3a.1 L'utilisateur rejoin le groupe. <br>
-                    3b. Le groupe est privé. <br>
-                    3b.1 La requête est approuvée.<br>
-                    3b.1.1 L'usager rejoint le groupe. <br>
-                    3b.2 La requête est refusée. <br>
-                    3b.2.1 L'usager ne peut pas rejoindre le groupe/ <br>
-                    3b.2.2 L'usager recoit la notification que sa requête a été refusée. <br>
-                    <span style="font-weight: bold;">Postconditions :</span> L'usager rejoint la communauté.<br>
+                    2.1.a Il n'y a aucune communauté ouverte qui correspond à l'activité choisie par l'utilisateur.<br>
+                     2.1.a.1 Le Système retourne un avertissement, et le processus recommence à l'étape 2.<br>
+                    <span style="font-weight: bold;">Postconditions :</span><br>
+                    Le système rajoute dans sa base de données l'identifiant de l'utilisateur dans l'objet correspondant à l'instance de la communauté.<br>
                 </p>
     
                 <p id="gerer les anomalies">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Un robot cesse de fonctionner / anomalies<br>
-                    <span style="font-weight: bold;">But :</span> L'usager .<br>
+                    <span style="font-weight: bold;">But :</span> L'Utilisateur veut gérer les anomalies de ses robots.<br>
                     <span style="font-weight: bold;">Préconditions :</span><br>
-                    1. L'utilisateur est inscript et a au moins un robot<br>
-                    2. Le robot defectueux a des moyens de détecter lorsqu'il fonctionne mal<br>
-                    3. Le fournisseur tag les possibles défections selon leur niveau d'importance<br>
-                    <span style="font-weight: bold;">Acteurs :</span> Principal: Systeme | secondaire: Usager (car l'usager peut choisir de ne rien faire)<br>
-                    Secondaire: Utilisateur<br>
+                    1. L'utilisateur est inscrit et a au moins un robot<br>
+                    2. un ou plusieurs robot est(sont) défectueux et ont communiqué leur défaillance au système.<br>
+                    <span style="font-weight: bold;">Acteurs :</span>Utilisateur(Principal), Fournisser(secondaire)<br>
+                    <br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
-                    1. Un robot est défectueux, il envoie un message au système<br>
-                    2. L'usager reçoit un email et le UI display clairement un problème<br>
-                    3. L'usager se fait proposer des solutions, incluant contacter le fournisseur ou acheter de nouvelles parties<br>
-                    4. Le fournisseur est aussi notifié de la défection, afin qu'il puisse avoir des statistiques de ses produits <br>
-                    5. L'usager fait des démarches pour régler son robot
+                    1. Un robot est défectueux, Le système envoie une notification à l'usager.<br>
+                     1.2 L'usager se fait proposer des solutions, incluant contacter le fournisseur ou acheter de nouvelles parties<br>
+                    2. Le fournisseur est aussi notifié de la défection, afin qu'il puisse avoir des statistiques de ses produits <br>
+                     2.1 L'utilisateur contacte le fournisseur pour règler le problème ou recevoir une nouvelle composante.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-                    1a. Le robot n'est pas connecté a un réseau, il ne peut pas faire par de sa défection<br>
-                    1a.1. Le système note les robots qui ne sont pas connectés, une fois que l'usager règle cela, le robot fait part de ses problèmes<br>
-                    <span style="font-weight: bold;">Postconditions :</span> L'usager est informé sur les problèmes de ses robots et a une piste sur comment les régler.<br>
+                    1.2a. L'utilisateur de prend aucune action.<br>
+                     1.2a.1 Le processus termine.<br>
+                    <span style="font-weight: bold;">Postconditions :</span> 
+                    L'usager est informé sur les problèmes de ses robots et a une piste sur comment les régler.
+                    Le système n'a rien à sauvegarder.<br>
                 </p>
     
                 <p id="participer a une activite avec ses robots">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> L'usager souhaite participer a une activité avec ses robots<br>
                     <span style="font-weight: bold;">But :</span> De participer a une activité avec un ou plusieurs robots.<br>
                     <span style="font-weight: bold;">Préconditions :</span><br>
-                    1. L'utilisateur est inscript et a au moins un robot<br>
+                    1. L'utilisateur est inscrit et a au moins un robot<br>
                     2. Au moins un robot est capable de participer a une activité<br>
-                    <span style="font-weight: bold;">Acteurs :</span> Principal: Usager | Secondaire: Robots<br>
+                    <span style="font-weight: bold;">Acteurs :</span>Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
-                    1. L'usager choisit une activité, l'heure et le lieu de cette activité<br>
-                    2. La validité du lieu est vérifiée
-                    3. On vérifie également que l'heure de l'activité se trouve dans le futur.
-                    4. Une liste de robots pouvant faire l'activité a l'heure prévue et étant capable de se rendre au lieu peuvent y aller<br>
-                    5. L'usager peut filtrer les robots disponible comme par couleur, fournisseur, etc<br>
-                    6. L'usager selectionne les robots qu'il veut ou select all selon son critère de recherche <br>
-                    7. L'usager se rend au lieu a l'heure prévue et s'amuse avec ses robots.
+                    1. L'usager choisit une activité, il spécifie le type, la date de début ainsi que la fin.<br>
+                    2. Le système vérifie la validité des informations
+                    4. Le système fournit une liste de robots pouvant faire l'activité a l'heure prévue et étant capable de se rendre au lieu...<br>
+                    5. L'usager selectionne les robots qu'il veut ou select all selon son critère de recherche<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
-                    2a. Le système ne reconnait pas le lieu. On demande a l'usager de réessayer ou d'entrer directement les coordonnées<br>
-                    3a. L'heure n'est pas valide, on demande a l'usager de la choisir de nouveau.
-                    4a. Aucun robot n'est capable de participer. 
-                    4a. 1. Le système propose de soit canceller des tâches pour liberer du temps a des robots qui pourraient participer
-                    4a 2. Le système propose également de reschedule ou relocaliser l'activité pour la rendre possible
-                    4a 3. Si l'usager ne modifie rien, alors l'activité est impossible
-                    4b L'usager souhaite participer mais avec son robot préféré qui n'est pas disponible
-                    4b 1. L'usager doit allors liberer le temps de ce robot ou ajuster l'activité
-                    7a. L'usager ne veut plus faire d'activité, il peut canceller a tout moment.
-                    
-
-                    <span style="font-weight: bold;">Postconditions :</span> L'usager à participé a une activité avec ses robots et est heureux<br>
+                    2a. La date, ou d'autres informations ne sont pas valides.<br>
+                     2a.1 Le système renvoie une erreur, le processus reprends à l'étape 1.<br>
+                    4a. Aucun robot n'est capable de participer.<br>
+                     4a.1. le système retourne une erreur. Le processus reprend à l'étape 1.<br>
+                    <span style="font-weight: bold;">Postconditions :</span><br>
+                    Le système enregistre l'usager à l'activité spécifiée dans sa base de données, il l'attribue
+                    également aux robots spécifiés.<br>
+                    <br>
                 </p>
     
             </div>
@@ -508,7 +499,10 @@
             5. Sécurité de l'informations des utilisateurs telles que l'adresse courriel, numéro de téléphone et surtout les détails saisies lors du paiement des composants.<br>
             </div>
 
-            <div id="Prototype java"></div>
+            <div id="Prototype java">
+                <h2>Prototype Java</h2>
+
+            </div>
         </div>
 
     </body>
