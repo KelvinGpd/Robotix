@@ -44,7 +44,7 @@
                 <span style="font-weight: bold;">temps mis: </span>-
             </p>
             <p>
-                <span style="font-weight: bold;">Nom: </span> Samue Maltais
+                <span style="font-weight: bold;">Nom: </span> Samuel Maltais
                 <br>
                 <span style="font-weight: bold;">Matricule: </span> 20244617
                 <br>
@@ -53,11 +53,19 @@
                 <span style="font-weight: bold;">temps mis: </span>-
             </p>
             <p>
+<<<<<<< HEAD
                 <span style="font-weight: bold;">Nom: </span> Léo Tremblay
                 <br>
                 <span style="font-weight: bold;">Matricule: </span> 20247961
                 <br>
                 <span style="font-weight: bold;">Courriel: </span>leo.tremblay@umontreal.ca
+=======
+                span style="font-weight: bold;">Nom: </span> Yan Shek
+                <br>
+                <span style="font-weight: bold;">Matricule: </span> 20244110
+                <br>
+                <span style="font-weight: bold;">Courriel: </span>yan.shek@umontreal.ca
+>>>>>>> 19419e188f66d79922188c671b2996fab37584e2
                 <br>
                 <span style="font-weight: bold;">temps mis: </span>-
             </p>
@@ -78,45 +86,45 @@
 
                 -ressources d'un robot: CPU & Mémoire du robot <br>
 
--type d'un robot: qualificateur permettant de classifier un robot selon son utilisation régulière. <br>
+                -type d'un robot: qualificateur permettant de classifier un robot selon son utilisation régulière. <br>
 
--efficacité énergétique: quantificateur d'énergie par tâche effectué <br>
+                -efficacité énergétique: quantificateur d'énergie par tâche effectué <br>
 
--composantes: toute pièce hardware pouvant être incorporé à un robot, obligatoires(CPU) et optionnelles. <br>
+                -composantes: toute pièce hardware pouvant être incorporé à un robot, obligatoires(CPU) et optionnelles. <br>
 
--mécanisme d'inventorisation: processus par lesquels un robot effectue une collecte de données externes afin d'améliorer son efficacité. <br>
+                -mécanisme d'inventorisation: processus par lesquels un robot effectue une collecte de données externes afin d'améliorer son efficacité. <br>
 
--numéro de série (UUID): numéro fourni par le fournisseur, unique pour chaque composante du système, et qui permet ainsi l'identification des différentes pièces.<br>
+                -numéro de série (UUID): numéro fourni par le fournisseur, unique pour chaque composante du système, et qui permet ainsi l'identification des différentes pièces.<br>
 
--flotte: ensemble de robots attribuables à un seul utilisateur. <br>
+                -flotte: ensemble de robots attribuables à un seul utilisateur. <br>
 
--ordres de déplacement: ordres issus par le système qui permet aux robots de se déplacer en fonction de leur composantes.<br>
+                -ordres de déplacement: ordres issus par le système qui permet aux robots de se déplacer en fonction de leur composantes.<br>
 
--actions des robots: créées indépendamment des robots, puis implémentés(attribuées) aux robot, représentent une seule action quelconque effectuée. <br>
+                -actions des robots: créées indépendamment des robots, puis implémentés(attribuées) aux robot, représentent une seule action quelconque effectuée. <br>
 
--tâche: séquence d'actions d'un robot.<br>
+                -tâche: séquence d'actions d'un robot.<br>
 
--propriété de transition: caractéristique propre à une tâche, indiquant si elle s'effectue en même temps ou après le précédent.<br>
+                -propriété de transition: caractéristique propre à une tâche, indiquant si elle s'effectue en même temps ou après le précédent.<br>
 
--exécution en parallèle: mode d'éxécution ou les tâches sont exécutées en même temps.<br>
+                -exécution en parallèle: mode d'éxécution ou les tâches sont exécutées en même temps.<br>
 
--exécution en séquence: mode d'éxécution ou les tâches sont exécutées un après l'autre.<br>
+                -exécution en séquence: mode d'éxécution ou les tâches sont exécutées un après l'autre.<br>
 
--état d'un robot: qualifié par la position, la vitesse, le niveau de batterie ainsi que la consommation CPU et mémoire d'un robot. <br>
+                -état d'un robot: qualifié par la position, la vitesse, le niveau de batterie ainsi que la consommation CPU et mémoire d'un robot. <br>
 
--usage: évolution périodique de l'état d'un robot.<br>
+                -usage: évolution périodique de l'état d'un robot.<br>
 
--historique: trace de l'usage.<br>
+                -historique: trace de l'usage.<br>
 
--métriques: quantificateurs (indicateurs, ratios agrégés par période)<br>
+                -métriques: quantificateurs (indicateurs, ratios agrégés par période)<br>
 
--activités: série de tâches qui peut être assigné à n'importe quel robot pour atteindre un objectif spécifique et doit avoir une date de début et une date de fin. Listes d'activités non exhaustive: Jeux, Éducation, Création.<br>
+                -activités: série de tâches qui peut être assigné à n'importe quel robot pour atteindre un objectif spécifique et doit avoir une date de début et une date de fin. Listes d'activités non exhaustive: Jeux, Éducation, Création.<br>
 
--robot: composé d'au moins un CPU et une autre composante non-obligatoire. Classé par son type ainsi que son numéro de série unique. Exécute des tâches pour réaliser une activité.<br>
+                -robot: composé d'au moins un CPU et une autre composante non-obligatoire. Classé par son type ainsi que son numéro de série unique. Exécute des tâches pour réaliser une activité.<br>
 
--anomalies: motif qui dévie de la norme suite à l'analyse de métriques<br>
+                -anomalies: motif qui dévie de la norme suite à l'analyse de métriques<br>
 
--Capacité de fabrication: métrique quantifiant la production d'objets par unité de temps<br>
+                -Capacité de fabrication: métrique quantifiant la production d'objets par unité de temps<br>
 
             </div>
 
@@ -156,8 +164,7 @@
                     3. Le fournisseur est inscrit au système et peut recevoir une commande<br>
                     <br>
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire)<br>
-                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-                    ordonnée numériquement<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'utilisateur se connecte au marché.<br>
                      1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
                     2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
@@ -192,8 +199,7 @@
                     2. Le fournisseur est en mesure de fournir toutes les informations propres à la composante<br>
                     <br>
                     <span style="font-weight: bold;">Acteurs :</span> Fournisser (principal).<br>
-                    <span style="font-weight: bold;">Scénario principal :</span> description étape par étape,
-                    ordonnée numériquement<br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Le fournisseur se connecte à son compte<br>
                      1.1. Il accède à la page de ses produits<br>
                     1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
@@ -238,6 +244,26 @@
                 </p>
     
                 <p id="register robot to fleet">
+                    <span style="font-weight: bold;">Cas d'utilisation:</span> Ajouter un nouveau robot <br>
+                    <span style="font-weight: bold;">But: </span> L'utilisateur enregistre un nouveau robot à sa flotte <br>
+                    <span style="font-weight: bold;">Préconditions: </span><br>
+                    1. L'utilisateur est inscrit sur le système Robotix.<br>
+                    2. L'utilisateur a acheté un robot auprès du fournisseur.<br>
+                    3. Le numéro de série est enregistré dans la banque de données.<br>
+                    <span style="font-weight: bold;">Acteurs: </span> Utilisateur<br>
+                    <span style="font-weight: bold;">Scénario principal:</span><br>
+                    1. L'utilisateur saisit le numéro de série fournit par le fournisseur<br>
+                    2. L'utilisateur choisit et saisit le nom et le type du robot.<br>
+                    <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
+                    1a. Le numéro de série n'est pas valide.<br>
+                    1a.1 Le système affiche un message d'erreur et l'usager ne peut poursuivre<br>
+                    1a.2 Tant que le numéro n'est pas valide, cette étape reste.<br>
+                    2a. Les champs sont laissés vides.<br>
+                    2a.1 Le système avertit l'usager que les champs sont vides et sont requis.<br>
+                    2a.2 L'utilisateur ne peut pas poursuivre<br>
+                    2a.3 Tant qu'un des champs est vide, cette étape persiste.<br>
+
+                    <span style="font-weight: bold;">Postconditions: </span> Le robot est ajouté à la flotte.
                 </p>
     
                 <p id="create-action">
@@ -327,28 +353,25 @@
                     parcourue, energie utilisee, historique de taches, performance, rendement, etc. Des données globablement utile pour planifier des
                     ajustements. 
                     <br>
-                    <span style="font-weight: bold;">Préconditions :</span> 
-                    L'utilisateur doit être inscrit
-                    Il doit au moins un robot
+                    <span style="font-weight: bold;">Préconditions :</span> <br>
+                    1. L'utilisateur doit être inscrit<br>
+                    2. Il doit au moins un robot
                     <br>
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span>
                     1. L'utilisateur choisit son critère de selection, soit un robo individuel, tous les robots d'un même type, selon le fournisseur, etc<br>
-                     1.1. Étape 1.1<br>
                     2. L'utilisateur choisit une métrique a visionner. Une des metriques mentionée dans le but<br>
                     3. L'application fait un requete d'historique a ces robots<br>
                     4. Les données sont reçues et montrée en graphique ou format visuel plaisant dependant de la métrique<br>
                     5. L'utilisateur peut changer le time frame des données, elle ont le time frame maximal par défault.
-                    6. L'utilisateur peut telecharger les données en format CSV
-
-
+                    6. L'utilisateur peut telecharger les données en format CSV <br>
 
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     1a. Il n'y a aucun Robot qui correspond au critère de recherche<br>
                     4a 1. Certains robots ne sont pas connectés. L'application propose d'ignorer les robots non connectés dans les données <br>
                     4a 2. Si les robots non connectés sont ignorés, les données restent les memes mais il y a une liste dans le UI qui montre quels robots ont échoués.<br>
                     4b 1. Le critère de recherche est N/A a certains robots, par example distance parcourure pour un robot immobile. L'interface demande a l'usager si il veut ces données nulles ou NULL considérée.
-                    <span style="font-weight: bold;">Postconditions :</span> 
+                    <br><span style="font-weight: bold;">Postconditions :</span> 
                     L'utilisateur a des données CSV de l'information qu'il recherchait sur le groupe qu'il voulait.
                     <br>
                 </p>
@@ -373,12 +396,11 @@
                     2a.2. Le système avertit le fournisseur que les informations ne sont pas valides.<br>
                     2a.3. Le scénario recommence à l'étape 1
                     3a 1. Le moderateur ne juge pas que la compangnie est fiable, il envoie un email avec ce qu'il faut faire pour pouvoir vendre
-                    3a 2. Une fois des preuves additionelles de légitimité envoyée, on passe à l'étape 4.
+                    3a 2. Une fois des preuves additionelles de légitimité envoyée, on passe à l'étape 4.<br>
                     <span style="font-weight: bold;">Postconditions :</span> Les informations du fournisseur sont enregistrées dans le système.<br>
                 </p>
     
-                <p id="trouver un fournisseur">
-                    
+                <p id="trouver un fournisseur de composantes">
                 </p>
     
                 <p id="se joindre a une communaute">
@@ -437,39 +459,41 @@
     
             </div>
 
-            <div id="Risque"></div>
-            
-            <h2>1. Risque de confidentialité des données.</h2>
+            <div id="Risques">
+                <h2>Risques</h2>            
+                <h3>1. Risque de confidentialité des données.</h3>
 
-<p>Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
-Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.</p>
+                <p>Comme il est demandé aux utilisateurs de s'inscrire, il se peut qu'un accès non autorisé ait possession des informations personelles sensibles des usagers.
+                Pire encore, une intrusion peut avoir accès à des robots alors que cet individu n'y a pas droit. Ceci peut entraîner à une utilisation abusive des robots.</p>
 
 
-<h2>2. Défaillance du système</h2>
-<p>
-Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
-ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
-</p>
-<h2>
-3.Manque d'adoption des utilisateurs
-</h2>
-<p>
-Il existe un risque que les utilisateurs ne trouvent pas l'outil Robotix suffisamment convivial, intuitif ou utile, ce qui pourrait entraîner un manque d'adoption de l'outil. Si les utilisateurs ne voient pas de valeur ajoutée significative à utiliser l'outil ou s'ils rencontrent des difficultés techniques ou fonctionnelles, ils pourraient décider de ne pas l'utiliser, ce qui pourrait compromettre le succès du projet.
-</p>
-<h2>
-4. Risque de mauvaise utilisation des robots
-</h2>
-<p>
-Les utilisateurs pourraient utiliser les robots de manière inappropriée ou contraire aux consignes de sécurité, ce qui pourrait entraîner des accidents, des blessures ou des dommages matériels. 
-</p>
-<h2>
-5. Depassement du budget
-</h2>
-<p>
-Le développement de l'outil Robotix pourrait prendre plus de temps que prévu ou dépasser le budget alloué. Des problèmes techniques, des changements de spécifications ou des ressources insuffisantes pourraient contribuer à ces retards et dépassements budgétaires, impactant la satisfaction des utilisateurs et la rentabilité globale du projet.
-</p>
+                <h3>2. Défaillance du système</h3>
+                <p>
+                Lors du processus de développement du module de contrôle des robots, il est probable qu'il ait une erreur dans la conception, ou bien un bug se retrouve dans le programme
+                ou bien encore des déficiences de performances. Ces obstacles peuvent entraîner des interruptions du système et ainsi perdre la confiance des clients. 
+                </p>
+                <h3>
+                3.Manque d'adoption des utilisateurs
+                </h3>
+                <p>
+                Il existe un risque que les utilisateurs ne trouvent pas l'outil Robotix suffisamment convivial, intuitif ou utile, ce qui pourrait entraîner un manque d'adoption de l'outil. Si les utilisateurs ne voient pas de valeur ajoutée significative à utiliser l'outil ou s'ils rencontrent des difficultés techniques ou fonctionnelles, ils pourraient décider de ne pas l'utiliser, ce qui pourrait compromettre le succès du projet.
+                </p>
+                <h3>
+                4. Risque de mauvaise utilisation des robots
+                </h3>
+                <p>
+                Les utilisateurs pourraient utiliser les robots de manière inappropriée ou contraire aux consignes de sécurité, ce qui pourrait entraîner des accidents, des blessures ou des dommages matériels. 
+                </p>
+                <h3>
+                5. Depassement du budget
+                </h3>
+                <p>
+                Le développement de l'outil Robotix pourrait prendre plus de temps que prévu ou dépasser le budget alloué. Des problèmes techniques, des changements de spécifications ou des ressources insuffisantes pourraient contribuer à ces retards et dépassements budgétaires, impactant la satisfaction des utilisateurs et la rentabilité globale du projet.
+                </p>
+            </div>
 
-            <div id="Exigences non-fonctionnelles"></div>
+            <div id="Exigences non-fonctionnelles">
+            <h2>Exigences non-fonctionnelles</h2>
             1. Répondre à n'importe quelle demande de l'utilisateur dans un délai acceptable (quelques secondes)<br>
 
             2. Avoir assez d'espace dans le server pour stocker les données de chaque robot de chaque utilisateur<br> 
@@ -479,8 +503,9 @@ Le développement de l'outil Robotix pourrait prendre plus de temps que prévu o
             4. Compatibilité avec plusieurs types de robots, pour que l'utilisateur peut assigner des tâches aux robots et contrôler leurs movements peu importe le fournisseur des composantes.<br>
             
             5. Sécurité de l'informations des utilisateurs telles que l'adresse courriel, numéro de téléphone et surtout les détails saisies lors du paiement des composants.<br>
-            <div id="Prototype java"></div>
+            </div>
 
+            <div id="Prototype java"></div>
         </div>
 
     </body>
