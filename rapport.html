@@ -6,6 +6,8 @@
             {
                 border: outset 2px black;
                 border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
             }
             th
             {
@@ -14,6 +16,7 @@
             td
             { 
                 border-bottom: solid 1px black;
+                align-items: center;
             }
             .first_col
             {
@@ -74,13 +77,64 @@
 
         <div id="Distribution des taches">
             <h2>Distribution des taches</h2>
+            <table style="display: inline-table;">
+                <tr>
+                    <th class="first_col">Tache</th>
+                    <th>&nbsp;&nbsp;Leo Tremblay&nbsp;&nbsp;&nbsp;</th>
+                    <th>Kelvin Chen&nbsp;&nbsp;&nbsp;</th>
+                    <th>Yan Shek&nbsp;&nbsp;&nbsp;</th>
+                    <th>Samuel Maltais</th>
+                </tr>
+                <tr>
+                    <td class="first_col">Cas d'utilisation</td>
+                    <td>25%</td>
+                    <td>25%</td>
+                    <td>25%</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td class="first_col">Prototype</td>
+                    <td>Structure Generale, UI du fournisseur (50%)</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                    <td>UI d'utilisateur (50%)</td>
+                </tr>
+                <tr>
+                    <td class="first_col">Diagramme</td>
+                    <td>0%</td>
+                    <td>100%</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td class="first_col">Risques</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                    <td>100%</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td class="first_col">Exigences non-fonctionnels</td>
+                    <td>100%</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td class="first_col">Rapport</td>
+                    <td>26%</td>
+                    <td>26%</td>
+                    <td>Formattation du rapport (28%)</td>
+                    <td>26%</td>
+                </tr>
+            </table>
         </div>
 
         <div id="taches">
             <h2>Taches</h2>
             
             <div id="glossaire" style="display: flex; flex-wrap: wrap;">
-                <h2>glossaire</h2>
+                <h2>Glossaire</h2>
 
                 -ressources d'un robot: CPU & Mémoire du robot <br>
 
@@ -132,7 +186,7 @@
             </div>
 
             <div id="useCases">
-                <h2>cas d'utilisation</h2>
+                <h2>Cas d'utilisation</h2>
 
                 <p id="buy-component">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Achat de composantes<br>
@@ -146,21 +200,21 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur (principal), Fournisseur (secondaire)<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'utilisateur se connecte au marché.<br>
-                     1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
+                    &nbsp;1.1. Il y entre le nom de la composante(ou l'identifiant) qu'il recherche.<br>
                     2. Le système recherche à travers sa base de données pour les pièces satisfaisant la recherche.<br>
-                     2.1 Il y renvoie a lutilisateur une liste.<br>
+                    &nbsp;2.1 Il y renvoie a lutilisateur une liste.<br>
                     3. L'utilisateur ajoute le ou les composantes désirées dans son panier.<br>
-                     3.2. Il procède au paiement sécurisé.<br>
+                    &nbsp;3.2. Il procède au paiement sécurisé.<br>
                     4. Le système reçoit la requête et les détails de la commande.<br>
-                     4.1 le système confirme la commande et l'envoie au fournisseur.<br>
+                    &nbsp;4.1 le système confirme la commande et l'envoie au fournisseur.<br>
                     5. le fournisseur complète la commande en envoyant les produits à l'utilisateur.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
                     principal, alternatives possibles à certaines étapes<br>
                     2a. Le système ne trouve aucune composante pouvant satisfaire la recherche de l'utilisateur.<br>
-                     2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
-                     2a.2. Le scénario recommence à l'étape 1.<br>
+                    &nbsp;2a.1. Le système renvoie une erreur avertissant qu'il n'y existe aucune pièce sur le marché.<br>
+                    &nbsp;2a.2. Le scénario recommence à l'étape 1.<br>
                     4.1a. Le système ne peut confirmer la commande du à une erreur de paiement, manque de stock...<br>
-                     4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
+                    &nbsp;4.1a.1 Le système envoie une erreur, et le scénario recommence à l'étape 1.<br>
                     <span style="font-weight: bold;">Postconditions :</span> 
                     Le système enregistre les informations suivantes:<br>
                     -La date et l'heure à laquelle la commande à été envoyée<br>
@@ -170,7 +224,7 @@
                     -L'identifiant du fournisseur ayant complété la commande<br>
                     <br>
                 </p>
-    
+                <br>
                 <p id="list-component-on-market">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Lister une composante sur le marché.<br>
                     <span style="font-weight: bold;">But :</span> Un fournisseur souhaite lister une composante sur le service pour le vendre.<br>
@@ -181,17 +235,17 @@
                     <span style="font-weight: bold;">Acteurs :</span> Fournisser (principal).<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Le fournisseur se connecte à son compte<br>
-                     1.1. Il accède à la page de ses produits<br>
-                    1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
-                    1.3. Il envoie la demande de lister le nouveau produit au système.
+                    &nbsp;1.1. Il accède à la page de ses produits<br>
+                    &nbsp;1.2. Il sélectionne "rajouter un produit" et entre tous les détails, (Serial number, available stock...)<br>
+                    &nbsp;1.3. Il envoie la demande de lister le nouveau produit au système.<br>
                     2. Le système reçoit la demande et identifie le fournisseur<br>
-                    2.2 Le sytème rajoute dans sa base de données le produit ainsi que toutes les informations ratachées.<br>
-                    2.3 Le fournisseur reçoit une alerte comme quoi sa composante à été mise sur le marché.<br>
+                    &nbsp;2.2 Le sytème rajoute dans sa base de données le produit ainsi que toutes les informations ratachées.<br>
+                    &nbsp;2.3 Le fournisseur reçoit une alerte comme quoi sa composante à été mise sur le marché.<br>
                     <br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span> ramifications du déroulement
                     principal, alternatives possibles à certaines étapes<br>
                     1.3a. Les détails fournis sont invalides(vides ou ne suivent pas REGEX)<br>
-                    1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
+                    &nbsp;1.3a.1 Le système renvoie une alerte comme quoi il y a des champs invalides, et le processus reprend à 1.2<br>
                     <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
                     principal achève avec succès.<br>
                     Le système enregistre les informations suivantes:<br>
@@ -199,7 +253,7 @@
                     -Les informations propres à la composante, notamment: Le prix unitaire, La stock disponible, La description ainsi que l'id.<br>
                     <br>
                 </p>
-    
+                <br>
                 <p id="inscription-utilisateur">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> S'inscrire au système comme utilisateur<br>
                     <span style="font-weight: bold;">But :</span> L'utilisateur s'inscrit au système en saisant les informations nécessaires.<br>
@@ -209,20 +263,20 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Le système demande à l'utilisateur de saisir les informations nécessaires.<br>
-                     1.1. L'utilisateur saisit les informations.<br>
+                    &nbsp;1.1. L'utilisateur saisit les informations.<br>
                     2. Le système vérifie que les informations sont valides.<br>
-                     2.1. Pseudo est unique?<br>
-                     2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
-                     2.3. La compagnie existe?<br>
+                    &nbsp;2.1. Pseudo est unique?<br>
+                    &nbsp;2.2. L'addresse courriel et le numéro de téléphone sont dans le bon format?<br>
+                    &nbsp;2.3. La compagnie existe?<br>
                     3. Le système indique à l'utilisateur qu'il/elle a été inscrit avec succès.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     2a. Les informations saisies pas l'utilisateur ne sont pas valides.<br>
-                     2a.1. Les informations ne sont pas enregistrés dans le système.<br>
-                     2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides. Le scénario recommence à l'étape 1<br>
+                    &nbsp;2a.1. Les informations ne sont pas enregistrés dans le système.<br>
+                    &nbsp;2a.2. Le système avertit l'utilisateur que les informations ne sont pas valides. Le scénario recommence à l'étape 1<br>
                     <span style="font-weight: bold;">Postconditions :</span> 
                     Le sytème crée un nouveau objet utilisateur avec les informations associés et l'enregistre dans sa base de données.<br>
                 </p>
-    
+                <br>
                 <p id="register robot to fleet">
                     <span style="font-weight: bold;">Cas d'utilisation:</span> Ajouter un nouveau robot <br>
                     <span style="font-weight: bold;">But: </span> L'utilisateur enregistre un nouveau robot à sa flotte <br>
@@ -232,21 +286,21 @@
                     <span style="font-weight: bold;">Acteurs: </span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal:</span><br>
                     1.L'utilisateur se connecte et choisit "gérer mes robots", puis "rajouter un robot"<br> 
-                     1.1 L'utilisateur saisit le numéro de série fournit par le fournisseur, le nom et le type du robot.<br>
-                     1.2 L'utilisateur sélectionne sur "rajouter"<br>
+                    &nbsp;1.1 L'utilisateur saisit le numéro de série fournit par le fournisseur, le nom et le type du robot.<br>
+                    &nbsp;1.2 L'utilisateur sélectionne sur "rajouter"<br>
                     2. Le système reçoit la demande d'ajout d'un robot<br>
-                     2.1 Le sytème vérifie que le numéro de série est unique et n'est pas attribué à un autre robot de l'utilisateur ou d'un autre utilisateur.<br>
-                     2.2 Le système enregistre les informations du robot dans sa base de données et envoie un message de confirmation à l'utilisateur.<br>
+                    &nbsp;2.1 Le sytème vérifie que le numéro de série est unique et n'est pas attribué à un autre robot de l'utilisateur ou d'un autre utilisateur.<br>
+                    &nbsp;2.2 Le système enregistre les informations du robot dans sa base de données et envoie un message de confirmation à l'utilisateur.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
                     1a. Les informations ne sont pas valides (vides ou REGEX).<br>
-                     1a.1 Le système affiche un message d'erreur, le processus recommence à l'étape 1.1<br>
+                    &nbsp;1a.1 Le système affiche un message d'erreur, le processus recommence à l'étape 1.1<br>
                     2a. Le numéro de série est déjà en utilisation par un autre robot enregistré.<br>
-                     2a.1 Le système avertit l'usager "robot already registered", le processus recommence à l'étape 1.1<br>
+                    &nbsp;2a.1 Le système avertit l'usager "robot already registered", le processus recommence à l'étape 1.1<br>
                     <span style="font-weight: bold;">Postconditions: </span> 
                     Le système crée un nouveau objet robot, avec les informations associés et réfère à l'identifiant de l'utilisateur pour le rajouter 
                     à sa flotte.<br>
                 </p>
-    
+                <br>
                 <p id="create-action">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Créer une action<br>
                     <span style="font-weight: bold;">But :</span> L'utilisateur crée une action pour ses robots.<br>
@@ -259,11 +313,11 @@
                     3. Les instructions pour cette action sont enregistrées dans le système.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     2a. Les instructions sont impossibles à effectuer ou contient des erreurs.<br>
-                     2a.1. Le système indique à l'utilisateur que les instructions ne sont pas valides, le processus reprend à partir de l'étape 1.<br>    
+                    &nbsp;2a.1. Le système indique à l'utilisateur que les instructions ne sont pas valides, le processus reprend à partir de l'étape 1.<br>    
                     <span style="font-weight: bold;">Postconditions :</span> 
                     Le système crée un nouvel object action avec ses instructions et le sauvegarde en l'attribuant à l'identifiant de l'utilisateur.<br>
                 </p>
-    
+                <br>
                 <p id="assign task to robot">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Assigner une série d'actions(une tâche) à un robot<br>
                     <span style="font-weight: bold;">But :</span> Un utilisateur du système souhaite attribuer une tâche à un de ses robots.<br>
@@ -275,20 +329,20 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur.<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'utilisateur rentre dans la page "gérer mes robots"<br>
-                     1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
-                     1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
+                    &nbsp;1.1. Le système récupère la liste de tous les robots associés à l'identifiant de l'utilisateur (Si le robot n'est pas disponible, le système le saute).<br>
+                    &nbsp;1.1. L'utilisateur sélectionne le robot dans la liste auquel il désire attribuer une tâche.<br>
                     2. Le système récupère la liste de tous les actions prédéfinis par l'utilisateur et les affiche.<br>
                     3. L'utilisateur ordonne une liste séquentielle d'actions à partir du Gui. Optionnellement, il choisit aussi un horaire et/ou une action déclencheur.<br>
-                     3.1 L'utilisateur sélectionne "create & assign task".<br>
-                     3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
+                    &nbsp;3.1 L'utilisateur sélectionne "create & assign task".<br>
+                    &nbsp;3.2 Le système vérifie la validité de la tâche et envoie un message de confirmation à l'utilisateur.<br>
                     4. Le système attribue la tâche dans sa base de données à l'identifiant du robot.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     1.1a. tous les robots de l'utilisateur sont occupés<br>
-                     1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
+                    &nbsp;1.1a.1 Le système renvoie une alerte à l'utilisateur comme quoi aucun de ses robots n'est disponible. Le processus se termine (exit process).<br>
                     3.2a. La liste séquentielle d'actions est invalide, car le robot n'est pas en mesure d'effectuer un ou plusieurs actions dans la liste.<br>
-                     3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
+                    &nbsp;3.2a.1 Le système renvoie une alerte comme quoi; "robot-name" cannot execute "task-name" because it is missing the required components. Le procès recommence à partir de l'étape 3.<br> 
                     3.2b. La liste séquentielle d'actions est invalide, car la liste d'actions spécifée par l'utilisateur est vide.<br>
-                     3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         
+                    &nbsp;3.2b.1 Le système renvoie une alerte comme quoi; please select at least one one action to create a task. Le procès recommence à partir de l'étape 3.<br>         
                     <span style="font-weight: bold;">Postconditions :</span> État du système lorsque le scénario
                     principal achève avec succès.<br>
                     Le système enregistre les informations suivantes:<br>
@@ -296,7 +350,7 @@
                     -L'identifiant du robot dans la flotte de l'utilisateur ayant été attribué la tâche.<br>
                     <br>
                 </p>
-    
+                <br>
                 <p id="etats-robots">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Voir l'état de ses robots<br>
                     <span style="font-weight: bold;">But :</span> L'utilisateur voit l'état de ses robots tel que la position, condition, vitesse, etc.<br>
@@ -308,12 +362,12 @@
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1.L'utilisateur indique les robots dont il/elle veut voir l'état. <br>
                     2.Le système envoie des requètes au robot indiqué.<br>
-                     2.1 Le robot répond au système et renvoit son état (sa position, sa vitesse, son niveau de batterie, sa consommation CPU et mémoire.).<br>
+                    &nbsp;2.1 Le robot répond au système et renvoit son état (sa position, sa vitesse, son niveau de batterie, sa consommation CPU et mémoire.).<br>
                     4. Le système reçoit les informations transimises par WiFi/Bluetooth
-                     4.1 Le système affiche l'information reçu à l'utilisateur.<br>
+                    &nbsp;4.1 Le système affiche l'information reçu à l'utilisateur.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     2.1.a. Le robot sélectionné n'a plus de batterie. Il ne peut pas envoyer de réponse à la requête faite par le système.<br>
-                     2.1.a.1 Le système affiche un avertissement comme quoi le robot n'est pas communicable. Il renvoie cependant à l'utilisateur les derniers
+                    &nbsp;2.1.a.1 Le système affiche un avertissement comme quoi le robot n'est pas communicable. Il renvoie cependant à l'utilisateur les derniers
                      informations disponibles. Le processus se termine (exit).<br>
                     <span style="font-weight: bold;">Postconditions :</span> 
                     Le système sauvegarde les informations comme les dernières informations disponibles sur l'état du robot, et l'attribue au robot. (De tel manière 
@@ -332,17 +386,17 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span>
                     1. L'utilisateur choisit son critère de selection, soit un robot individuel, tous les robots d'un même type, selon le fournisseur, etc<br>
-                     1.1 L'utilisateur choisit une ou plusieurs métrique(s) a visionner.<br>
+                    &nbsp;1.1 L'utilisateur choisit une ou plusieurs métrique(s) a visionner.<br>
                     3. Le système cherche, selon les identifiants des robots sélectionnés, l'historique de(s) métrique(s).<br>
-                     3.1 Il trouve l'historique des données captés par le robot et envoyés périodiquement au système.
-                     3.2 Le système affiche en graphique ou format visuel plaisant dependant de la métrique<br>
+                    &nbsp;3.1 Il trouve l'historique des données captés par le robot et envoyés périodiquement au système.
+                    &nbsp;3.2 Le système affiche en graphique ou format visuel plaisant dependant de la métrique<br>
                     5. L'utilisateur peut changer le time frame des données, elle ont le time frame maximal par défault.<br>
-                     5.1 L'utilisateur télécharge les données en format CSV <br>
+                    &nbsp;5.1 L'utilisateur télécharge les données en format CSV <br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
                     1a. Il n'y a aucun Robot qui correspond au critère de recherche<br>
-                     1a.1 Le système renvoie une erreur, le processus recommence à l'étape 1.
+                    &nbsp;1a.1 Le système renvoie une erreur, le processus recommence à l'étape 1.
                     1b. Les Robots sélectionnés par l'utilisateur non aucunes données disponible.
-                     1b.1 Le système renvoie une erreur, le processus recommence à l'étape 1.
+                    &nbsp;1b.1 Le système renvoie une erreur, le processus recommence à l'étape 1.
                     <br><span style="font-weight: bold;">Postconditions:</span> 
                     L'utilisateur a reçu les données CSV de l'information qu'il recherchait sur le groupe qu'il voulait.
                     Le système, n'a rien à sauvegarder.
@@ -357,16 +411,16 @@
                     <span style="font-weight: bold;">Acteurs :</span> Fournisseur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Le système demande au fournisseur de saisir les informations nécessaires.<br>
-                     1.1. Le fournisseur entre son nom, addresse courriel, numéro de téléphone, compagnie...<br>
+                    &nbsp;1.1. Le fournisseur entre son nom, addresse courriel, numéro de téléphone, compagnie...<br>
                     2. Le système vérifie la validité des informations fournies.<br>
                     3. Le système avertit au fournisseur qu'il a été inscrit avec succès.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     2a. Les informations saisies par le fournisseur ne sont pas valides.<br>
-                     2a.1. Le système avertit le fournisseur que les informations ne sont pas valides. Le scénario recommence à l'étape 1<br>
+                    &nbsp;2a.1. Le système avertit le fournisseur que les informations ne sont pas valides. Le scénario recommence à l'étape 1<br>
                     <span style="font-weight: bold;">Postconditions :</span><br>
                     Le système crée un nouvel objet fournisseur avec informations données et l'enregistre dans sa base de données.<br>
                 </p>
-    
+                <br>
                 <p id="trouver un fournisseur">
                     <span style="font-weight: bold;">Cas d'utilisation:</span> Trouver un fournisseur<br>
                     <span style="font-weight: bold;">But :</span> L'utilisateur trouve un fournisseur pour faire des achats<br>
@@ -375,17 +429,17 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'usager navigue dans la section pour trouver des fournisseurs.<br>
-                     1.1 L'usager ajoute des filtres permettant de spécifier le fournisseur recherché.(Les filtres peuvent être la localisation géographique, fournisseur d'une pièce spécifique ou d'un robot complet).<br>
+                    &nbsp;1.1 L'usager ajoute des filtres permettant de spécifier le fournisseur recherché.(Les filtres peuvent être la localisation géographique, fournisseur d'une pièce spécifique ou d'un robot complet).<br>
                     2. Le système affiche une liste de fournisseur remplissant les conditions spécifiées.<br>
                     3. L'usager choisit le fournisseur à sa discrétion.<br>
-                     3.1 Le système affiche à l'utilisateur des informations plus spécifiques sur la compagnie, tel les composantes qu'ils vendent.<br>
+                    &nbsp;3.1 Le système affiche à l'utilisateur des informations plus spécifiques sur la compagnie, tel les composantes qu'ils vendent.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
                     2.a Le système ne retrouve aucun fournisseur correspondant aux spécifications de l'usager.<br> 
-                     2.a.1 Le système renvoie une erreur, le processus reprend à l'étape 1.<br>
+                    &nbsp;2.a.1 Le système renvoie une erreur, le processus reprend à l'étape 1.<br>
                     <span style="font-weight: bold;">Postconditions:</span><br>
                     Le sytème n'a rien à enregistrer.<br>
                 </p>
-    
+                <br>
                 <p id="se joindre a une communaute">
                     <span style="font-weight: bold;">Cas d'utilisation:</span> Joindre une communauté<br>
                     <span style="font-weight: bold;">But :</span> L'utilisateur se joint à une communauté partageant des activités similaires<br>
@@ -395,18 +449,18 @@
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur <br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'utilisateur ouvre l'onglet de communauté d'activités.<br>
-                     1.1 Le système obtient une liste de toutes les activités des robots de l'utilisateur.<br> 
+                    &nbsp;1.1 Le système obtient une liste de toutes les activités des robots de l'utilisateur.<br> 
                     2. L'usager sélectionne l'activité pour laquelle il veut joindre une communauté<br>
-                     2.1 Le système obtient une liste de toutes les communautés publiques (en sautant ceux privées) avec des activités similaires.<br>
+                    &nbsp;2.1 Le système obtient une liste de toutes les communautés publiques (en sautant ceux privées) avec des activités similaires.<br>
                     3. L'utilisateur choisit une communauté à laquelle se joindre.<br>
-                     3.1 Le système inscrit l'identifiant de l'utilisateur à la communauté.<br>
+                    &nbsp;3.1 Le système inscrit l'identifiant de l'utilisateur à la communauté.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
                     2.1.a Il n'y a aucune communauté ouverte qui correspond à l'activité choisie par l'utilisateur.<br>
-                     2.1.a.1 Le Système retourne un avertissement, et le processus recommence à l'étape 2.<br>
+                    &nbsp;2.1.a.1 Le Système retourne un avertissement, et le processus recommence à l'étape 2.<br>
                     <span style="font-weight: bold;">Postconditions :</span><br>
                     Le système rajoute dans sa base de données l'identifiant de l'utilisateur dans l'objet correspondant à l'instance de la communauté.<br>
                 </p>
-    
+                <br>
                 <p id="gerer les anomalies">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> Un robot cesse de fonctionner / anomalies<br>
                     <span style="font-weight: bold;">But :</span> L'Utilisateur veut gérer les anomalies de ses robots.<br>
@@ -417,17 +471,17 @@
                     <br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. Un robot est défectueux, Le système envoie une notification à l'usager.<br>
-                     1.2 L'usager se fait proposer des solutions, incluant contacter le fournisseur ou acheter de nouvelles parties<br>
+                    &nbsp;1.2 L'usager se fait proposer des solutions, incluant contacter le fournisseur ou acheter de nouvelles parties<br>
                     2. Le fournisseur est aussi notifié de la défection, afin qu'il puisse avoir des statistiques de ses produits <br>
-                     2.1 L'utilisateur contacte le fournisseur pour règler le problème ou recevoir une nouvelle composante.<br>
+                    &nbsp;2.1 L'utilisateur contacte le fournisseur pour règler le problème ou recevoir une nouvelle composante.<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     1.2a. L'utilisateur de prend aucune action.<br>
-                     1.2a.1 Le processus termine.<br>
+                    &nbsp;1.2a.1 Le processus termine.<br>
                     <span style="font-weight: bold;">Postconditions :</span> 
                     L'usager est informé sur les problèmes de ses robots et a une piste sur comment les régler.
                     Le système n'a rien à sauvegarder.<br>
                 </p>
-    
+                <br>
                 <p id="participer a une activite avec ses robots">
                     <span style="font-weight: bold;">Cas d'utilisation :</span> L'usager souhaite participer a une activité avec ses robots<br>
                     <span style="font-weight: bold;">But :</span> De participer a une activité avec un ou plusieurs robots.<br>
@@ -442,9 +496,9 @@
                     5. L'usager selectionne les robots qu'il veut ou select all selon son critère de recherche<br>
                     <span style="font-weight: bold;">Scénarios alternatifs :</span><br>
                     2a. La date, ou d'autres informations ne sont pas valides.<br>
-                     2a.1 Le système renvoie une erreur, le processus reprends à l'étape 1.<br>
+                    &nbsp;2a.1 Le système renvoie une erreur, le processus reprends à l'étape 1.<br>
                     4a. Aucun robot n'est capable de participer.<br>
-                     4a.1. le système retourne une erreur. Le processus reprend à l'étape 1.<br>
+                    &nbsp;4a.1. le système retourne une erreur. Le processus reprend à l'étape 1.<br>
                     <span style="font-weight: bold;">Postconditions :</span><br>
                     Le système enregistre l'usager à l'activité spécifiée dans sa base de données, il l'attribue
                     également aux robots spécifiés.<br>
@@ -498,10 +552,13 @@
             
             5. Sécurité de l'informations des utilisateurs telles que l'adresse courriel, numéro de téléphone et surtout les détails saisies lors du paiement des composants.<br>
             </div>
-
+            <div id="Insights">
+                <h2>Diagramme insights</h2>
+                <p>On n'a pas acces a la section Insights sur GitHub</p>
+            </div>
             <div id="Prototype java">
                 <h2>Prototype Java</h2>
-
+                <p>Voici un <a href="https://github.com/KelvinGpd/Robotix/tree/b59adeea223e0392d6f72b7407055ea328addde7/Prototype%20Java/src">lien</a> vers le prototype Java de l'application</p>
             </div>
         </div>
 
