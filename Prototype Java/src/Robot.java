@@ -5,7 +5,7 @@ import java.util.UUID;
 public class Robot {
     private UUID uuid;
     private List<Pair<String, String>> parts;
-    private String type;
+    public String type;
     public int[] position = new int[] { 0, 0, 0 };
     public String name;
 

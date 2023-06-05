@@ -10,7 +10,6 @@ public class Controller {
         while (true) {
             String choice = reader.next();
             if (isValid(choice, numChoices)) {
-                reader.close();
                 return choice;
             }
             System.out.print("Veuillez saisir un choix valide: ");
