@@ -404,6 +404,8 @@
                     1. L'utilisateur possède un compte de Robotix.
                     2. Il y a des fournisseurs enregistrés
                     <span style="font-weight: bold;">Acteurs :</span> Utilisateur <br>
+                    1. L'utilisateur est inscrit.
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur<br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'usager navigue dans la section pour trouver des fournisseurs.<br>
                     2. L'usager ajoute des filtres permettant de spécifier le fournisseur recherché.<br>
@@ -412,6 +414,12 @@
                     4. L'usager choisi le fournisseur à sa discrétion.<br>
                     5. L'usager peut commander des pièces<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
+                    2.a Le système ne retrouve aucun fournisseur correspondant aux spécifications de l'usager.<br> 
+                     2.a.1 Le système renvoie une erreur, le processus reprend à l'étape 1.<br>
+                    <span style="font-weight: bold;">Postconditions:</span><br>
+                    Le sytème n'a rien à enregistrer.<br>
+                </p>
+
                     3a. Aucun fournisseur ne convient au filtre.<br>
                     3a.1 La page affiche une liste vide.<br>
                     3b. Aucun filtre n'est ajouté.<br>
