@@ -403,7 +403,7 @@
                     <span style="font-weight: bold;">Préconditions :</span><br>
                     1. L'utilisateur possède un compte de Robotix.
                     2. Il y a des fournisseurs enregistrés
-                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur(principal) <br>
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur <br>
                     <span style="font-weight: bold;">Scénario principal :</span><br>
                     1. L'usager navigue dans la section pour trouver des fournisseurs.<br>
                     2. L'usager ajoute des filtres permettant de spécifier le fournisseur recherché.<br>
@@ -412,10 +412,37 @@
                     4. L'usager choisi le fournisseur à sa discrétion.<br>
                     5. L'usager peut commander des pièces<br>
                     <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
-                <p id="trouver un fournisseur de composantes">
+                    3a. Aucun fournisseur ne convient au filtre.<br>
+                    3a.1 La page affiche une liste vide.<br>
+                    3b. Aucun filtre n'est ajouté.<br>
+                    3b.1 Tous les fournisseurs disponible sont affichés.<br>
+                    <span style="font-weight: bold;">Postconditions :</span> Les fournisseurs appropriés sont affichés.<br>
+
                 </p>
     
                 <p id="se joindre a une communaute">
+                    <span style="font-weight: bold;">Cas d'utilisation:</span> Joindre une communauté<br>
+                    <span style="font-weight: bold;">But :</span> L'utilisateur se joint à une communauté partageant des activités similaires<br>
+                    <span style="font-weight: bold;">Préconditions :</span><br>
+                    1. L'utilisateur possède un compte de Robotix.
+                    2. L'utilisateur possède des robots avec des activités prédéfinis.
+                    <span style="font-weight: bold;">Acteurs :</span> Utilisateur <br>
+                    <span style="font-weight: bold;">Scénario principal :</span><br>
+                    1. La page affiche les activités en cours.
+                    2. L'usager sélectionne l'activité pour laquelle il veut joindre une communauté<br>
+                    3. Une requête est envoyée au groupe.
+                    <span style="font-weight: bold;">Scénarios alternatifs:</span><br>
+                    1a. L'utilisateur ne possède aucune activité en cours.<br>
+                    1a.1 L'utilisateur n'a pas accès à la page et ce scénario n'a pas lieu.<br>
+                    3a. Le groupe est public. <br>
+                    3a.1 L'utilisateur rejoin le groupe. <br>
+                    3b. Le groupe est privé. <br>
+                    3b.1 La requête est approuvée.<br>
+                    3b.1.1 L'usager rejoint le groupe. <br>
+                    3b.2 La requête est refusée. <br>
+                    3b.2.1 L'usager ne peut pas rejoindre le groupe/ <br>
+                    3b.2.2 L'usager recoit la notification que sa requête a été refusée. <br>
+                    <span style="font-weight: bold;">Postconditions :</span> Les fournisseurs appropriés sont affichés.<br>
                 </p>
     
                 <p id="gerer les anomalies">
