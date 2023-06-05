@@ -42,7 +42,7 @@ public class UserView {
         }
 
         System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
-        switch (controller.choice(2)){
+        switch (controller.choice(2)) {
             case "1":
                 run();
                 break;
@@ -58,10 +58,10 @@ public class UserView {
 
         // Prompt for email
         System.out.print("Entrez votre email: ");
-        String email = scanner.next();
+        String email = scanner.nextLine();
 
         // Check email with regex
-        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+        if (!email.matches("(?i)^[A-Z0-9+_.-]+@[A-Z0-9.-]+$")) {
             System.out.println("Format de email invalide !");
             return this.register();
         }
@@ -77,7 +77,7 @@ public class UserView {
         // Prompt for phone number
         System.out.print("Entrez votre numero de telephone: ");
         String phoneNumber = scanner.nextLine();
-
+        phoneNumber = phoneNumber.replaceAll("[^\\d]", "");
         // Check phone number with regex
         if (!phoneNumber.matches("^[0-9]{10}$")) {
             System.out.println("Format invalide !");
@@ -103,8 +103,8 @@ public class UserView {
         System.out.println("En premier lieu, achetez un CPU de Robotix, puis achetez les autres components plus tard");
         System.out.println("Choisissez la generation de CPU:");
         int gen = 0;
-        System.out.println("1. Gen 1 1ghz\n2. Gen 2 2ghz\n Gen 3 3ghz\n" +
-                "4. Gen 4 4ghz\nGen 5 5ghz");
+        System.out.println("1. Gen 1 1ghz\n2. Gen 2 2ghz\n3. Gen 3 3ghz\n" +
+                "4. Gen 4 4ghz\n5. Gen 5 5ghz");
 
         switch (controller.choice(5)) {
             case "1" -> type = "Gen 1";
@@ -120,7 +120,7 @@ public class UserView {
         robot.addPart(type, "Robotix");
         System.out.println("Robot cree !");
         nosRobots.add(robot);
-
+        this.run();
     }
 
     private void robotInfo() {
