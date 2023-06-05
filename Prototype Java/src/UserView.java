@@ -20,35 +20,36 @@ public class UserView {
     public void run() {
         User user = register();
 
-        System.out.println("Bienvenue à Robotix " + user.getUsername() + ". Veuillez choisir une option:");
-        System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
-                "4. Créer un action\n5. Interagir avec vos robots");
-        switch (controller.choice(5)) {
-            case "1":
-                addRobot();
-                break;
-            case "2":
-                robotInfo();
-                break;
-            case "3":
-                buyComponents();
-                break;
-            case "4":
-                createAction();
-                break;
-            case "5":
-                interact();
-                break;
-        }
+        while(true) {
+            System.out.println("Bienvenue à Robotix " + user.getUsername() + ". Veuillez choisir une option:");
+            System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
+                    "4. Créer un action\n5. Interagir avec vos robots");
+            switch (controller.choice(5)) {
+                case "1":
+                    addRobot();
+                    break;
+                case "2":
+                    robotInfo();
+                    break;
+                case "3":
+                    buyComponents();
+                    break;
+                case "4":
+                    createAction();
+                    break;
+                case "5":
+                    interact();
+                    break;
+            }
 
-        System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
-        switch (controller.choice(2)) {
-            case "1":
-                run();
-                break;
-            case "2":
-                System.exit(0);
-                break;
+            System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
+            switch (controller.choice(2)) {
+                case "1":
+                    continue;
+                case "2":
+                    System.exit(0);
+                    break;
+            }
         }
     }
 
@@ -120,7 +121,6 @@ public class UserView {
         robot.addPart(type, "Robotix");
         System.out.println("Robot cree !");
         nosRobots.add(robot);
-        this.run();
     }
 
     private void robotInfo() {
@@ -135,7 +135,6 @@ public class UserView {
             }
 
         }
-        this.run();
     }
 
     private void buyComponents() {
@@ -159,17 +158,14 @@ public class UserView {
         wtv = scanner.nextLine();
         nosRobots.get(choice).addPart(wtv, "Robotix");
         System.out.println("Done !");
-        this.run();
     }
 
     private void createAction() {
         System.out.println("Choisissez la nouvelle position x y z de votre robot");
-        this.run();
     }
 
     private void interact() {
         // TODO
         // assigner tâches, participer à des activités
-        this.run();
     }
 }
