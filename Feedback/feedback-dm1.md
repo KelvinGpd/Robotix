@@ -37,6 +37,7 @@ Bien!
 
 - Pas de release créé: nous avons dû la créer
 - Aucune utilisation d'issues ni de pull requests
+  - Créez vos tâches dans l'onglet Issues et assignez-les aux membres de l'équipe
 - Aucune utilisation de branches: tout est poussé dans main
 - Bonne répartition de commits
 - Pas d'Insights: nous allons évaluer cette partie dans le devoir 2
