@@ -41,6 +41,7 @@ Bien!
 - Aucune utilisation de branches: tout est poussé dans main
 - Bonne répartition de commits
 - Pas d'Insights: nous allons évaluer cette partie dans le devoir 2
+  - Un workaround serait de mettre le repo public, prendre les capture d'écran des section "Pulse" et "Contributors", puis remettre le repo privé
 
 ## Bonus: Application Java [8/10]
 
