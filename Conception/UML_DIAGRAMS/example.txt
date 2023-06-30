@@ -1,2 +1,0 @@
-make sure the uml diagrams have the same name as the
-ids of the html file for each use case for easy identification.
