@@ -3,13 +3,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import data.Robot;
+import data.User;
+
 public class UserView {
     Controller controller;
     ArrayList<String> fournisseurs = new ArrayList<String>();
     ArrayList<Robot> nosRobots = new ArrayList<Robot>();
+    private User currUser;
 
-    public UserView() {
-        controller = new Controller();
+    public UserView(Controller controller) {
+        this.controller = controller;
         fournisseurs.add("Fournisseur A");
         fournisseurs.add("Fournisseur B");
         fournisseurs.add("Fournisseur C");
@@ -17,10 +21,25 @@ public class UserView {
         fournisseurs.add("Robotix");
     }
 
-    public void run() {
-        User user = register();
-
-        while(true) {
+    public void run(boolean isNew) {
+        User user;
+        if (isNew) {
+            user = register();
+            controller.add(user);
+        } else {
+            String email, password;
+            System.out.print("Entrez votre email: ");
+            Scanner scanner = new Scanner(System.in);
+            email = scanner.nextLine();
+            System.out.print("Entrez votre password: ");
+            password = scanner.nextLine();
+            user = controller.authenticateUser(email, password);
+            if (user == null) {
+                System.out.println("Password ou email incorrect!");
+                return;
+            }
+        }
+        while (true) {
             System.out.println("Bienvenue à Robotix " + user.getUsername() + ". Veuillez choisir une option:");
             System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
                     "4. Créer un action\n5. Interagir avec vos robots");
@@ -84,7 +103,12 @@ public class UserView {
             System.out.println("Format invalide !");
             return this.register();
         }
-        User user = new User(email, username, phoneNumber);
+
+        System.out.print("Choisissez un mot de passe: ");
+        String password = scanner.nextLine();
+
+        User user = new User(email, username, phoneNumber, password);
+
         return user;
     }
 

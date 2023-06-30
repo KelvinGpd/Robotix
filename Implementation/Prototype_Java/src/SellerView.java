@@ -2,16 +2,37 @@
 
 import java.util.Scanner;
 
+import data.Seller;
+import data.User;
+
 public class SellerView {
     Controller controller;
     Seller seller;
-    public SellerView() {
-        controller = new Controller();
+
+    public SellerView(Controller controller) {
+        this.controller = controller;
     }
 
-    public void run(){
-        seller = register();
-        while(true) {
+    public void run(boolean isNew) {
+        Seller seller;
+        if (isNew) {
+            seller = register();
+            controller.add(seller);
+        } else {
+            String email, password;
+            System.out.print("Entrez votre email: ");
+            Scanner scanner = new Scanner(System.in);
+            email = scanner.nextLine();
+            System.out.print("Entrez votre password: ");
+            password = scanner.nextLine();
+            seller = controller.authenticateSeller(email, password);
+            if (seller == null) {
+                System.out.println("Password ou email incorrect!");
+                return;
+            }
+        }
+
+        while (true) {
             System.out.println("Bienvenue à Robotix " + seller.getName() + ". Veuillez choisir une option:");
             System.out.println("1. Vendre des composantes 2. Voir vos composantes");
             switch (controller.choice(2)) {
@@ -33,8 +54,8 @@ public class SellerView {
         }
     }
 
-    private Seller register(){
-        String name, address, email, phone;
+    private Seller register() {
+        String name, address, email, phone, password;
         String[] components;
         Scanner reader = new Scanner(System.in);
         System.out.println("Veuillez saisir les informations suivantes:");
@@ -46,12 +67,15 @@ public class SellerView {
         email = reader.nextLine();
         System.out.print("Téléphone: ");
         phone = reader.nextLine();
+        System.out.print("Choisissez un password: ");
+        password = reader.nextLine();
+
         System.out.println("Composantes que vous produissez (séparés par des virgules): ");
         components = reader.next().split(",");
-        return new Seller(name, address, email, phone, components);
+        return new Seller(name, address, email, phone, components, password);
     }
 
-    private void sellComp(){
+    private void sellComp() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez saisir le nom de la composante que vous voulez vendre:");
         String component = scanner.next();
@@ -59,9 +83,10 @@ public class SellerView {
         System.out.println("La composante \"" + component + "\" a été listé sur le marché.");
 
     }
-    private void viewComp(){
+
+    private void viewComp() {
         System.out.println("Vous vendez les composantes suivantes:");
-        for(String component : seller.getComponents()){
+        for (String component : seller.getComponents()) {
             System.out.println(component);
         }
     }
