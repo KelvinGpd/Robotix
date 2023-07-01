@@ -9,7 +9,29 @@ public class Controller {
 
     public Controller() {
         database = new Database();
-        System.out.println(database.sellers);
+        String[] components = { "wheels", "cpu" };
+        this.add(new Seller("Companie A", "1234 street", "Company@email.com", "111-1111-1111", components, "qwerty"));
+        String[] components2 = { "helice", "batteries" };
+        this.add(new Seller("Companie B", "5678 street", "Company2@email.com", "222-2222-2222", components2, "qwerty"));
+        String[] components3 = { "Arms", "wings" };
+        this.add(new Seller("Companie C", "12313 street", "Companysdasd@email.com", "333-1111-1111", components3,
+                "qwerty"));
+        String[] components4 = { "Gpu", "Paint" };
+        this.add(new Seller("Companie D", "1234123 street", "Company222@email.com", "333-4567-1111", components4,
+                "qwerty"));
+        String[] components5 = { "Lithium", "Robot food" };
+        this.add(new User("randomUser@email.com", "randomUser1", "111-1111-1111", "qwerty"));
+        this.add(new Seller("Companie E", "1234 street", "Company@email.com", "111-1111-1111", components5, "qwerty"));
+        this.add(new User("randomUser2@email.com", "randomUser2", "121-1111-1111", "qwerty"));
+        this.add(new User("randomUser3@email.com", "randomUser3", "131-1111-1111", "qwerty"));
+        this.add(new User("randomUser4@email.com", "randomUser4", "141-1111-1111", "qwerty"));
+        this.add(new User("randomUser5@email.com", "randomUser5", "151-1111-1111", "qwerty"));
+        this.add(new User("randomUser6@email.com", "randomUser6", "161-1111-1111", "qwerty"));
+        this.add(new User("randomUser7@email.com", "randomUser7", "171-1111-1111", "qwerty"));
+        this.add(new User("randomUser8@email.com", "randomUser8", "181-1111-1111", "qwerty"));
+        this.add(new User("randomUser9@email.com", "randomUser9", "191-1111-1111", "qwerty"));
+        this.add(new User("randomUser10@email.com", "randomUser10", "221-1111-1111", "qwerty"));
+
     }
 
     public String choice(int numChoices) {

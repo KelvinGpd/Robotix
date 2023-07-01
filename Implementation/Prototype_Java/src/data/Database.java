@@ -20,4 +20,22 @@ public class Database {
     public void add(Seller s) {
         sellers.add(s);
     }
+
+    public void delete(User u) {
+        for (int i = 0; i < users.size(); i++) {
+            if (u.getEmail() == this.users.get(i).getEmail()) {
+                users.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void delete(Seller s) {
+        for (int i = 0; i < sellers.size(); i++) {
+            if (s.getEmail() == this.sellers.get(i).getEmail()) {
+                sellers.remove(i);
+                break;
+            }
+        }
+    }
 }

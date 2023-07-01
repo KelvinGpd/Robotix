@@ -11,6 +11,8 @@ public class User implements Serializable {
     private String username;
     private String phoneNumber;
     private String password;
+    private ArrayList<String> followers;
+    private ArrayList<String> following;
 
     public User(String email, String username, String phoneNumber, String password) {
         this.email = email;
@@ -21,6 +23,14 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public void addFollower(String email) {
+        followers.add(email);
+    }
+
+    public void addFollowing(String email) {
+        following.add(email);
     }
 
     public String getPassword() {
