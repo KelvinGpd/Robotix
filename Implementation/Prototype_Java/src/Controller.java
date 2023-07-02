@@ -1,27 +1,32 @@
 import java.util.Scanner;
 
-import data.Database;
-import data.Seller;
-import data.User;
+import data.*;
 
 public class Controller {
     private Database database;
 
     public Controller() {
         database = new Database();
-        String[] components = { "wheels", "cpu" };
-        this.add(new Seller("Companie A", "1234 street", "Company@email.com", "111-1111-1111", components, "qwerty"));
-        String[] components2 = { "helice", "batteries" };
-        this.add(new Seller("Companie B", "5678 street", "Company2@email.com", "222-2222-2222", components2, "qwerty"));
-        String[] components3 = { "Arms", "wings" };
-        this.add(new Seller("Companie C", "12313 street", "Companysdasd@email.com", "333-1111-1111", components3,
+        Component[] components = { new Component("HyperRollers", "wheels", "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.", 199),
+                                   new Component("AMD 7600X", "cpu", "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350)};
+        this.add(new Seller("Companie A", "1234 street", "company@email.com", "111-1111-1111", components, "qwerty"));
+        Component[] components2 = { new Component("RapidLift 2.0", "propeller", "Efficacité maximale et une propulsion optimale, garantissant une vitesse et une maniabilité exceptionnelles.", 95),
+                                    new Component("Energizer", "batteries", "Une batterie longue durée avec une autonomie exceptionnelle", 45),
+                                    new Component("Shockwave V", "speakers", "Haut-parleur sans fil qui offre une connectivité sans encombrement", 89) };
+        this.add(new Seller("Companie B", "5678 street", "company2@email.com", "222-2222-2222", components2, "qwerty"));
+        Component[] components3 = { new Component("Ultragrip 4", "arms", "bras robotique polyvalent conçu pour s'adapter à une large gamme d'applications industrielles", 60),
+                                    new Component("VisonLens HD","camera" , "Caméra HD offrant une résolution haute définition", 210)};
+        this.add(new Seller("Companie C", "12313 street", "companysdasd@email.com", "333-1111-1111", components3,
                 "qwerty"));
-        String[] components4 = { "Gpu", "Paint" };
-        this.add(new Seller("Companie D", "1234123 street", "Company222@email.com", "333-4567-1111", components4,
+        Component[] components4 = { new Component("ImageColor","screen", "Une qualité d'image exceptionnelle avec une netteté et des détails époustouflants", 99),
+                                    new Component("RealSound 1665-E", "speaker", "Haut-parleur compact et facilement transportable.", 70) };
+        this.add(new Seller("Companie D", "1234123 street", "company222@email.com", "333-4567-1111", components4,
                 "qwerty"));
-        String[] components5 = { "Lithium", "Robot food" };
+        Component[] components5 = { new Component("OmniCapture 3","micro", "une qualité audio exceptionnelle, capturant des sons clairs et détaillés", 50),
+                                    new Component("Intel i7 8th Gen","cpu", "CPU conçu pour une efficacité énergétique optimale.",  199)};
+        this.add(new Seller("Companie E", "1234 street", "company@email.com", "111-1111-1111", components5, "qwerty"));
+
         this.add(new User("randomUser@email.com", "randomUser1", "111-1111-1111", "qwerty"));
-        this.add(new Seller("Companie E", "1234 street", "Company@email.com", "111-1111-1111", components5, "qwerty"));
         this.add(new User("randomUser2@email.com", "randomUser2", "121-1111-1111", "qwerty"));
         this.add(new User("randomUser3@email.com", "randomUser3", "131-1111-1111", "qwerty"));
         this.add(new User("randomUser4@email.com", "randomUser4", "141-1111-1111", "qwerty"));
@@ -51,6 +56,11 @@ public class Controller {
 
     public void add(Seller e) {
         database.sellers.add(e);
+    }
+
+    public void update(Seller e) {
+        database.delete(e);
+        database.add(e);
     }
 
     public Seller authenticateSeller(String email, String password) {
