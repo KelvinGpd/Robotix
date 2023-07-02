@@ -10,6 +10,7 @@ public class Robot {
     public String type;
     public int[] position = new int[] { 0, 0, 0 };
     public String name;
+    public ArrayList<String> taches = new ArrayList<String>();
 
     public Robot(String type, String name) {
         this.uuid = UUID.randomUUID();

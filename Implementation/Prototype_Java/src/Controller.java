@@ -55,7 +55,8 @@ public class Controller {
 
     public Seller authenticateSeller(String email, String password) {
         for (int i = 0; i < database.sellers.size(); i++) {
-            if (database.sellers.get(i).getEmail() == email && database.sellers.get(i).getPassword() == password) {
+            if (database.sellers.get(i).getEmail().equals(email)
+                    && database.sellers.get(i).getPassword().equals(password)) {
                 return database.sellers.get(i);
             }
         }
@@ -64,7 +65,8 @@ public class Controller {
 
     public User authenticateUser(String email, String password) {
         for (int i = 0; i < database.users.size(); i++) {
-            if (database.users.get(i).getEmail() == email && database.users.get(i).getPassword() == password) {
+            if (database.users.get(i).getEmail().equals(email)
+                    && database.users.get(i).getPassword().equals(password)) {
                 return database.users.get(i);
             }
         }
