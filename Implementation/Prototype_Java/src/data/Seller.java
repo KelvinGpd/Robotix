@@ -1,16 +1,21 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Seller {
     String name, address, email, phone, password;
-    String[] components;
+    ArrayList<Component> components;
 
-    public Seller(String name, String address, String email, String phone, String[] components, String password) {
+    public Seller(String name, String address, String email, String phone, Component[] components, String password) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.phone = phone;
-        this.components = components;
         this.password = password;
+
+        this.components = new ArrayList<>();
+        Collections.addAll(this.components, components);
     }
 
     public String getName() {
@@ -33,7 +38,11 @@ public class Seller {
         return phone;
     }
 
-    public String[] getComponents() {
+    public ArrayList<Component> getComponents() {
         return components;
+    }
+
+    public void addComponent(Component comp){
+        components.add(comp);
     }
 }

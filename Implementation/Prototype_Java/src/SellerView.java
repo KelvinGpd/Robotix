@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import data.Seller;
 import data.User;
+import data.Component;
 
 public class SellerView {
     Controller controller;
@@ -14,7 +15,6 @@ public class SellerView {
     }
 
     public void run(boolean isNew) {
-        Seller seller;
         if (isNew) {
             seller = register();
             controller.add(seller);
@@ -56,7 +56,7 @@ public class SellerView {
 
     private Seller register() {
         String name, address, email, phone, password;
-        String[] components;
+        Component[] components;
         Scanner reader = new Scanner(System.in);
         System.out.println("Veuillez saisir les informations suivantes:");
         System.out.print("Nom: ");
@@ -70,24 +70,43 @@ public class SellerView {
         System.out.print("Choisissez un password: ");
         password = reader.nextLine();
 
-        System.out.println("Composantes que vous produissez (séparés par des virgules): ");
-        components = reader.next().split(",");
+        System.out.print("Nombre de composantes differents que vous produissez: ");
+        int numComp = Integer.parseInt(reader.nextLine());
+        components = new Component[numComp];
+        for(int i=0;i<numComp;i++){
+            components[i] = newComp();
+        }
+        
         return new Seller(name, address, email, phone, components, password);
     }
 
     private void sellComp() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Veuillez saisir le nom de la composante que vous voulez vendre:");
-        String component = scanner.next();
-
-        System.out.println("La composante \"" + component + "\" a été listé sur le marché.");
-
+        System.out.println("Veuillez saisir les informations suivantes sur la composante que vous voulez vendre:");
+        Component component = newComp();
+        seller.addComponent(component);
+        controller.update(seller);
+        System.out.println("La composante \"" + component.getName() + "\" a été listé sur le marché.");
     }
-
     private void viewComp() {
         System.out.println("Vous vendez les composantes suivantes:");
-        for (String component : seller.getComponents()) {
-            System.out.println(component);
+        for (Component component : seller.getComponents()) {
+            System.out.println(component + "\n");
         }
+    }
+
+    private Component newComp() {
+        Scanner reader = new Scanner(System.in);
+        String nameComp, type, desc;
+        int price;
+        System.out.print("Nom du composante: ");
+        nameComp = reader.nextLine();
+        System.out.print("Type: ");
+        type = reader.nextLine();
+        System.out.print("Description: ");
+        desc = reader.nextLine();
+        System.out.print("Prix: ");
+        price = Integer.parseInt(reader.nextLine());
+        return new Component(nameComp, type, desc, price);
     }
 }
