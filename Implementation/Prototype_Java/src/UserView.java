@@ -46,7 +46,7 @@ public class UserView {
         while (true) {
             System.out.println("Bienvenue à Robotix " + user.getUsername() + ". Veuillez choisir une option:");
             System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
-                    "4. Créer/modifier un action\n5. Interagir avec vos robots\n" + //
+                    "4. Créer/modifier un action\n5. Participer a une activite\n" + //
                     "6. Creer/modifier une tache");
             switch (controller.choice(6)) {
                 case "1":
@@ -311,7 +311,53 @@ public class UserView {
     }
 
     private void interact() {
+        Scanner scanner = new Scanner(System.in);
         // TODO
         // assigner tâches, participer à des activités
+        System.out.println("Incrivez la journee ou commence l'activite (DD/MM/YYYY)");
+        String aws = scanner.nextLine();
+        System.out.println("Incrivez l'heure a laquelle vous voulez faire l'activite (HH:MM)");
+
+        aws = scanner.nextLine();
+        System.out.println("Incrivez le lieu ou faire l'activite (adresse sera cherchee sur le google maps api)");
+        aws = scanner.nextLine();
+        System.out.println("Incrivez la fin de l'activite (DD/MM/YYYY)");
+        aws = scanner.nextLine();
+
+        System.out.println("Choisissez l'activite a laquelle participer");
+        System.out.println("1: faire un tache avec mes robots\n2: jouer/apprendre/eduquer avec un de mes robots \n");
+
+        switch (controller.choice(2)) {
+            case "1":
+                System.out.println("Quelle tache voulez vous faire ?");
+                scanner.nextLine();
+                System.out.println(
+                        "Avec quel robot voulez vous faire cette tache ? Assurez vous que le robot puisse faire la tache");
+                for (int i = 0; i < nosRobots.size(); i++) {
+                    System.out.println(String.valueOf(i) + "       " + nosRobots.get(i).name);
+                }
+                String wtv = scanner.nextLine();
+                int choice = 0;
+                try {
+                    choice = Integer.parseInt(wtv);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+                break;
+            case "2":
+                System.out.println("Avec quel robot voulez vous faire cette activite ?");
+                for (int i = 0; i < nosRobots.size(); i++) {
+                    System.out.println(String.valueOf(i) + "       " + nosRobots.get(i).name);
+                }
+                try {
+                    String ok = scanner.nextLine();
+                    choice = Integer.parseInt(ok);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+
+                break;
+        }
+        System.out.println("L'inscription est faite !");
     }
 }
