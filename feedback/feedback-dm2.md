@@ -2,7 +2,7 @@
 
 Corrigé par Santiago Gomez Maqueo Anaya
 
-Total:
+Total: 85
 
 ## Description du système opérationnel [5/5]
 Excellent. Vous avez satisfait tous les critères attendus.
