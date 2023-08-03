@@ -103,6 +103,7 @@ public class Controller {
         return n > 0 && n <= max;
     }
 
+
     //fonctionnalites Tache 3
 
     //Récupérer la liste des utilisateurs
@@ -110,7 +111,7 @@ public class Controller {
         return database.users;
     }
 
-    //Rechercher un utilisateur (par pseudo ou parmi la liste des suiveurs d'un utilisateur spécifique)
+    //Rechercher un utilisateur (par pseudo)
     public User queryUser(String pseudo){
         for (User user: database.users){
             if (user.getUsername() == pseudo) {
@@ -120,20 +121,43 @@ public class Controller {
         return null;
     }
 
-    //TODO Voir le profil d'un utilisateur
-    public void viewProile(User user) {
-
-    }
-
-    //TODO Récupérer la liste des activités
-    public List<Activity> getActivities(){
-        ArrayList<Activity> activities = new ArrayList<>();
-        for (User user: database.users){
-            for(Activity activity : user.getActivities()) {
-                activities.add(activity);
+    //Rechercher un utilisateur (parmi la liste des suiveurs d'un utilisateur spécifique)
+    public User queryUser(User user, String pseudo) {
+        List<User> userFollowers = user.getFollowers();
+        for(User follower: userFollowers){
+            if (follower.getUsername() == pseudo) {
+                return follower;
             }
         }
-        return activities;
+        return null;
+    }
+
+    //show information: pseudo, followers, following, points, interests,
+    //not adapted for gui
+    public void viewProfile(User user){
+        System.out.println("nom: " + user.getUsername() + "\n");
+
+        System.out.println("followers: ");
+        for(User follower : user.getFollowers()){
+            System.out.println(follower.getUsername());
+        }
+        System.out.println("\n");
+
+        System.out.println("following: ");
+        for(User following : user.getFollowing()) {
+            System.out.println(following.getUsername());
+        }
+        System.out.println("\n");
+
+        System.out.println(user.getPoints() + "\n");
+        for (String interest : user.getInterests()){
+            System.out.println(interest);
+        }
+    }
+
+    //Récupérer la liste des activités
+    public List<Activity> getActivities(){
+        return database.activities;
     }
 
     //Récupérer la liste des intérêts
@@ -147,28 +171,82 @@ public class Controller {
     }
 
     //Rechercher un fournisseur (par nom, adresse ou types de composantes)
-    public Seller querySeller(String name) {
-        for (Seller seller : database.sellers){
-            if (seller.getName() == name) {
-                return seller;
-            }
+    //using choice ig since all three are Strings
+    public Seller querySeller(String factor, String choice) {
+        switch (choice) {
+            //by name
+            case "1" :
+                for (Seller seller : database.sellers){
+                    if (seller.getName() == factor) {
+                        return seller;
+                    }
+                }
+            //by address
+            case "2":
+                for (Seller seller : database.sellers){
+                    if (seller.getEmail() == factor) {
+                        return seller;
+                    }
+                }
+            //TODO by component type
+            case "3":
+                for(Seller seller : database.sellers) {
+                    List<Component> components = seller.getComponents();
+                }
         }
         return null;
     }
 
-    //TODO Voir le profil d'un fournisseur
+
+    //Voir le profil d'un fournisseur
     public void viewProfile(Seller seller) {
+        System.out.println(seller.getName() + "\n");
+        System.out.println("Listed components: ");
+        for(Component component : seller.getComponents()) {
+            System.out.println(component.getName());
+        }
 
     }
 
     //Rechercher une composante (par nom de la composante, type ou nom du fournisseur)
-    //par nom de fournisseur
-    public List<Component> queryComponent(String sellerName){
-        for (Seller seller : database.sellers){
-            if (seller.getName() == sellerName) {
-                return seller.getComponents();
-            }
+    public List<Component> queryComponent(String factor, String choice){
+        switch (choice) {
+            //par nom de fournisseur
+            case "1" :
+                for (Seller seller : database.sellers){
+                    if (seller.getName() == factor) {
+                        return seller.getComponents();
+                    }
+                }
+            //par nom de la composante
+            case "2":
+                List<Component> matchingNameComponents = new ArrayList<>();
+                for(Seller seller: database.sellers) {
+                    List<Component> components = seller.getComponents();
+                    for (Component component : components) {
+                        if (component.getName() == factor) {
+                            matchingNameComponents.add(component);
+                        }
+                    }
+                }
+                return matchingNameComponents;
+            //par type de la composante
+            case "3" :
+                List<Component> matchingTypeComponents = new ArrayList<>();
+                for(Seller seller: database.sellers) {
+                    List<Component> components = seller.getComponents();
+                    for (Component component : components) {
+                        if (component.getType() == factor) {
+                            matchingTypeComponents.add(component);
+                        }
+                    }
+                }
+                return matchingTypeComponents;
         }
+
+
+
+
         return null;
     }
 }
