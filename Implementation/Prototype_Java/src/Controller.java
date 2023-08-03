@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,9 @@ public class Controller {
 
     public Controller() {
         database = new Database();
+
+        database.addInterest("roblox");
+
         Component[] components = { new Component("HyperRollers", "wheels", "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.", 199),
                                    new Component("AMD 7600X", "cpu", "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350)};
         this.add(new Seller("Companie A", "1234 street", "company@email.com", "111-1111-1111", components, "qwerty"));
@@ -117,16 +121,24 @@ public class Controller {
     }
 
     //TODO Voir le profil d'un utilisateur
+    public void viewProile(User user) {
+
+    }
 
     //TODO Récupérer la liste des activités
     public List<Activity> getActivities(){
-        return null;
-        //not sure what activity class is yet
+        ArrayList<Activity> activities = new ArrayList<>();
+        for (User user: database.users){
+            for(Activity activity : user.getActivities()) {
+                activities.add(activity);
+            }
+        }
+        return activities;
     }
 
-    //TODO Récupérer la liste des intérêts
+    //Récupérer la liste des intérêts
     public List<String> getInterests() {
-        return null;
+        return database.interests;
     }
 
     //Récupérer la liste des fournisseurs
@@ -145,6 +157,9 @@ public class Controller {
     }
 
     //TODO Voir le profil d'un fournisseur
+    public void viewProfile(Seller seller) {
+
+    }
 
     //Rechercher une composante (par nom de la composante, type ou nom du fournisseur)
     //par nom de fournisseur
@@ -156,6 +171,4 @@ public class Controller {
         }
         return null;
     }
-
-
 }

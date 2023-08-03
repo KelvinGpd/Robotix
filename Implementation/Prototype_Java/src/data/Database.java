@@ -7,10 +7,16 @@ import javax.xml.crypto.Data;
 public class Database {
     public ArrayList<User> users;
     public ArrayList<Seller> sellers;
+    public ArrayList<String> interests;
 
     public Database() {
         this.users = new ArrayList<User>();
         this.sellers = new ArrayList<Seller>();
+        this.interests = new ArrayList<String>();
+    }
+
+    public void addInterest (String interest) {
+        interests.add(interest);
     }
 
     public void add(User u) {
