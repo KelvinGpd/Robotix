@@ -16,6 +16,10 @@ public class Component {
         return name;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public String toString(){
         return ("Nom: " + name + "\nType: "+ type + "\nDescription: "+ desc +"\nPrix: "+ price);
     }

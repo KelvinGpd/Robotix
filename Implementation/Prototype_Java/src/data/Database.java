@@ -1,5 +1,6 @@
 package data;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.xml.crypto.Data;
@@ -8,16 +9,23 @@ public class Database {
     public ArrayList<User> users;
     public ArrayList<Seller> sellers;
     public ArrayList<String> interests;
+    public ArrayList<Activity> activities;
 
     public Database() {
         this.users = new ArrayList<User>();
         this.sellers = new ArrayList<Seller>();
         this.interests = new ArrayList<String>();
+        this.activities = new ArrayList<Activity>();
     }
 
     public void addInterest (String interest) {
         interests.add(interest);
     }
+
+    public void addActivity (Activity activity) {
+        activities.add(activity);
+    }
+
 
     public void add(User u) {
         users.add(u);
