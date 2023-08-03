@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 import data.*;
@@ -95,4 +98,64 @@ public class Controller {
         }
         return n > 0 && n <= max;
     }
+
+    //fonctionnalites Tache 3
+
+    //Récupérer la liste des utilisateurs
+    public List<User> getUsers() {
+        return database.users;
+    }
+
+    //Rechercher un utilisateur (par pseudo ou parmi la liste des suiveurs d'un utilisateur spécifique)
+    public User queryUser(String pseudo){
+        for (User user: database.users){
+            if (user.getUsername() == pseudo) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    //TODO Voir le profil d'un utilisateur
+
+    //TODO Récupérer la liste des activités
+    public List<Activity> getActivities(){
+        return null;
+        //not sure what activity class is yet
+    }
+
+    //TODO Récupérer la liste des intérêts
+    public List<String> getInterests() {
+        return null;
+    }
+
+    //Récupérer la liste des fournisseurs
+    public List<Seller> getSellers() {
+        return database.sellers;
+    }
+
+    //Rechercher un fournisseur (par nom, adresse ou types de composantes)
+    public Seller querySeller(String name) {
+        for (Seller seller : database.sellers){
+            if (seller.getName() == name) {
+                return seller;
+            }
+        }
+        return null;
+    }
+
+    //TODO Voir le profil d'un fournisseur
+
+    //Rechercher une composante (par nom de la composante, type ou nom du fournisseur)
+    //par nom de fournisseur
+    public List<Component> queryComponent(String sellerName){
+        for (Seller seller : database.sellers){
+            if (seller.getName() == sellerName) {
+                return seller.getComponents();
+            }
+        }
+        return null;
+    }
+
+
 }
