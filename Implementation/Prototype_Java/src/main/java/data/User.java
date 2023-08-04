@@ -1,18 +1,23 @@
 package data;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class User extends Client {
     private ArrayList<Robot> robots;
-    private ArrayList<User> followers;
-    private ArrayList<User> following;
+    private ArrayList<String> followers;
+    private ArrayList<String> following;
     private ArrayList<Activity> activities;
     private ArrayList<String> interests;
 
     private int points;
 
+    //Constructeur normal
     public User(String email, String username, String phoneNumber, String password){
         super(username, email, phoneNumber, password);
         this.robots = new ArrayList<>();
@@ -21,6 +26,39 @@ public class User extends Client {
         this.activities = new ArrayList<>();
         this.interests = new ArrayList<>();
     }
+    //Pour recoustruire l'object deserialisé
+    public User(String username, String email, String phoneNumber, String password, ArrayList<Robot> robots, String[] followers, String[] following,Activity[] activities, String[] interests, int points){
+        super(username, email, phoneNumber, password);
+        this.robots = robots;
+        this.points = points;
+        this.followers = (ArrayList<String>) Arrays.asList(followers);
+        this.following = (ArrayList<String>) Arrays.asList(following);
+        this.activities = (ArrayList<Activity>) Arrays.asList(activities);
+        this.interests = (ArrayList<String>) Arrays.asList(interests);
+    }
+    //Pour recoustruire l'object deserialisé
+    @JsonCreator
+    public User(@JsonProperty("name") String name, @JsonProperty("email") String email,@JsonProperty("phone") String phoneNumber,
+                @JsonProperty("password") String password,@JsonProperty("following") ArrayList<String> following,
+                @JsonProperty("robots") ArrayList<Robot> robots,
+                @JsonProperty("activities") ArrayList<Activity> activities,
+                @JsonProperty("interests") ArrayList<String> interests,
+                @JsonProperty("followers") ArrayList<String> followers,
+                @JsonProperty("points") int points
+                ) {
+
+        super(name, email, phoneNumber, password);
+        this.followers = followers;
+
+        this.following = following;
+        this.robots = robots;
+        this.activities = activities;
+        this.interests = interests;
+        this.points = points;
+
+
+    }
+
 
     //Interests
     public ArrayList<String> getInterests(){
@@ -45,16 +83,16 @@ public class User extends Client {
     }
 
     //Followers
-    public void addFollower(User user) {
+    public void addFollower(String user) {
         followers.add(user);
     }
-    public void addFollowing(User user) {
+    public void addFollowing(String user) {
         following.add(user);
     }
-    public List<User> getFollowers() {
+    public List<String> getFollowers() {
         return followers;
     }
-    public List<User> getFollowing() {
+    public List<String> getFollowing() {
         return following;
     }
 

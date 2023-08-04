@@ -9,8 +9,5 @@
         <module name="Prototype_Java" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Prototype_Java" target="14" />
-    </bytecodeTargetLevel>
   </component>
 </project>

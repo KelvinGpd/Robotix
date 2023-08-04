@@ -1,5 +1,6 @@
 package data.databases;
 
+import data.Client;
 import data.JsonHandler;
 
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 abstract class Db<T> {
     String path;
@@ -61,6 +63,24 @@ abstract class Db<T> {
         objects.remove(object);
         write(objects);
     }
+
+    public Client login(String email, String password){
+        List<Client> objects = (List<Client>) read();
+        Client match = null;
+        for(Client obj : objects){
+            if(obj.getEmail().equals(email)){
+                if(obj.getPassword().equals(password)){
+                    return obj;
+                }
+            }
+        }
+        return match;
+    }
+    public T get(String email){
+        return null;
+    }
+
+
 
     //modify mehod
     //void modify(T object);

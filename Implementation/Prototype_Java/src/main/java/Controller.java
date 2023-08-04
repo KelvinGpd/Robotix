@@ -11,7 +11,14 @@ public class Controller {
 
     public Controller() {
         db = new UserDb("src/main/resources/Json/Users.json");
-        db.add(new User("s","s","s","s"));
+
+        User testUser = new User("a","Preuve qu'on recover le user","a","a");
+        testUser.addFollower("RandomMf");
+        Robot randomRobot = new Robot("Executionner", "Top g");
+        testUser.add(randomRobot);
+        db.add(testUser);
+        User myClient = (User) db.login("a", "a");
+        System.out.println(myClient.getName());
 
         database = new Database("Implementation/Prototype_Java/src/Json/Users.json",
                 "Implementation/Prototype_Java/src/Json/Sellers.json",
@@ -138,10 +145,10 @@ public class Controller {
     // Rechercher un utilisateur (parmi la liste des suiveurs d'un utilisateur
     // spécifique)
     public User queryUser(User user, String pseudo) {
-        List<User> userFollowers = user.getFollowers();
-        for (User follower : userFollowers) {
-            if (follower.getName() == pseudo) {
-                return follower;
+        List<String> userFollowers = user.getFollowers();
+        for (String follower : userFollowers) {
+            if (follower.equals(pseudo)) {
+                return null;
             }
         }
         return null;
@@ -153,14 +160,14 @@ public class Controller {
         System.out.println("nom: " + user.getName() + "\n");
 
         System.out.println("followers: ");
-        for (User follower : user.getFollowers()) {
-            System.out.println(follower.getName());
+        for (String follower : user.getFollowers()) {
+            System.out.println(follower);
         }
         System.out.println("\n");
 
         System.out.println("following: ");
-        for (User following : user.getFollowing()) {
-            System.out.println(following.getName());
+        for (String following : user.getFollowing()) {
+            System.out.println(following);
         }
         System.out.println("\n");
 

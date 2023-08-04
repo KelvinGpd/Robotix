@@ -24,7 +24,12 @@ public class JsonHandler {
     //deserializing method for objects
     public <T> T jsonToObject(String json, Class<T> valueType) {
         try{
-            return objectMapper.readValue(json, valueType);
+            if(json.equals("") || json.equals("[]")){
+                return null;
+            }
+            else{
+                return objectMapper.readValue(json, valueType);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return null;
