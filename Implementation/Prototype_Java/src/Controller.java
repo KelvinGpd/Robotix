@@ -125,7 +125,7 @@ public class Controller {
     // Rechercher un utilisateur (par pseudo)
     public User queryUser(String pseudo) {
         for (User user : database.loadUsers()) {
-            if (user.getUsername() == pseudo) {
+            if (user.getName() == pseudo) {
                 return user;
             }
         }
@@ -137,7 +137,7 @@ public class Controller {
     public User queryUser(User user, String pseudo) {
         List<User> userFollowers = user.getFollowers();
         for (User follower : userFollowers) {
-            if (follower.getUsername() == pseudo) {
+            if (follower.getName() == pseudo) {
                 return follower;
             }
         }
@@ -147,17 +147,17 @@ public class Controller {
     // show information: pseudo, followers, following, points, interests,
     // not adapted for gui
     public void viewProfile(User user) {
-        System.out.println("nom: " + user.getUsername() + "\n");
+        System.out.println("nom: " + user.getName() + "\n");
 
         System.out.println("followers: ");
         for (User follower : user.getFollowers()) {
-            System.out.println(follower.getUsername());
+            System.out.println(follower.getName());
         }
         System.out.println("\n");
 
         System.out.println("following: ");
         for (User following : user.getFollowing()) {
-            System.out.println(following.getUsername());
+            System.out.println(following.getName());
         }
         System.out.println("\n");
 

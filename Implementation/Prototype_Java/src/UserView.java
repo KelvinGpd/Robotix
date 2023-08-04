@@ -44,7 +44,7 @@ public class UserView {
         }
         currUser = user;
         while (true) {
-            System.out.println("Bienvenue à Robotix " + user.getUsername() + ". Veuillez choisir une option:");
+            System.out.println("Bienvenue à Robotix " + user.getName() + ". Veuillez choisir une option:");
             System.out.println("1. Ajouter un robot\n2. Informations sur vos robots\n 3. Acheter des composantes\n" +
                     "4. Créer/modifier un action\n5. Participer a une activite\n" + //
                     "6. Creer/modifier une tache");

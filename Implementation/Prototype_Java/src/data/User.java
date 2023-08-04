@@ -7,23 +7,16 @@ import java.util.List;
 import data.Robot;
 
 //Pour quon puisse l'envoyer online, l'object user est serializable
-public class User implements Serializable {
+public class User extends Client implements Serializable {
     private ArrayList<Robot> robots;
-    private String email;
-    private String username;
-    private String phoneNumber;
-    private String password;
     private ArrayList<User> followers;
     private ArrayList<User> following;
     private ArrayList<Activity> activities;
     private ArrayList<String> interests;
     private int points;
 
-    public User(String email, String username, String phoneNumber, String password) {
-        this.email = email;
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
+    public User(String email, String username, String phoneNumber, String password){
+        super(username, email, phoneNumber, password);
     }
 
     //Interests
@@ -61,21 +54,6 @@ public class User implements Serializable {
     public List<User> getFollowing() {
         return following;
     }
-
-    //Credentials
-    public String getEmail() {
-        return email;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
 
     //Robots
     public void add(Robot r) {
