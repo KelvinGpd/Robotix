@@ -26,7 +26,7 @@ abstract class Db<T> {
     }
 
     //read method
-    private List<T> read() {
+    public List<T> read() {
         try {
             String json = new String(Files.readAllBytes(Paths.get(path)));
             T[] array = jsonHandler.jsonToObject(json, getArrayClass());
@@ -59,9 +59,9 @@ abstract class Db<T> {
     }
 
     public void remove(T object) {
-        List<T> objects = read();
-        objects.remove(object);
-        write(objects);
+        List<Client> objects = (List<Client>) read();
+        objects.remove((Client) object);
+        write((List<T>) objects);
     }
 
     public Client login(String email, String password){
