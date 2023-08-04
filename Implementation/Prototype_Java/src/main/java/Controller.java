@@ -3,26 +3,30 @@ import java.util.List;
 import java.util.Scanner;
 
 import data.*;
+import data.databases.SellerDb;
 import data.databases.UserDb;
 
 public class Controller {
-    private Database database;
-    private UserDb db;
+
+    private UserDb UserDb = new UserDb("src/main/resources/Json/Users.json");
+
+    private SellerDb SellerDb = new SellerDb("src/main/resources/Json/Sellers.json");
 
     public Controller() {
-        db = new UserDb("src/main/resources/Json/Users.json");
+        tests();
+    }
 
+    public void tests(){
         User testUser = new User("a","Preuve qu'on recover le user","a","a");
         testUser.addFollower("RandomMf");
         Robot randomRobot = new Robot("Executionner", "Top g");
         testUser.add(randomRobot);
-        db.add(testUser);
-        User myClient = (User) db.login("a", "a");
+        this.add(testUser);
+        User myClient = this.authenticateUser("a", "a");
         System.out.println(myClient.getName());
 
-        database = new Database("Implementation/Prototype_Java/src/Json/Users.json",
-                "Implementation/Prototype_Java/src/Json/Sellers.json",
-                "Implementation/Prototype_Java/src/Json/Activties.json");
+
+
 
         Component[] components = { new Component("HyperRollers", "wheels",
                 "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.",
@@ -30,6 +34,7 @@ public class Controller {
                 new Component("AMD 7600X", "cpu",
                         "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350) };
         this.add(new Seller("Companie A", "1234 street", "company@email.com", "111-1111-1111", components, "qwerty"));
+
         Component[] components2 = { new Component("RapidLift 2.0", "propeller",
                 "Efficacité maximale et une propulsion optimale, garantissant une vitesse et une maniabilité exceptionnelles.",
                 95),
@@ -66,7 +71,15 @@ public class Controller {
         this.add(new User("randomUser9@email.com", "randomUser9", "191-1111-1111", "qwerty"));
         this.add(new User("randomUser10@email.com", "randomUser10", "221-1111-1111", "qwerty"));
 
+        Seller sell = this.authenticateSeller("company@email.com", "qwerty");
+        System.out.println(sell.getName());
+        sell.setName("Le nom a bel et bien ete changé");
+        this.update(sell);
+        System.out.println(sell.getName());
+
+
     }
+
 
     public String choice(int numChoices) {
         Scanner reader = new Scanner(System.in);
@@ -80,36 +93,30 @@ public class Controller {
     }
 
     public void add(User e) {
-        database.loadUsers().add(e);
+        UserDb.add(e);
+    }
+    public void update(User e) {
+        UserDb.remove(e);
+        UserDb.add(e);
     }
 
+
     public void add(Seller e) {
-        database.loadSellers().add(e);
+        SellerDb.add(e);
     }
 
     public void update(Seller e) {
-        database.delete(e);
-        database.add(e);
+        SellerDb.remove(e);
+        SellerDb.add(e);
     }
 
     public Seller authenticateSeller(String email, String password) {
-        for (int i = 0; i < database.loadSellers().size(); i++) {
-            if (database.loadSellers().get(i).getEmail().equals(email)
-                    && database.loadSellers().get(i).getPassword().equals(password)) {
-                return database.loadSellers().get(i);
-            }
-        }
-        return null;
+       return (Seller) SellerDb.login(email, password);
     }
 
+
     public User authenticateUser(String email, String password) {
-        for (int i = 0; i < database.loadUsers().size(); i++) {
-            if (database.loadUsers().get(i).getEmail().equals(email)
-                    && database.loadUsers().get(i).getPassword().equals(password)) {
-                return database.loadUsers().get(i);
-            }
-        }
-        return null;
+        return (User) UserDb.login(email,password);
     }
 
     private boolean isValid(String input, int max) {
@@ -129,13 +136,13 @@ public class Controller {
 
     // Récupérer la liste des utilisateurs
     public List<User> getUsers() {
-        return database.loadUsers();
+        return UserDb.read();
     }
 
     // Rechercher un utilisateur (par pseudo)
     public User queryUser(String pseudo) {
-        for (User user : database.loadUsers()) {
-            if (user.getName() == pseudo) {
+        for (User user : UserDb.read()) {
+            if (user.getName().equals(pseudo)) {
                 return user;
             }
         }
@@ -177,19 +184,9 @@ public class Controller {
         }
     }
 
-    // Récupérer la liste des activités
-    // public List<Activity> getActivities(){
-    // return database.activities;
-    // }
-
-    // Récupérer la liste des intérêts
-    // public List<String> getInterests() {
-    // return database.interests;
-    // }
-
     // Récupérer la liste des fournisseurs
     public List<Seller> getSellers() {
-        return database.loadSellers();
+        return SellerDb.read();
     }
 
     // Rechercher un fournisseur (par nom, adresse ou types de composantes)
@@ -198,21 +195,21 @@ public class Controller {
         switch (choice) {
             // by name
             case "1":
-                for (Seller seller : database.loadSellers()) {
-                    if (seller.getName() == factor) {
+                for (Seller seller : getSellers()) {
+                    if (seller.getName().equals(factor)) {
                         return seller;
                     }
                 }
                 // by address
             case "2":
-                for (Seller seller : database.loadSellers()) {
-                    if (seller.getEmail() == factor) {
+                for (Seller seller : getSellers()) {
+                    if (seller.getEmail().equals(factor)) {
                         return seller;
                     }
                 }
                 // TODO by component type
             case "3":
-                for (Seller seller : database.loadSellers()) {
+                for (Seller seller : SellerDb.read()) {
                     List<Component> components = seller.getComponents();
                 }
         }
@@ -235,15 +232,15 @@ public class Controller {
         switch (choice) {
             // par nom de fournisseur
             case "1":
-                for (Seller seller : database.loadSellers()) {
-                    if (seller.getName() == factor) {
+                for (Seller seller : getSellers()) {
+                    if (seller.getName().equals(factor)) {
                         return seller.getComponents();
                     }
                 }
                 // par nom de la composante
             case "2":
                 List<Component> matchingNameComponents = new ArrayList<>();
-                for (Seller seller : database.loadSellers()) {
+                for (Seller seller : getSellers()) {
                     List<Component> components = seller.getComponents();
                     for (Component component : components) {
                         if (component.getName() == factor) {
@@ -255,10 +252,10 @@ public class Controller {
             // par type de la composante
             case "3":
                 List<Component> matchingTypeComponents = new ArrayList<>();
-                for (Seller seller : database.loadSellers()) {
+                for (Seller seller : getSellers()) {
                     List<Component> components = seller.getComponents();
                     for (Component component : components) {
-                        if (component.getType() == factor) {
+                        if (component.getType().equals(factor)) {
                             matchingTypeComponents.add(component);
                         }
                     }

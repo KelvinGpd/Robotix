@@ -37,6 +37,7 @@ public class UserView {
             System.out.print("Entrez votre password: ");
             password = scanner.nextLine();
             user = controller.authenticateUser(email, password);
+
             if (user == null) {
                 System.out.println("Password ou email incorrect!");
                 return;

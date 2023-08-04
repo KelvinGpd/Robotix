@@ -1,6 +1,11 @@
 package data;
 
-public class Component {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
+public class Component implements Serializable {
     String name;
     String type;
     String desc;
@@ -11,6 +16,11 @@ public class Component {
         this.desc=desc;
         this.price=price;
     }
+    @JsonCreator
+    public Component(@JsonProperty("name") String name, @JsonProperty("type") String type){
+        this.name=name;
+        this.type=type;
+    }
 
     public String getName() {
         return name;
@@ -20,8 +30,5 @@ public class Component {
         return type;
     }
 
-    public String toString(){
-        return ("Nom: " + name + "\nType: "+ type + "\nDescription: "+ desc +"\nPrix: "+ price);
-    }
 }
 
