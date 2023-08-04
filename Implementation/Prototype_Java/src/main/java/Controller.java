@@ -1,15 +1,18 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 import data.*;
+import data.databases.UserDb;
 
 public class Controller {
     private Database database;
+    private UserDb db;
 
     public Controller() {
+        db = new UserDb("src/main/resources/Json/Users.json");
+        db.add(new User("s","s","s","s"));
+
         database = new Database("Implementation/Prototype_Java/src/Json/Users.json",
                 "Implementation/Prototype_Java/src/Json/Sellers.json",
                 "Implementation/Prototype_Java/src/Json/Activties.json");

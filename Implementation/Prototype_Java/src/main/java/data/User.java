@@ -1,10 +1,7 @@
 package data;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import data.Robot;
 
 
 public class User extends Client {
@@ -18,6 +15,11 @@ public class User extends Client {
 
     public User(String email, String username, String phoneNumber, String password){
         super(username, email, phoneNumber, password);
+        this.robots = new ArrayList<>();
+        this.followers = new ArrayList<>();
+        this.following = new ArrayList<>();
+        this.activities = new ArrayList<>();
+        this.interests = new ArrayList<>();
     }
 
     //Interests
