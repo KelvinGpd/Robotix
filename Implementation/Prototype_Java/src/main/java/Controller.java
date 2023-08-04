@@ -13,74 +13,13 @@ public class Controller {
     private SellerDb SellerDb = new SellerDb("src/main/resources/Json/Sellers.json");
 
     public Controller() {
-        tests();
-    }
-
-    public void tests(){
-        User testUser = new User("a","Preuve qu'on recover le user","a","a");
-        testUser.addFollower("RandomMf");
-        Robot randomRobot = new Robot("Executionner", "Top g");
-        testUser.add(randomRobot);
-        this.add(testUser);
-        User myClient = this.authenticateUser("a", "a");
-        System.out.println(myClient.getName());
-
-
-
-
-        Component[] components = { new Component("HyperRollers", "wheels",
-                "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.",
-                199),
-                new Component("AMD 7600X", "cpu",
-                        "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350) };
-        this.add(new Seller("Companie A", "1234 street", "company@email.com", "111-1111-1111", components, "qwerty"));
-
-        Component[] components2 = { new Component("RapidLift 2.0", "propeller",
-                "Efficacité maximale et une propulsion optimale, garantissant une vitesse et une maniabilité exceptionnelles.",
-                95),
-                new Component("Energizer", "batteries", "Une batterie longue durée avec une autonomie exceptionnelle",
-                        45),
-                new Component("Shockwave V", "speakers",
-                        "Haut-parleur sans fil qui offre une connectivité sans encombrement", 89) };
-        this.add(new Seller("Companie B", "5678 street", "company2@email.com", "222-2222-2222", components2, "qwerty"));
-        Component[] components3 = { new Component("Ultragrip 4", "arms",
-                "bras robotique polyvalent conçu pour s'adapter à une large gamme d'applications industrielles", 60),
-                new Component("VisonLens HD", "camera", "Caméra HD offrant une résolution haute définition", 210) };
-        this.add(new Seller("Companie C", "12313 street", "companysdasd@email.com", "333-1111-1111", components3,
-                "qwerty"));
-        Component[] components4 = {
-                new Component("ImageColor", "screen",
-                        "Une qualité d'image exceptionnelle avec une netteté et des détails époustouflants", 99),
-                new Component("RealSound 1665-E", "speaker", "Haut-parleur compact et facilement transportable.", 70) };
-        this.add(new Seller("Companie D", "1234123 street", "company222@email.com", "333-4567-1111", components4,
-                "qwerty"));
-        Component[] components5 = {
-                new Component("OmniCapture 3", "micro",
-                        "une qualité audio exceptionnelle, capturant des sons clairs et détaillés", 50),
-                new Component("Intel i7 8th Gen", "cpu", "CPU conçu pour une efficacité énergétique optimale.", 199) };
-        this.add(new Seller("Companie E", "1234 street", "company@email.com", "111-1111-1111", components5, "qwerty"));
-
-        this.add(new User("randomUser@email.com", "randomUser1", "111-1111-1111", "qwerty"));
-        this.add(new User("randomUser2@email.com", "randomUser2", "121-1111-1111", "qwerty"));
-        this.add(new User("randomUser3@email.com", "randomUser3", "131-1111-1111", "qwerty"));
-        this.add(new User("randomUser4@email.com", "randomUser4", "141-1111-1111", "qwerty"));
-        this.add(new User("randomUser5@email.com", "randomUser5", "151-1111-1111", "qwerty"));
-        this.add(new User("randomUser6@email.com", "randomUser6", "161-1111-1111", "qwerty"));
-        this.add(new User("randomUser7@email.com", "randomUser7", "171-1111-1111", "qwerty"));
-        this.add(new User("randomUser8@email.com", "randomUser8", "181-1111-1111", "qwerty"));
-        this.add(new User("randomUser9@email.com", "randomUser9", "191-1111-1111", "qwerty"));
-        this.add(new User("randomUser10@email.com", "randomUser10", "221-1111-1111", "qwerty"));
-
-        Seller sell = this.authenticateSeller("company@email.com", "qwerty");
-        System.out.println(sell.getName());
-        sell.setName("Le nom a bel et bien ete changé");
-        this.update(sell);
-        System.out.println(sell.getName());
-
-
     }
 
 
+    public void whipeData(){
+        SellerDb.clear();
+        UserDb.clear();
+    }
     public String choice(int numChoices) {
         Scanner reader = new Scanner(System.in);
         while (true) {

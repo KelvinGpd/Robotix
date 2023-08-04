@@ -58,9 +58,21 @@ abstract class Db<T> {
         write(objects);
     }
 
+    public void clear(){
+        write(null);
+    }
+
     public void remove(T object) {
         List<Client> objects = (List<Client>) read();
-        objects.remove((Client) object);
+        Client thisClient = (Client) object;
+
+        for(Client client : objects){
+            if(client.getEmail().equals(thisClient.getEmail())){
+                objects.remove(client);
+                objects.add(thisClient);
+            }
+        }
+
         write((List<T>) objects);
     }
 
