@@ -1,5 +1,8 @@
 package data;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -18,6 +21,16 @@ public class Robot {
         this.type = type;
         this.name = name;
 
+    }
+    @JsonCreator
+    public Robot(@JsonProperty("type") String type, @JsonProperty("name") String name, @JsonProperty("parts") List<Pair<String, String>> parts, @JsonProperty("position") int[] position
+        ,@JsonProperty("uuid") UUID uuid
+    ){
+        this.type = type;
+        this.name = name;
+        this.uuid = uuid;
+        this.parts = parts;
+        this.position = position;
     }
 
     public void addPart(String partName, String provider) {
