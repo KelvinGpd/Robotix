@@ -56,7 +56,7 @@ public class Database {
     public void add(User u) {
         try {
             List<String[]> currData = readCsvFile(sellersPath);
-            String[] userString = { u.getUsername(), u.getEmail(), u.getPassword(), u.getPhoneNumber(),
+            String[] userString = { u.getName(), u.getEmail(), u.getPassword(), u.getPhone(),
                     u.getActivities().toString(), u.getFollowers().toString(), u.getActivities().toString() };
             currData.add(userString);
             transformAndWriteCsvFile(currData, sellersPath);
