@@ -6,13 +6,14 @@ import java.util.List;
 
 import data.Robot;
 
-//Pour quon puisse l'envoyer online, l'object user est serializable
-public class User extends Client implements Serializable {
+
+public class User extends Client {
     private ArrayList<Robot> robots;
     private ArrayList<User> followers;
     private ArrayList<User> following;
     private ArrayList<Activity> activities;
     private ArrayList<String> interests;
+
     private int points;
 
     public User(String email, String username, String phoneNumber, String password){
