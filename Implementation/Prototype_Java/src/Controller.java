@@ -10,25 +10,39 @@ public class Controller {
     private Database database;
 
     public Controller() {
-        database = new Database("Implementation/Prototype_Java/src/Json/Users.json", "Implementation/Prototype_Java/src/Json/Sellers.json", "Implementation/Prototype_Java/src/Json/Activties.json");
+        database = new Database("Implementation/Prototype_Java/src/Json/Users.json",
+                "Implementation/Prototype_Java/src/Json/Sellers.json",
+                "Implementation/Prototype_Java/src/Json/Activties.json");
 
-        Component[] components = { new Component("HyperRollers", "wheels", "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.", 199),
-                                   new Component("AMD 7600X", "cpu", "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350)};
+        Component[] components = { new Component("HyperRollers", "wheels",
+                "Légère et élégante, notre roue en alliage améliore les performances et l'efficacité de votre véhicule.",
+                199),
+                new Component("AMD 7600X", "cpu",
+                        "Puissance de traitement exceptionnelle, permettant des opérations rapides et fluides.", 350) };
         this.add(new Seller("Companie A", "1234 street", "company@email.com", "111-1111-1111", components, "qwerty"));
-        Component[] components2 = { new Component("RapidLift 2.0", "propeller", "Efficacité maximale et une propulsion optimale, garantissant une vitesse et une maniabilité exceptionnelles.", 95),
-                                    new Component("Energizer", "batteries", "Une batterie longue durée avec une autonomie exceptionnelle", 45),
-                                    new Component("Shockwave V", "speakers", "Haut-parleur sans fil qui offre une connectivité sans encombrement", 89) };
+        Component[] components2 = { new Component("RapidLift 2.0", "propeller",
+                "Efficacité maximale et une propulsion optimale, garantissant une vitesse et une maniabilité exceptionnelles.",
+                95),
+                new Component("Energizer", "batteries", "Une batterie longue durée avec une autonomie exceptionnelle",
+                        45),
+                new Component("Shockwave V", "speakers",
+                        "Haut-parleur sans fil qui offre une connectivité sans encombrement", 89) };
         this.add(new Seller("Companie B", "5678 street", "company2@email.com", "222-2222-2222", components2, "qwerty"));
-        Component[] components3 = { new Component("Ultragrip 4", "arms", "bras robotique polyvalent conçu pour s'adapter à une large gamme d'applications industrielles", 60),
-                                    new Component("VisonLens HD","camera" , "Caméra HD offrant une résolution haute définition", 210)};
+        Component[] components3 = { new Component("Ultragrip 4", "arms",
+                "bras robotique polyvalent conçu pour s'adapter à une large gamme d'applications industrielles", 60),
+                new Component("VisonLens HD", "camera", "Caméra HD offrant une résolution haute définition", 210) };
         this.add(new Seller("Companie C", "12313 street", "companysdasd@email.com", "333-1111-1111", components3,
                 "qwerty"));
-        Component[] components4 = { new Component("ImageColor","screen", "Une qualité d'image exceptionnelle avec une netteté et des détails époustouflants", 99),
-                                    new Component("RealSound 1665-E", "speaker", "Haut-parleur compact et facilement transportable.", 70) };
+        Component[] components4 = {
+                new Component("ImageColor", "screen",
+                        "Une qualité d'image exceptionnelle avec une netteté et des détails époustouflants", 99),
+                new Component("RealSound 1665-E", "speaker", "Haut-parleur compact et facilement transportable.", 70) };
         this.add(new Seller("Companie D", "1234123 street", "company222@email.com", "333-4567-1111", components4,
                 "qwerty"));
-        Component[] components5 = { new Component("OmniCapture 3","micro", "une qualité audio exceptionnelle, capturant des sons clairs et détaillés", 50),
-                                    new Component("Intel i7 8th Gen","cpu", "CPU conçu pour une efficacité énergétique optimale.",  199)};
+        Component[] components5 = {
+                new Component("OmniCapture 3", "micro",
+                        "une qualité audio exceptionnelle, capturant des sons clairs et détaillés", 50),
+                new Component("Intel i7 8th Gen", "cpu", "CPU conçu pour une efficacité énergétique optimale.", 199) };
         this.add(new Seller("Companie E", "1234 street", "company@email.com", "111-1111-1111", components5, "qwerty"));
 
         this.add(new User("randomUser@email.com", "randomUser1", "111-1111-1111", "qwerty"));
@@ -101,17 +115,16 @@ public class Controller {
         return n > 0 && n <= max;
     }
 
+    // fonctionnalites Tache 3
 
-    //fonctionnalites Tache 3
-
-    //Récupérer la liste des utilisateurs
+    // Récupérer la liste des utilisateurs
     public List<User> getUsers() {
         return database.loadUsers();
     }
 
-    //Rechercher un utilisateur (par pseudo)
-    public User queryUser(String pseudo){
-        for (User user: database.loadUsers()){
+    // Rechercher un utilisateur (par pseudo)
+    public User queryUser(String pseudo) {
+        for (User user : database.loadUsers()) {
             if (user.getUsername() == pseudo) {
                 return user;
             }
@@ -119,10 +132,11 @@ public class Controller {
         return null;
     }
 
-    //Rechercher un utilisateur (parmi la liste des suiveurs d'un utilisateur spécifique)
+    // Rechercher un utilisateur (parmi la liste des suiveurs d'un utilisateur
+    // spécifique)
     public User queryUser(User user, String pseudo) {
         List<User> userFollowers = user.getFollowers();
-        for(User follower: userFollowers){
+        for (User follower : userFollowers) {
             if (follower.getUsername() == pseudo) {
                 return follower;
             }
@@ -130,96 +144,96 @@ public class Controller {
         return null;
     }
 
-    //show information: pseudo, followers, following, points, interests,
-    //not adapted for gui
-    public void viewProfile(User user){
+    // show information: pseudo, followers, following, points, interests,
+    // not adapted for gui
+    public void viewProfile(User user) {
         System.out.println("nom: " + user.getUsername() + "\n");
 
         System.out.println("followers: ");
-        for(User follower : user.getFollowers()){
+        for (User follower : user.getFollowers()) {
             System.out.println(follower.getUsername());
         }
         System.out.println("\n");
 
         System.out.println("following: ");
-        for(User following : user.getFollowing()) {
+        for (User following : user.getFollowing()) {
             System.out.println(following.getUsername());
         }
         System.out.println("\n");
 
         System.out.println(user.getPoints() + "\n");
-        for (String interest : user.getInterests()){
+        for (String interest : user.getInterests()) {
             System.out.println(interest);
         }
     }
 
-    //Récupérer la liste des activités
-    //public List<Activity> getActivities(){
-    //    return database.activities;
-    //}
+    // Récupérer la liste des activités
+    // public List<Activity> getActivities(){
+    // return database.activities;
+    // }
 
-    //Récupérer la liste des intérêts
-    //public List<String> getInterests() {
-    //    return database.interests;
-    //}
+    // Récupérer la liste des intérêts
+    // public List<String> getInterests() {
+    // return database.interests;
+    // }
 
-    //Récupérer la liste des fournisseurs
+    // Récupérer la liste des fournisseurs
     public List<Seller> getSellers() {
         return database.loadSellers();
     }
 
-    //Rechercher un fournisseur (par nom, adresse ou types de composantes)
-    //using choice ig since all three are Strings
+    // Rechercher un fournisseur (par nom, adresse ou types de composantes)
+    // using choice ig since all three are Strings
     public Seller querySeller(String factor, String choice) {
         switch (choice) {
-            //by name
-            case "1" :
-                for (Seller seller : database.loadSellers()){
+            // by name
+            case "1":
+                for (Seller seller : database.loadSellers()) {
                     if (seller.getName() == factor) {
                         return seller;
                     }
                 }
-            //by address
+                // by address
             case "2":
-                for (Seller seller : database.loadSellers()){
+                for (Seller seller : database.loadSellers()) {
                     if (seller.getEmail() == factor) {
                         return seller;
                     }
                 }
-            //TODO by component type
+                // TODO by component type
             case "3":
-                for(Seller seller : database.loadSellers()) {
+                for (Seller seller : database.loadSellers()) {
                     List<Component> components = seller.getComponents();
                 }
         }
         return null;
     }
 
-
-    //Voir le profil d'un fournisseur
+    // Voir le profil d'un fournisseur
     public void viewProfile(Seller seller) {
         System.out.println(seller.getName() + "\n");
         System.out.println("Listed components: ");
-        for(Component component : seller.getComponents()) {
+        for (Component component : seller.getComponents()) {
             System.out.println(component.getName());
         }
 
     }
 
-    //Rechercher une composante (par nom de la composante, type ou nom du fournisseur)
-    public List<Component> queryComponent(String factor, String choice){
+    // Rechercher une composante (par nom de la composante, type ou nom du
+    // fournisseur)
+    public List<Component> queryComponent(String factor, String choice) {
         switch (choice) {
-            //par nom de fournisseur
-            case "1" :
-                for (Seller seller : database.loadSellers()){
+            // par nom de fournisseur
+            case "1":
+                for (Seller seller : database.loadSellers()) {
                     if (seller.getName() == factor) {
                         return seller.getComponents();
                     }
                 }
-            //par nom de la composante
+                // par nom de la composante
             case "2":
                 List<Component> matchingNameComponents = new ArrayList<>();
-                for(Seller seller: database.loadSellers()) {
+                for (Seller seller : database.loadSellers()) {
                     List<Component> components = seller.getComponents();
                     for (Component component : components) {
                         if (component.getName() == factor) {
@@ -228,10 +242,10 @@ public class Controller {
                     }
                 }
                 return matchingNameComponents;
-            //par type de la composante
-            case "3" :
+            // par type de la composante
+            case "3":
                 List<Component> matchingTypeComponents = new ArrayList<>();
-                for(Seller seller: database.loadSellers()) {
+                for (Seller seller : database.loadSellers()) {
                     List<Component> components = seller.getComponents();
                     for (Component component : components) {
                         if (component.getType() == factor) {
@@ -241,9 +255,6 @@ public class Controller {
                 }
                 return matchingTypeComponents;
         }
-
-
-
 
         return null;
     }
