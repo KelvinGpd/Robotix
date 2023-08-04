@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Seller extends Client{
-    String name, address, email, phone, password;
+    String address;
     ArrayList<Component> components;
 
     public Seller(String name, String address, String email, String phone, Component[] components, String password) {

@@ -15,6 +15,7 @@ public class Database {
         this.activitiesPath = activitiesPath;
     }
 
+
     public List<String[]> readCsvFile(String path) throws IOException {
         List<String[]> data = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
