@@ -10,7 +10,7 @@ import javax.xml.crypto.Data;
 
 public class Database {
 
-    private String usersPath, sellersPath, activitiesPath ;
+    private String usersPath, sellersPath, activitiesPath;
 
     public Database(String usersPath, String sellersPath, String activitiesPath) {
         this.usersPath = usersPath;
@@ -18,102 +18,104 @@ public class Database {
         this.activitiesPath = activitiesPath;
     }
 
-    //serializing data methods
-    private void saveToFile(User user){
-        ArrayList<User> users = loadUsers();
-        if (users == null ) {
-            users = new ArrayList<>();
+    public List<String[]> readCsvFile(String path) throws IOException {
+        List<String[]> data = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                data.add(row);
+            }
         }
-        users.add(user);
-        try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersPath))) {
-            outputStream.writeObject(users);
-        }catch (IOException e) {
-            e.printStackTrace();
+        return data;
+    }
+
+    // Method to transform data and write it back to a new CSV file.
+    public void transformAndWriteCsvFile(List<String[]> data, String path) throws IOException {
+        try (FileWriter writer = new FileWriter(path)) {
+            for (String[] row : data) {
+                String line = String.join(",", row);
+                writer.write(line + "\n");
+            }
+            writer.flush();
         }
     }
 
-    private void saveToFile(Seller seller){
-        ArrayList<Seller> sellers = loadSellers();
-        if (sellers == null ) {
-            sellers = new ArrayList<>();
-        }
-        sellers.add(seller);
-        try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(sellersPath))) {
-            outputStream.writeObject(sellers);
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public void add(Seller e) {
+        try {
+            List<String[]> currData = readCsvFile(sellersPath);
+            String[] userString = { e.name, e.email, e.password, e.phone, e.address, e.components.toString() };
+            currData.add(userString);
+            transformAndWriteCsvFile(currData, sellersPath);
 
-    public ArrayList<User> loadUsers() {
-        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(usersPath))){
-            return (ArrayList<User>) inputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public ArrayList<Seller> loadSellers() {
-        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(usersPath))){
-            return (ArrayList<Seller>) inputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
     public void add(User u) {
-        saveToFile(u);
-    }
+        try {
+            List<String[]> currData = readCsvFile(sellersPath);
+            String[] userString = { u.getUsername(), u.getEmail(), u.getPassword(), u.getPhoneNumber(),
+                    u.getActivities().toString(), u.getFollowers().toString(), u.getActivities().toString() };
+            currData.add(userString);
+            transformAndWriteCsvFile(currData, sellersPath);
 
-    public void add(Seller s) {
-        saveToFile(s);
-    }
-
-    public void delete(User userToRemove) {
-        ArrayList<User> users = loadUsers();
-        if(users == null) {
-            return;
+        } catch (Exception exp) {
+            exp.printStackTrace();
         }
+    }
 
-        Iterator<User> iterator = users.iterator();
-        while(iterator.hasNext()) {
-            User user = iterator.next();
-            if(user.getEmail().equals(userToRemove.getEmail())) {
-                iterator.remove();
-                break;
+    public List<User> loadUsers() {
+        List<User> users = new ArrayList<User>();
+        try {
+            List<String[]> currData = readCsvFile(sellersPath);
+            for (String[] line : currData) {
+                users.add(lineToUser(line));
             }
 
-        }
+        } catch (Exception e) {
 
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(usersPath))) {
-            outputStream.writeObject(users);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        return users;
     }
 
-    public void delete(Seller sellerToRemove) {
-        ArrayList<Seller> sellers = loadSellers();
-        if(sellers == null) {
-            return;
-        }
+    // On doit faire un nouveau constructor pour User, pour allow la recreation de
+    // l'object
+    private User lineToUser(String[] line) {
+        User user = new User(line[1], line[0], line[3], line[2]);
+        return user;
+    }
 
-        Iterator<Seller> iterator = sellers.iterator();
-        while(iterator.hasNext()) {
-            Seller seller = iterator.next();
-            if(seller.getEmail().equals(sellerToRemove.getEmail())) {
-                iterator.remove();
-                break;
+    public List<Seller> loadSellers() {
+        List<Seller> sellers = new ArrayList<Seller>();
+        try {
+            List<String[]> currData = readCsvFile(sellersPath);
+            for (String[] line : currData) {
+                sellers.add(lineToSeller(line));
             }
 
-        }
+        } catch (Exception e) {
 
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(sellersPath))) {
-            outputStream.writeObject(sellers);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        return sellers;
     }
+
+    // MARCHE PAS
+    private Seller lineToSeller(String[] line) {
+        List<Component> components = null;
+        Seller seller = new Seller(line[1], line[0], line[3], line[2], null, line[2]);
+        return seller;
+    }
+
+    // Todo
+    public void delete(User u) {
+
+    }
+
+    // Todo
+    public void delete(Seller s) {
+
+    }
+
 }
