@@ -9,6 +9,12 @@ import data.databases.ActivityDb;
 import data.databases.SellerDb;
 import data.databases.UserDb;
 
+/**
+ * The Controller class handles the core functionalities of the application.
+ * It interacts with the data layer (databases) to perform operations
+ * on users, sellers, and activities, as well as other functionalities related
+ * to user authentication, querying data, and viewing profiles.
+ */
 public class Controller {
 
     private UserDb UserDb = new UserDb("src/main/resources/Json/Users.json");
@@ -17,77 +23,115 @@ public class Controller {
 
     private ActivityDb activityDb = new ActivityDb("src/main/resources/Json/Activties.json");
 
+    /**
+     * Creates a new instance of the Controller class.
+     */
     public Controller() {
     }
 
-
+    /**
+     * Wipes the data from the User and Seller databases.
+     */
     public void wipeData(){
         SellerDb.clear();
         UserDb.clear();
     }
-    public String choice(int numChoices) {
-        Scanner reader = new Scanner(System.in);
-        while (true) {
-            String choice = reader.next();
-            if (isValid(choice, numChoices)) {
-                return choice;
-            }
-            System.out.print("Veuillez saisir un choix valide: ");
-        }
-    }
 
+
+    /**
+     * Adds a User object to the User database.
+     *
+     * @param e The User object to be added.
+     */
     public void add(User e) {
         UserDb.add(e);
     }
+
+    /**
+     * Updates a User object in the User database.
+     *
+     * @param e The User object to be updated.
+     */
     public void update(User e) {
         UserDb.remove(e);
         UserDb.add(e);
     }
 
-
+    /**
+     * Adds a Seller object to the Seller database.
+     *
+     * @param e The Seller object to be added.
+     */
     public void add(Seller e) {
         SellerDb.add(e);
     }
+
+
+    /**
+     * Updates a Seller object in the Seller database.
+     * The existing Seller object is removed and then the updated object is added.
+     *
+     * @param e The Seller object to be updated.
+     */
 
     public void update(Seller e) {
         SellerDb.remove(e);
         SellerDb.add(e);
     }
 
+    /**
+     * Adds an Activity object to the Activity database.
+     *
+     * @param e The Activity object to be added.
+     */
     public void add(Activity e) {
         activityDb.add(e);
     }
 
+
+    /**
+     * Authenticates a Seller using the provided email and password.
+     * This method attempts to log in a Seller using the provided email and password
+     * by calling the login method of the Seller database.
+     *
+     * @param email    The email of the Seller to be authenticated.
+     * @param password The password of the Seller to be authenticated.
+     * @return The authenticated Seller object, or null if authentication fails.
+     */
     public Seller authenticateSeller(String email, String password) {
        return (Seller) SellerDb.login(email, password);
     }
 
 
+    /**
+     * Authenticates a User using the provided email and password.
+     * This method attempts to log in a User using the provided email and password
+     * by calling the login method of the User database.
+     *
+     * @param email    The email of the User to be authenticated.
+     * @param password The password of the User to be authenticated.
+     * @return The authenticated User object, or null if authentication fails.
+     */
     public User authenticateUser(String email, String password) {
         return (User) UserDb.login(email,password);
     }
 
-    private boolean isValid(String input, int max) {
-        int n;
-        if (input == null) {
-            return false;
-        }
-        try {
-            n = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return n > 0 && n <= max;
-    }
 
-    // fonctionnalites Tache 3
-
-    // Récupérer la liste des utilisateurs
+    /**
+     * Retrieves the list of all users from the User database.
+     *
+     * @return A List containing all User objects stored in the database.
+     */
     public List<User> getUsers() {
         return UserDb.read();
     }
 
-    // Rechercher un utilisateur (par pseudo)
+    /**
+     * Searches for a user in the User database by their pseudo (username).
+     *
+     * @param pseudo The pseudo (username) of the user to search for.
+     * @return The User object with the specified pseudo if found, or null if not found.
+     */
     public User queryUser(String pseudo) {
         for (User user : UserDb.read()) {
             if (user.getName().equals(pseudo)) {
@@ -97,8 +141,13 @@ public class Controller {
         return null;
     }
 
-    // Rechercher un utilisateur (parmi la liste des suiveurs d'un utilisateur
-    // spécifique)
+    /**
+     * Searches for a user in the list of followers of a specific user.
+     *
+     * @param user   The User object representing the specific user whose followers are searched.
+     * @param pseudo The pseudo (username) of the user to search for among the followers.
+     * @return The User object with the specified pseudo if found among the followers, or null if not found.
+     */
     public User queryUser(User user, String pseudo) {
         List<String> userFollowers = user.getFollowers();
         for (String follower : userFollowers) {
@@ -109,8 +158,14 @@ public class Controller {
         return null;
     }
 
-    // show information: pseudo, followers, following, points, interests,
-    // not adapted for gui
+    /**
+     * Displays the profile information of a User.
+     * This method prints the pseudo, followers, following, points, and interests
+     * of the specified User to the console. This information is not adapted for
+     * graphical user interfaces (GUIs).
+     *
+     * @param user The User object whose profile information is to be displayed.
+     */
     public void viewProfile(User user) {
         System.out.println("nom: " + user.getName() + "\n");
 
@@ -132,13 +187,23 @@ public class Controller {
         }
     }
 
-    // Récupérer la liste des fournisseurs
+    /**
+     * Retrieves the list of all sellers from the Seller database.
+     *
+     * @return A List containing all Seller objects stored in the database.
+     */
     public List<Seller> getSellers() {
         return SellerDb.read();
     }
 
-    // Rechercher un fournisseur (par nom, adresse ou types de composantes)
-    // using choice ig since all three are Strings
+
+    /**
+     * Searches for a seller in the Seller database based on the specified factor and choice.
+     *
+     * @param factor The factor to search for (e.g., name, address, or types of components).
+     * @param choice The choice determining the search criteria (e.g., "1" for name, "2" for address).
+     * @return The Seller object matching the specified factor and choice, or null if not found.
+     */
     public Seller querySeller(String factor, String choice) {
         switch (choice) {
             // by name
@@ -155,16 +220,18 @@ public class Controller {
                         return seller;
                     }
                 }
-                // TODO by component type
-            case "3":
-                for (Seller seller : SellerDb.read()) {
-                    List<Component> components = seller.getComponents();
-                }
         }
         return null;
     }
 
-    // Voir le profil d'un fournisseur
+
+    /**
+     * Displays the profile information of a Seller.
+     * This method prints the name of the Seller and the names of the components listed
+     * by the Seller to the console.
+     *
+     * @param seller The Seller object whose profile information is to be displayed.
+     */
     public void viewProfile(Seller seller) {
         System.out.println(seller.getName() + "\n");
         System.out.println("Listed components: ");
@@ -174,8 +241,13 @@ public class Controller {
 
     }
 
-    // Rechercher une composante (par nom de la composante, type ou nom du
-    // fournisseur)
+    /**
+     * Searches for components in the Seller database based on the specified factor and choice.
+     *
+     * @param factor The factor to search for (e.g., name of the component, type, or name of the supplier).
+     * @param choice The choice determining the search criteria (e.g., "1" for name of the supplier, "2" for name of the component, "3" for type of the component).
+     * @return A List of Component objects matching the specified factor and choice, or null if no components are found.
+     */
     public List<Component> queryComponent(String factor, String choice) {
         switch (choice) {
             // par nom de fournisseur
@@ -214,6 +286,12 @@ public class Controller {
         return null;
     }
 
+
+    /**
+     * Retrieves the list of all activities from the Activity database.
+     *
+     * @return A List containing all Activity objects stored in the database.
+     */
     public List<Activity> getActvities() {
         return  activityDb.read();
     }

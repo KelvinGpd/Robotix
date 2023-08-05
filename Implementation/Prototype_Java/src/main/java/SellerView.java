@@ -3,10 +3,12 @@
 import java.util.Scanner;
 
 import controllers.Controller;
+import controllers.ValidationController;
 import data.Seller;
 import data.Component;
 
 public class SellerView {
+    ValidationController validationController;
     Controller controller;
     Seller seller;
 
@@ -27,20 +29,20 @@ public class SellerView {
 
         while (true) {
             System.out.println("Bienvenue à Robotix " + seller.getName() + ". Veuillez choisir une option:");
-            System.out.println("1. Vendre des composantes 2. Voir vos composantes");
-            switch (controller.choice(2)) {
-                case "1":
+            System.out.println("0. Vendre des composantes 1. Voir vos composantes");
+            switch (validationController.takeValidInput(1)) {
+                case 0:
                     sellComp();
                     break;
-                case "2":
+                case 1:
                     viewComp();
                     break;
             }
-            System.out.println("Voulez vous: \n1. Retourner au menu principal\n2. Quitter l'application");
-            switch (controller.choice(2)) {
-                case "1":
+            System.out.println("Voulez vous: \n0. Retourner au menu principal\n1. Quitter l'application");
+            switch (validationController.takeValidInput(1)) {
+                case 0:
                     continue;
-                case "2":
+                case 1:
                     System.exit(0);
                     break;
             }
