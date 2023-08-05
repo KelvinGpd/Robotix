@@ -16,7 +16,7 @@ public class UserView {
 
     //controllers
     Controller controller;
-    ValidationController validationController;
+    ValidationController validationController = new ValidationController();
 
     /**
      * Constructor to create a new views.UserView instance with the specified controller.
@@ -201,19 +201,19 @@ public class UserView {
      */
     private void interact() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("voulez vous 1: participer a une activite, 2:creer une activite ?");
+        System.out.println("Voulez-vous:\n0: participer a une activite ?\n1:creer une activite ?\n2. Suprimer une activite");
         ActivityView activityView = new ActivityView(currUser, controller);
 
-        switch (validationController.takeValidInput(1)) {
+        switch (validationController.takeValidInput(2)) {
             case 0 :
                 activityView.participateActivity();
                 break;
             case 1 :
                 activityView.createActivity();
                 break;
+            case 2:
+                activityView.cancelActivity();
         }
-        System.out.println("Choisissez l'activite a laquelle participer");
-        System.out.println("1: faire un tache avec mes robots\n2: jouer/apprendre/eduquer avec un de mes robots \n");
     }
 
 }

@@ -19,6 +19,7 @@ public class Activity implements Serializable {
     private String endDate;
     private int pointsGiven;
 
+    private ArrayList<String> robots = new ArrayList<>();
     private List<User> participants;
 
     /**
@@ -31,7 +32,7 @@ public class Activity implements Serializable {
      * @param endDate The end date of the activity.
      * @param pointsGiven The points given for participating in the activity.
      */
-    public Activity(String name, String description, String[] interests, String startDate, String endDate, int pointsGiven){
+    public Activity(String name, String description, String[] interests, String startDate, String endDate, int pointsGiven, ArrayList<String> robots){
         this.name = name;
         this.description = description;
         this.interests = interests;
@@ -70,7 +71,7 @@ public class Activity implements Serializable {
      * @param user The user to be added as a participant.
      */
     public void participate(User user) {
-        System.out.println("That activity is now scheduled, yay !");
+        System.out.println("L'activité est schedulée, yay !");
         // participants.add(user);
     }
     
@@ -81,8 +82,8 @@ public class Activity implements Serializable {
     public void getActivityinfo() {
         System.out.println(name);
         System.out.println(description);
-        System.out.println("start date: " +startDate+ " end Date: " + endDate);
-        System.out.println("pointsGiven: " + pointsGiven);
+        System.out.println("    start date: " +startDate+ " end Date: " + endDate);
+        System.out.println("    pointsGiven: " + pointsGiven);
     }
 
     public String getName() {
