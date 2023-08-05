@@ -5,6 +5,7 @@ import data.JsonHandler;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -66,6 +67,9 @@ abstract class Db<T> {
      */
     private void write(List<T> objects) {
         try(FileWriter fileWriter = new FileWriter(path)) {
+            RandomAccessFile file = new RandomAccessFile(path, "rw");
+            file.setLength(0); // Truncate the file to 0 bytes
+            file.close();
             String json = jsonHandler.objectToJson(objects);
             fileWriter.write(json);
         } catch (IOException e) {
@@ -85,11 +89,6 @@ abstract class Db<T> {
         write(objects);
     }
 
-    public void removeClient(T object){
-        List<T> objects = read();
-        objects.remove(object);
-        write(objects);
-    }
 
     /**
      * Clears the database by writing a null value to the JSON data file.
@@ -107,13 +106,15 @@ abstract class Db<T> {
         List<Client> objects = (List<Client>) read();
         Client thisClient = (Client) object;
 
+        Client clientToRemove = null;
+
         for(Client client : objects){
             if(client.getEmail().equals(thisClient.getEmail())){
-                objects.remove(client);
-                objects.add(thisClient);
+                clientToRemove = client;
+                break;
             }
         }
-
+        objects.remove(clientToRemove);
         write((List<T>) objects);
     }
 

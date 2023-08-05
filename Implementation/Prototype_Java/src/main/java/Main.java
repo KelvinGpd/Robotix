@@ -1,5 +1,7 @@
 import controllers.Controller;
 import controllers.ValidationController;
+import views.SellerView;
+import views.UserView;
 
 /**
  * The main class that serves as the entry point for the Robotix application.
