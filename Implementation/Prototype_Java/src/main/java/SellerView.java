@@ -2,8 +2,8 @@
 
 import java.util.Scanner;
 
+import controllers.Controller;
 import data.Seller;
-import data.User;
 import data.Component;
 
 public class SellerView {
@@ -14,22 +14,15 @@ public class SellerView {
         this.controller = controller;
     }
 
-    public void run(boolean isNew) {
-        if (isNew) {
-            seller = register();
-            controller.add(seller);
-        } else {
-            String email, password;
-            System.out.print("Entrez votre email: ");
-            Scanner scanner = new Scanner(System.in);
-            email = scanner.nextLine();
-            System.out.print("Entrez votre password: ");
-            password = scanner.nextLine();
-            seller = controller.authenticateSeller(email, password);
-            if (seller == null) {
-                System.out.println("Password ou email incorrect!");
-                return;
-            }
+
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("register, or login?");
+
+        switch (scanner.nextLine()) {
+            case "register" : register();
+            case "login" : login();
+            default: run();
         }
 
         while (true) {
@@ -52,6 +45,22 @@ public class SellerView {
                     break;
             }
         }
+    }
+
+    public void login() {
+
+        System.out.print("Entrez votre email: ");
+        Scanner scanner = new Scanner(System.in);
+        String email = scanner.nextLine();
+        System.out.print("Entrez votre password: ");
+        String password = scanner.nextLine();
+
+        seller = controller.authenticateSeller(email, password);
+        if (seller == null) {
+            System.out.println("Password ou email incorrect!");
+            return;
+        }
+
     }
 
     private Seller register() {
