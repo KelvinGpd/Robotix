@@ -1,8 +1,11 @@
 import data.*;
-import data.databases.UserDb;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Tests {
@@ -114,6 +117,22 @@ public class Tests {
 
         myClient = controller.authenticateUser("not a user", "a");
         assertEquals(myClient, null);
+
+    }
+    @Test
+    public void testClearFile(){
+        controller.whipeData();
+        try{
+            String path = "src/main/resources/Json/Sellers.json";
+            String json = new String(Files.readAllBytes(Paths.get(path)));
+            assertEquals(json, "null");
+        }catch (Exception e){
+            e.printStackTrace();
+            assert(false);
+        }
+    }
+    @Test
+    public void test(){
 
     }
 
