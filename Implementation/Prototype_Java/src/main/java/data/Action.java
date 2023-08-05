@@ -26,6 +26,7 @@ public class Action {
         this.type = type;
         this.name = name;
         this.vector = vector;
+        this.value = value;
     }
 
     public String getValue() {

@@ -33,8 +33,8 @@ public class TaskView {
             for (int i = 0; i < actions.size(); i++) {
                 System.out.println("Option " + i + ":");
                 System.out.println("    " + actions.get(i).getName());
-                System.out.println("    " + actions.get(i).getType());
-                if(actions.get(i).getType() == "mouvement"){
+                System.out.println("    type: " + actions.get(i).getType());
+                if(actions.get(i).getType().equals("mouvement")){
                     double[] vector = actions.get(i).getVector();
                     System.out.println("        x: " + vector[0]);
                     System.out.println("        y: " + vector[1]);
