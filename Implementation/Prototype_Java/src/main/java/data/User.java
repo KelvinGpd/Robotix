@@ -37,6 +37,7 @@ public class User extends Client {
         this.following = new ArrayList<>();
         this.activities = new ArrayList<>();
         this.interests = new ArrayList<>();
+        this.actions = new ArrayList<>();
     }
 
 
@@ -83,6 +84,12 @@ public class User extends Client {
      *
      * @return The list of interests as an ArrayList of strings.
      */
+
+    public void addRobot(Robot r){
+        this.robots.add(r);
+    }
+    //Interests
+
     public ArrayList<String> getInterests(){
         return interests;
     }
