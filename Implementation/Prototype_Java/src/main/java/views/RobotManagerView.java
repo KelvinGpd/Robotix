@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class RobotManagerView {
-    ValidationController validationController;
+    ValidationController validationController = new ValidationController();
     Controller controller;
     User currUser;
     public RobotManagerView(User currUser, Controller controller){

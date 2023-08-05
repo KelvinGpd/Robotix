@@ -3,15 +3,18 @@ package views;
 import controllers.Controller;
 import controllers.ValidationController;
 import data.Activity;
+import data.Robot;
+import data.Tache;
 import data.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 public class ActivityView {
-    ValidationController validationController;
+    ValidationController validationController = new ValidationController();
     Controller controller;
     User currUser;
 
@@ -34,8 +37,7 @@ public class ActivityView {
 
         int choice = validationController.takeValidInput(activities.size());
         activities.get(choice).participate(currUser);
-
-        System.out.println("inscription reussie!");
+        controller.update(currUser);
 
     }
 
@@ -46,6 +48,53 @@ public class ActivityView {
      */
     public void createActivity() {
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choisissez l'activite a laquelle participer");
+        ArrayList<String> robots = new ArrayList<>();
+        System.out.println("0: faire un tache avec mes robots\n1: jouer/apprendre/eduquer avec un de mes robots \n2:autre");
+        int choice = validationController.takeValidInput(2);
+        if(choice == 0){
+            System.out.println("Quelle tache souhaitez vous faire ?");
+            for (int i = 0; i < currUser.getTasks().size(); i++) {
+                System.out.println("Option " + i + ":");
+                System.out.println("    Nom: " + currUser.getTasks().get(i).getName());
+                System.out.println("    Continuelle: " + currUser.getTasks().get(i).getRepeats());
+                System.out.println("    Heure: " + currUser.getTasks().get(i).getTimeFormat());
+            }
+            int otherChoice = validationController.takeValidInput(currUser.getTasks().size()-1);
+            Tache tache = currUser.getTasks().get(otherChoice);
+        }
+            System.out.println("Quels robots souhaitez vous impliquer dans cette activite ?");
+            ArrayList<Integer> implicatedRobots = new ArrayList<Integer>();
+            int yes =0;
+            while (yes == 0) {
+                for (int i = 0; i < currUser.getRobots().size(); i++) {
+                    if(!implicatedRobots.contains(i)){
+                        System.out.println(i + "       " + currUser.getRobots().get(i).name);
+                    }
+                }
+                int robotChoice = validationController.takeValidInput(currUser.getRobots().size());
+                if(!implicatedRobots.contains(robotChoice)){
+                    Robot robot = currUser.getRobots().get(robotChoice);
+                    robots.add(robot.name);
+                }
+                else {
+                    System.out.println("Choix impossible, ce robot est deja impliqué");
+                }
+                implicatedRobots.add(robotChoice);
+
+                if(currUser.getRobots().size() == implicatedRobots.size()){
+                    System.out.println("Tous vos robots sont impliqués");
+                    break;
+                }
+                System.out.println("Souhaitez-vous ajouter un autre robot ?\n0:Oui\n1:Non");
+                yes = validationController.takeValidInput(1);
+            }
+        if(choice == 2){
+            System.out.println("Indiquer quel type d'activite vous souhaitez faire");
+            scanner.nextLine();
+        }
+        System.out.println("Il n'a aucun conflit d'horaire avec vos robots, yay !");
 
         System.out.println("Donnez un nom a votre activite");
         String name = scanner.nextLine();
@@ -65,12 +114,24 @@ public class ActivityView {
         System.out.println("combien de points seront attribuable a la completion de votre activite?");
         int points = parseInt(scanner.nextLine());
 
-        Activity activity = new Activity(name, description, interests, startDate, endDate, points);
+        Activity activity = new Activity(name, description, interests, startDate, endDate, points, (ArrayList<String>) null);
 
-        controller.add(activity);
         currUser.addActivity(activity);
         controller.update(currUser);
 
-        System.out.println("l'activite a ete cree.");
+        System.out.println("l'activite est crée.");
+    }
+    public void cancelActivity(){
+        System.out.println("Quelle activite voulez vous canceller ?");
+        List<Activity> activities = currUser.getActvities();
+        for(int i = 0; i < currUser.getActvities().size(); i++) {
+            System.out.println("Option " + i + ":");
+            activities.get(i).getActivityinfo();
+            System.out.println();
+        }
+        int choice = validationController.takeValidInput(currUser.getActvities().size() - 1);
+        currUser.getActvities().remove(choice);
+        controller.update(currUser);
+        System.out.println("Done !");
     }
 }

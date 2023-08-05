@@ -222,4 +222,7 @@ public class User extends Client {
     }
 
 
+    public List<Activity> getActvities() {
+        return  activities;
+    }
 }
