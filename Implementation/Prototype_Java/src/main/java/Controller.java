@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import data.*;
+import data.databases.ActivityDb;
 import data.databases.SellerDb;
 import data.databases.UserDb;
 
@@ -11,6 +12,8 @@ public class Controller {
     private UserDb UserDb = new UserDb("src/main/resources/Json/Users.json");
 
     private SellerDb SellerDb = new SellerDb("src/main/resources/Json/Sellers.json");
+
+    private ActivityDb activityDb = new ActivityDb("src/main/resources/Json/Activties.json");
 
     public Controller() {
     }
@@ -203,5 +206,9 @@ public class Controller {
         }
 
         return null;
+    }
+
+    public List<Activity> getActvities() {
+        return  activityDb.read();
     }
 }
