@@ -85,6 +85,12 @@ abstract class Db<T> {
         write(objects);
     }
 
+    public void removeClient(T object){
+        List<T> objects = read();
+        objects.remove(object);
+        write(objects);
+    }
+
     /**
      * Clears the database by writing a null value to the JSON data file.
      */

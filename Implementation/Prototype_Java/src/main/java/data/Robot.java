@@ -82,20 +82,18 @@ public class Robot {
         return parts;
     }
 
-    /**
-     * The Pair class represents a generic key-value pair, where the key and value can be of any data type.
-     *
-     * @param <K> The type of the key.
-     * @param <V> The type of the value.
-     */
-    public static class Pair<K, V> {
-        private final K key;
-        private final V value;
 
-        public Pair(K key, V value) {
+    public static class Pair<K, V> {
+        private  K key;
+        private  V value;
+
+        @JsonCreator
+        public Pair(@JsonProperty("key") K key, @JsonProperty("value") V value) {
+
             this.key = key;
             this.value = value;
         }
+
 
         public K getKey() {
             return key;

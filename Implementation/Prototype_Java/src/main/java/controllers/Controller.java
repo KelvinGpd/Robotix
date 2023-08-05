@@ -1,13 +1,15 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import data.*;
+import data.Activity;
+import data.Component;
+import data.Seller;
+import data.User;
 import data.databases.ActivityDb;
 import data.databases.SellerDb;
 import data.databases.UserDb;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Controller class handles the core functionalities of the application.
@@ -22,6 +24,10 @@ public class Controller {
     private SellerDb SellerDb = new SellerDb("src/main/resources/Json/Sellers.json");
 
     private ActivityDb activityDb = new ActivityDb("src/main/resources/Json/Activties.json");
+
+    public void removeUser(User u){
+        UserDb.remove(u);
+    }
 
     /**
      * Creates a new instance of the Controller class.

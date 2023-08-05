@@ -23,16 +23,21 @@ public class Main {
         while (true) {
             System.out.println("*** Robotix ***");
             System.out.println(
-                    "Veuillez choisir une option:\n0. S'enregistrer/login comme utilisateur\n1. S'enregistrer/login comme fournisseur");
-
-            switch (validationController.takeValidInput(1)) {
-                case 0:
-                    userView.run();
-                    break;
-                case 1:
-                    sellerView.run();
-                    break;
+                    "Veuillez choisir une option:\n1. S'enregistrer/login comme utilisateur\n2. S'enregistrer/login comme fournisseur");
+            try {
+                switch (validationController.takeValidInput(2)) {
+                    case 1:
+                        userView.run();
+                        break;
+                    case 2:
+                        sellerView.run();
+                        break;
+                }
+            }
+            catch (Exception e){
+                System.out.println("Format incorrect !");
             }
         }
+
     }
 }
