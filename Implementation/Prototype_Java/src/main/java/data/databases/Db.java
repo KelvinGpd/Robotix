@@ -54,7 +54,7 @@ abstract class Db<T> {
                 return new ArrayList<>(Arrays.asList(array));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Le systeme ne trouve pas le chemin vers le fichier Json. Aller voir l'information sur comment setup sur github !");
         }
         return new ArrayList<>();
     }
@@ -73,7 +73,7 @@ abstract class Db<T> {
             String json = jsonHandler.objectToJson(objects);
             fileWriter.write(json);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Le systeme ne trouve pas le chemin vers le fichier Json. Aller voir l'information sur comment setup sur github !");
         }
 
     }

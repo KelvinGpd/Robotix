@@ -32,7 +32,17 @@ public class TaskView {
             List<Action> actions = currUser.getActions();
             for (int i = 0; i < actions.size(); i++) {
                 System.out.println("Option " + i + ":");
-                System.out.println(actions.get(i).getName());
+                System.out.println("    " + actions.get(i).getName());
+                System.out.println("    " + actions.get(i).getType());
+                if(actions.get(i).getType() == "mouvement"){
+                    double[] vector = actions.get(i).getVector();
+                    System.out.println("        x: " + vector[0]);
+                    System.out.println("        y: " + vector[1]);
+                    System.out.println("        z: " + vector[2]);
+                }
+                else{
+                    System.out.println("        " + actions.get(i).getValue());
+                }
             }
             choice = validationController.takeValidInput(actions.size()-1);
             taskActions.add(actions.get(choice));
@@ -133,6 +143,7 @@ public class TaskView {
         }
         int choice = validationController.takeValidInput(actions.size()-1);
         robot.tasks.add(currUser.getTasks().get(choice));
+        controller.update(currUser);
         System.out.println("Done !");
     }
 
