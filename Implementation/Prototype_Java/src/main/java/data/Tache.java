@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Tache {
     private String task;
 
-    private ArrayList<Action> actions;
+    private ArrayList<Action> actions = new ArrayList<>();
     private String timeFormat;
 
     private boolean reapats;
@@ -28,6 +28,18 @@ public class Tache {
         this.timeFormat = timeFormat;
         this.actions = actions;
         this.reapats = reapats;
+    }
+
+    public ArrayList<Action> getActions() {
+        return actions;
+    }
+
+    public void setReapats(boolean reapats) {
+        this.reapats = reapats;
+    }
+
+    public void setTimeFormat(String timeFormat) {
+        this.timeFormat = timeFormat;
     }
 
     public boolean getRepeats(){
