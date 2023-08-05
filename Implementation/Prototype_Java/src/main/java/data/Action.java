@@ -3,8 +3,6 @@ package data;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-
 /**
  * The Action class represents an action with a specific type, name, and a list of tasks.
  */
@@ -14,7 +12,8 @@ public class Action {
     private String type;
 
     private String value;
-    private ArrayList<Tache> tasks;
+
+    private double[] vector;
 
     /**
      * Creates a new Action with the specified type and name.
@@ -23,37 +22,28 @@ public class Action {
      * @param name The name of the action.
      */
     @JsonCreator
-    public Action (@JsonProperty("type") String type, @JsonProperty("name") String name) {
+    public Action (@JsonProperty("type") String type, @JsonProperty("name") String name, @JsonProperty("value") String value,@JsonProperty("position") double[] vector) {
         this.type = type;
         this.name = name;
-        tasks = new ArrayList<>();
+        this.vector = vector;
     }
 
     public String getValue() {
         return value;
     }
 
+    public double[] getVector() {
+        return vector;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     public void setValue(String value) {
         this.value = value;
     }
 
-    /**
-     * Gets the list of tasks associated with this action.
-     *
-     * @return An ArrayList containing the tasks associated with this action.
-     */
-    public ArrayList<Tache> getTasks(){
-        return tasks;
-    }
-
-    /**
-     * Adds a task to the list of tasks associated with this action.
-     *
-     * @param tache The task to be added.
-     */
-    public void addTask(Tache tache) {
-        tasks.add(tache);
-    }
 
     /**
      * Gets the name of this action.
