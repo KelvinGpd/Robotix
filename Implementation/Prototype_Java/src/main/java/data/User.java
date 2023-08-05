@@ -27,6 +27,7 @@ public class User extends Client {
         this.following = new ArrayList<>();
         this.activities = new ArrayList<>();
         this.interests = new ArrayList<>();
+        this.actions = new ArrayList<>();
     }
     //Pour recoustruire l'object deserialisé
     public User(String username, String email, String phoneNumber, String password, ArrayList<Robot> robots, String[] followers, String[] following,Activity[] activities, String[] interests, int points){
@@ -61,7 +62,9 @@ public class User extends Client {
 
     }
 
-
+    public void addRobot(Robot r){
+        this.robots.add(r);
+    }
     //Interests
     public ArrayList<String> getInterests(){
         return interests;

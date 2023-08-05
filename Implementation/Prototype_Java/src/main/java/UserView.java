@@ -1,9 +1,10 @@
 //UI for user
-import java.util.*;
 
 import controllers.Controller;
 import controllers.ValidationController;
 import data.*;
+
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
@@ -19,6 +20,7 @@ public class UserView {
         this.controller = controller;
         this.validationController = new ValidationController();
     }
+
 
     public void login() {
 
@@ -49,33 +51,43 @@ public class UserView {
             default: run();
         }
 
-        while (true) {
+        while (true && (this.currUser != null)) {
             System.out.println("Bienvenue à Robotix " + currUser.getName() + ". Veuillez choisir une option:");
             System.out.println("0. Ajouter un robot\n1. Informations sur vos robots\n 2. Acheter des composantes\n" +
                     "3. Créer/modifier un action\n4. Participer/creer une activite\n" + //
                     "5. Creer/modifier une tache");
-            switch (validationController.takeValidInput(5)) {
-                case 0:
-                    addRobotToFleet();
-                    break;
-                case 1:
-                    robotInfo();
-                    break;
-                case 2:
-                    buyComponents();
-                    break;
-                case 3:
-                    manageActions();
-                    break;
-                case 4:
-                    interact();
-                    break;
-                case 5:
-                    creerTache();
-                    ;
-                    break;
+            try {
+                switch (validationController.takeValidInput(5)) {
+                    case 0:
+                        addRobotToFleet();
+                        break;
+                    case 1:
+                        robotInfo();
+                        break;
+                    case 2:
+                        buyComponents();
+                        break;
+                    case 3:
+                        manageActions();
+                        break;
+                    case 4:
+                        interact();
+                        break;
+                    case 5:
+                        creerTache();
+                        ;
+                        break;
+                }
             }
-
+            catch (NumberFormatException e){
+                System.out.println("Le format de votre input n'est pas le bon !");
+            }
+            catch (FormatterClosedException e){
+                System.out.println("Non !");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
             System.out.println("Voulez vous: \n0. Retourner au menu principal\n1. Quitter l'application");
             switch (validationController.takeValidInput(1)) {
                 case 0:
@@ -126,6 +138,8 @@ public class UserView {
         String password = scanner.nextLine();
 
         User user = new User(email, username, phoneNumber, password);
+        currUser = user;
+
 
         controller.add(user);
     }
@@ -151,11 +165,11 @@ public class UserView {
                 "3. Gen 4 4ghz\n4. Gen 5 5ghz");
 
         switch (validationController.takeValidInput(4)) {
-            case 0 -> type = "Gen 1";
-            case 1 -> type = "Gen 2";
-            case 2 -> type = "Gen 3";
-            case 3 -> type = "Gen 4";
-            case 4 -> type = "Gen 5";
+            case 0 -> gen = 0;
+            case 1 -> gen = 1;
+            case 2 -> gen = 2;
+            case 3 -> gen = 3;
+            case 4 -> gen = 4;
         }
         System.out.println("Choisissez le nom de votre Robot:");
         String name = scanner.nextLine();
@@ -163,22 +177,22 @@ public class UserView {
         Robot robot = new Robot(type, name);
         robot.addPart(type, "Robotix");
 
+        currUser.addRobot(robot);
         System.out.println("Robot cree !");
-
-        currUser.getRobots().add(robot);
+        controller.add(currUser);
     }
 
 
     private void robotInfo() {
         System.out.println("Voici l'information de vos robots:");
         for (Robot robot : currUser.getRobots()) {
-            System.out.print(robot.name + "   ");
-            System.out.println(robot.getUUID());
-            System.out.println(robot.type);
-            System.out.println("Composantes:");
+            System.out.println("Le robot:" + robot.name + "   ");
+            System.out.println("    uuid: " + robot.getUUID());
+            System.out.println("   type: " + robot.type);
+            System.out.println("    " + "Composantes: ");
             for (Robot.Pair<String, String> pair  : robot.getParts()) {
-                System.out.println(pair.getKey());
-                System.out.println(pair.getValue());
+                System.out.println("    " + pair.getKey());
+                System.out.println("    " + pair.getValue());
             }
         }
     }
@@ -277,10 +291,10 @@ public class UserView {
 
 
     private void createAction() {
-        ArrayList<String> valableTypes = new ArrayList<>(Arrays.asList("movement", "son", "affichage"));
+        ArrayList<String> valableTypes = new ArrayList<>(Arrays.asList("mouvement", "son", "affichage"));
 
-        System.out.println("Choisissez quel type d'action vous voulez créer, voici une liste exhaustive de types:");
-        System.out.println("mouvement, son, affichage");
+        System.out.println("Choisissez quel type d'action vous voulez créer, voici une liste exhaustive de types...");
+        System.out.println("Les options sont: mouvement, son, affichage");
 
         String type = validationController.validateActionType(valableTypes);
 
