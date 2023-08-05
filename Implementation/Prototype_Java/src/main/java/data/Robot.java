@@ -45,7 +45,7 @@ public class Robot {
         return parts;
     }
 
-    static class Pair<K, V> {
+    public static class Pair<K, V> {
         private final K key;
         private final V value;
 

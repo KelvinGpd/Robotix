@@ -15,6 +15,9 @@ public class User extends Client {
     private ArrayList<Activity> activities;
     private ArrayList<String> interests;
 
+    //New additions for UserView
+    private ArrayList<Action> actions;
+
     private int points;
 
     //Constructeur normal
@@ -102,6 +105,15 @@ public class User extends Client {
     }
     public ArrayList<Robot> getRobots() {
         return robots;
+    }
+
+    //actions and tasks
+    public List<Action> getActions() {
+        return actions;
+    }
+
+    public void add(Action action) {
+        actions.add(action);
     }
 
 
