@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class User extends Client {
     private ArrayList<Robot> robots;
     private ArrayList<String> followers;
