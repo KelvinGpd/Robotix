@@ -1,8 +1,19 @@
 import controllers.Controller;
 import controllers.ValidationController;
 
-//the user interface
+/**
+ * The main class that serves as the entry point for the Robotix application.
+ * This class handles the user interface and provides options for users to register
+ * and login as either a regular user or a seller (provider).
+ */
 public class Main {
+    /**
+     * The main method that starts the Robotix application.
+     * It creates instances of the necessary controllers and views, then provides a loop
+     * for users to choose between registering and logging in as a user or a seller.
+     *
+     * @param args Command line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         Controller controller = new Controller();
         ValidationController validationController = new ValidationController();

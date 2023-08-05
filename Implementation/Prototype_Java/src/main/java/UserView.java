@@ -8,6 +8,10 @@ import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * The user interface for regular users in the Robotix application.
+ * This class allows users to register, login, and perform various actions related to their robots and activities.
+ */
 public class UserView {
     //user
     private User currUser;
@@ -16,11 +20,22 @@ public class UserView {
     Controller controller;
     ValidationController validationController;
 
+    /**
+     * Constructor to create a new UserView instance with the specified controller.
+     *
+     * @param controller The Controller instance used for communication with the data and business logic.
+     */
     public UserView(Controller controller) {
         this.controller = controller;
         this.validationController = new ValidationController();
     }
 
+
+    /**
+     * Method to handle the user login process.
+     * It prompts the user to enter their email and password, and then attempts to authenticate the user.
+     * If the login is successful, the user is assigned to the `currUser` variable for further actions.
+     */
 
     public void login() {
 
@@ -41,6 +56,10 @@ public class UserView {
         }
     }
 
+    /**
+     * Method to run the user view, allowing users to register, login, and perform various actions.
+     * This method provides a menu for users to choose between different actions.
+     */
     public void run() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("register, or login?");
@@ -102,7 +121,12 @@ public class UserView {
         }
     }
 
-
+    /**
+     * Method to handle the user registration process.
+     * It prompts the user to enter their email, username, phone number, and password,
+     * and then creates a new user instance based on the provided information.
+     * The new user is added to the system through the controller.
+     */
     private void register() {
         Scanner scanner = new Scanner(System.in);
 
@@ -148,6 +172,11 @@ public class UserView {
     }
 
 
+    /**
+     * Method to add a new robot to the user's fleet.
+     * The user is prompted to enter information about the new robot, such as its type, name, and CPU generation.
+     * A new robot instance is created and added to the user's robot list.
+     */
     private void addRobotToFleet() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Quel type de robot rajoutez vous ?");
@@ -189,6 +218,10 @@ public class UserView {
     }
 
 
+    /**
+     * Method to display information about the user's robots.
+     * It lists the details of each robot, including its name, type, and components.
+     */
     private void robotInfo() {
         System.out.println("Voici l'information de vos robots:");
         for (Robot robot : currUser.getRobots()) {
@@ -204,6 +237,11 @@ public class UserView {
     }
 
 
+    /**
+     * Method to allow the user to buy components for their robots.
+     * It prompts the user to select a robot from their fleet and then choose a component to purchase from the market.
+     * The purchased component is added to the selected robot's parts list.
+     */
     private void buyComponents() {
         System.out.println("Pour quel robot voulez vous acheter une composante ?");
         for (int i = 0; i < currUser.getRobots().size(); i++) {
@@ -234,6 +272,11 @@ public class UserView {
     }
 
 
+
+    /**
+     * Method to create a new task and associate it with one of the user's actions.
+     * The user is prompted to enter the task description, and then the task is added to the chosen action's task list.
+     */
     private void creerTache() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("veuillez entrer une tache");
@@ -253,6 +296,10 @@ public class UserView {
     }
 
 
+    /**
+     * Method to manage the user's actions, including creating new actions and modifying existing ones.
+     * It provides options to create a new action or modify an existing one by changing its tasks.
+     */
     private void manageActions() {
 
         System.out.println("0: Creer une action\n 1:Modifier une action");
@@ -265,6 +312,10 @@ public class UserView {
         }
     }
 
+    /**
+     * Method to modify an existing action's tasks based on user input.
+     * It allows the user to choose an action and then select a task to modify or replace with a new one.
+     */
     private void modifyAction() {
         System.out.println("selectionnez une de vos actions a modifier: ");
         List<Action> actions = currUser.getActions();
@@ -295,7 +346,11 @@ public class UserView {
         System.out.println("done!");
     }
 
-
+    /**
+     * Method to create a new action based on user input.
+     * It prompts the user to choose a type for the action and enter a name for the action.
+     * The new action is created and added to the user's action list.
+     */
     private void createAction() {
         ArrayList<String> valableTypes = new ArrayList<>(Arrays.asList("mouvement", "son", "affichage"));
 
@@ -315,6 +370,10 @@ public class UserView {
     }
 
 
+    /**
+     * Method to allow the user to participate in or create activities.
+     * It provides options to participate in existing activities or create new activities.
+     */
     private void interact() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("voulez vous 1: participer a une activite, 2:creer une activite ?");
@@ -328,6 +387,11 @@ public class UserView {
     }
 
 
+
+    /**
+     * Method to allow the user to participate in an existing activity.
+     * It prompts the user to choose an activity to participate in, and then adds the user to the activity's participants list.
+     */
     private void participateActivity() {
         System.out.println("veuillez choisir une activte a laquelle participer");
         List<Activity> activities = controller.getActvities();
@@ -344,6 +408,11 @@ public class UserView {
 
     }
 
+    /**
+     * Method to create a new activity based on user input.
+     * It prompts the user to enter information about the new activity, such as name, description, interests, and points.
+     * The new activity is created and added to the system through the controller.
+     */
     private void createActivity() {
         Scanner scanner = new Scanner(System.in);
 
