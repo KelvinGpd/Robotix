@@ -30,45 +30,22 @@ public class UserView {
 
 
     /**
-     * Method to handle the user login process.
-     * It prompts the user to enter their email and password, and then attempts to authenticate the user.
-     * If the login is successful, the user is assigned to the `currUser` variable for further actions.
-     */
-
-    public void login() {
-
-        System.out.print("Entrez votre email: ");
-        Scanner scanner = new Scanner(System.in);
-        String email = scanner.nextLine();
-        System.out.print("Entrez votre password: ");
-        String password = scanner.nextLine();
-        try {
-            currUser = controller.authenticateUser(email, password);
-            if (currUser == null) {
-                System.out.println("Password ou email incorrect!");
-                return;
-            }
-        }
-        catch (Exception e){
-
-        }
-    }
-
-    /**
      * Method to run the user view, allowing users to register, login, and perform various actions.
      * This method provides a menu for users to choose between different actions.
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("register, or login?");
+        System.out.println("1.register, or 2.login?");
         String choice = scanner.nextLine();
 
         switch (choice) {
-            case "register" : register();
+            case "1" : register();
                 break;
-            case "login" : login();
+            case "2" : login();
                 break;
-            default: run();
+            default:
+                System.out.println("invalid option, please try again");
+                run();
         }
 
         while (true && (this.currUser != null)) {
@@ -121,6 +98,31 @@ public class UserView {
     }
 
     /**
+     * Method to handle the user login process.
+     * It prompts the user to enter their email and password, and then attempts to authenticate the user.
+     * If the login is successful, the user is assigned to the `currUser` variable for further actions.
+     */
+    public void login() {
+
+        System.out.print("Entrez votre email: ");
+        Scanner scanner = new Scanner(System.in);
+        String email = scanner.nextLine();
+        System.out.print("Entrez votre password: ");
+        String password = scanner.nextLine();
+        try {
+            currUser = controller.authenticateUser(email, password);
+            if (currUser == null) {
+                System.out.println("Password ou email incorrect!");
+                return;
+            }
+        }
+        catch (Exception e){
+
+        }
+    }
+
+
+    /**
      * Method to handle the user registration process.
      * It prompts the user to enter their email, username, phone number, and password,
      * and then creates a new user instance based on the provided information.
@@ -131,41 +133,22 @@ public class UserView {
 
         // Prompt for email
         System.out.print("Entrez votre email: ");
-        String email = scanner.nextLine();
-
-        // Check email with regex
-        if (!validationController.validateEmail(email)) {
-            System.out.println("Format de email invalide !");
-            register();
-        }
+        String email = validationController.validateEmail(scanner.nextLine());
 
         //prompt for username
         System.out.print("Entrez votre nom d'usager: ");
-        String username = scanner.nextLine();
-
-        // Check username with regex
-        if (!validationController.validateUsername(username)) {
-            System.out.println("Format d'usager invalide !");
-            register();
-        }
+        String username = validationController.validateUsername(scanner.nextLine());
 
         // Prompt for phone number
         System.out.print("Entrez votre numero de telephone: ");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = validationController.validatePhonenum(scanner.nextLine());
         phoneNumber = phoneNumber.replaceAll("[^\\d]", "");
-
-        // Check phone number with regex
-        if (!validationController.validatePhonenum(phoneNumber)) {
-            System.out.println("Format invalide !");
-            register();
-        }
 
         System.out.print("Choisissez un mot de passe: ");
         String password = scanner.nextLine();
 
         User user = new User(email, username, phoneNumber, password);
         currUser = user;
-
 
         controller.add(user);
     }

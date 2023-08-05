@@ -11,6 +11,17 @@ import static java.lang.Integer.parseInt;
  * and performing checks on email addresses, usernames, phone numbers, and action types.
  */
 public class ValidationController {
+    private Scanner scanner;
+
+
+    /**
+     * Creates a new instance of the Controller class.
+     * Initializes Scanner.
+     */
+    public ValidationController(){
+        this.scanner = new Scanner(System.in);
+    }
+
 
     /**
      * Takes a valid integer input from the user within the range of 0 to the specified bar value.
@@ -20,7 +31,6 @@ public class ValidationController {
      */
     public int takeValidInput(int bar) {
         //for taking valid int inputs from 0-bar
-        Scanner scanner = new Scanner(System.in);
         int choice;
 
         try{
@@ -38,43 +48,48 @@ public class ValidationController {
         return choice;
     }
 
+
     /**
-     * Validates an email address using a regular expression pattern.
+     * Validates an email address.
      *
      * @param email The email address to be validated.
-     * @return true if the email address is valid, false otherwise.
+     * @return The validated email address if it matches the standard pattern.
      */
-    public boolean validateEmail(String email) {
+    public String validateEmail(String email) {
         if (email.matches("(?i)^[A-Z0-9+_.-]+@[A-Z0-9.-]+$")) {
-            return true;
+            return email;
         }
-        return false;
+        System.out.println("not valid, please enter anew");
+        return validateEmail(scanner.nextLine());
     }
 
     /**
-     * Validates a username using a regular expression pattern.
+     * Validates an username.
      *
      * @param username The username to be validated.
-     * @return true if the username is valid, false otherwise.
+     * @return The validated username if it matches the standard pattern.
      */
-    public boolean validateUsername(String username) {
+    public String validateUsername(String username) {
         if (username.matches("^[A-Za-z0-9_]+$")) {
-            return true;
+            return username;
         }
-        return false;
+        System.out.println("not valid, please enter anew");
+        return validateUsername(scanner.nextLine());
     }
 
+
     /**
-     * Validates a phone number using a regular expression pattern.
+     * Validates an phone number.
      *
      * @param phoneNum The phone number to be validated.
-     * @return true if the phone number is valid, false otherwise.
+     * @return The validated phone number if it matches the standard pattern.
      */
-    public boolean validatePhonenum (String phoneNum) {
+    public String validatePhonenum (String phoneNum) {
         if (phoneNum.matches("^[0-9]{10}$")) {
-            return true;
+            return phoneNum;
         }
-        return false;
+        System.out.println("not valid, please enter anew");
+        return validatePhonenum(scanner.nextLine());
     }
 
     /**
