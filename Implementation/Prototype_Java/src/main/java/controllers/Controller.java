@@ -1,3 +1,5 @@
+package controllers;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +21,7 @@ public class Controller {
     }
 
 
-    public void whipeData(){
+    public void wipeData(){
         SellerDb.clear();
         UserDb.clear();
     }
@@ -50,6 +52,10 @@ public class Controller {
     public void update(Seller e) {
         SellerDb.remove(e);
         SellerDb.add(e);
+    }
+
+    public void add(Activity e) {
+        activityDb.add(e);
     }
 
     public Seller authenticateSeller(String email, String password) {

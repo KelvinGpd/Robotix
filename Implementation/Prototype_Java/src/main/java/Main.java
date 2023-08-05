@@ -1,3 +1,5 @@
+import controllers.Controller;
+
 //the user interface
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +17,7 @@ public class Main {
                     userView.run();
                     break;
                 case "2":
-                    sellerView.run(true);
+                    sellerView.run();
                     break;
             }
         }

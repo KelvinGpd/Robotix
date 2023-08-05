@@ -1,6 +1,8 @@
 //UI for user
 import java.util.*;
 
+import controllers.Controller;
+import controllers.ValidationController;
 import data.*;
 
 import static java.lang.Integer.parseInt;
@@ -41,14 +43,16 @@ public class UserView {
 
         switch (choice) {
             case "register" : register();
+                break;
             case "login" : login();
+                break;
             default: run();
         }
 
         while (true) {
             System.out.println("Bienvenue à Robotix " + currUser.getName() + ". Veuillez choisir une option:");
             System.out.println("0. Ajouter un robot\n1. Informations sur vos robots\n 2. Acheter des composantes\n" +
-                    "3. Créer/modifier un action\n4. Participer a une activite\n" + //
+                    "3. Créer/modifier un action\n4. Participer/creer une activite\n" + //
                     "5. Creer/modifier une tache");
             switch (validationController.takeValidInput(5)) {
                 case 0:
@@ -84,7 +88,7 @@ public class UserView {
     }
 
 
-    private User register() {
+    private void register() {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for email
@@ -94,7 +98,7 @@ public class UserView {
         // Check email with regex
         if (!validationController.validateEmail(email)) {
             System.out.println("Format de email invalide !");
-            return this.register();
+            register();
         }
 
         //prompt for username
@@ -102,9 +106,9 @@ public class UserView {
         String username = scanner.nextLine();
 
         // Check username with regex
-        if (validationController.validateUsername(username)) {
+        if (!validationController.validateUsername(username)) {
             System.out.println("Format d'usager invalide !");
-            return this.register();
+            register();
         }
 
         // Prompt for phone number
@@ -113,9 +117,9 @@ public class UserView {
         phoneNumber = phoneNumber.replaceAll("[^\\d]", "");
 
         // Check phone number with regex
-        if (validationController.validatePhonenum(phoneNumber)) {
+        if (!validationController.validatePhonenum(phoneNumber)) {
             System.out.println("Format invalide !");
-            return this.register();
+            register();
         }
 
         System.out.print("Choisissez un mot de passe: ");
@@ -123,7 +127,7 @@ public class UserView {
 
         User user = new User(email, username, phoneNumber, password);
 
-        return user;
+        controller.add(user);
     }
 
 
@@ -343,7 +347,9 @@ public class UserView {
 
         Activity activity = new Activity(name, description, interests, startDate, endDate, points);
 
+        controller.add(activity);
         currUser.addActivity(activity);
+        controller.update(currUser);
 
         System.out.println("l'activite a ete cree.");
     }

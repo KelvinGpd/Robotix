@@ -1,5 +1,5 @@
+import controllers.Controller;
 import data.*;
-import data.databases.UserDb;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -63,7 +63,7 @@ public class Tests {
     @AfterEach
     public void tearDown() {
         // Clean up
-        controller.whipeData();
+        controller.wipeData();
         controller = null;
         jsonHandler= null;
     }
