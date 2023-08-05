@@ -61,7 +61,7 @@ public class Controller {
         return (User) UserDb.login(email,password);
     }
 
-    private boolean isValid(String input, int max) {
+    public boolean isValid(String input, int max) {
         int n;
         if (input == null) {
             return false;
