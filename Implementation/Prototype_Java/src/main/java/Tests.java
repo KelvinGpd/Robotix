@@ -49,7 +49,7 @@ public class Tests {
                 new Component("OmniCapture 3", "micro",
                         "une qualité audio exceptionnelle, capturant des sons clairs et détaillés", 50),
                 new Component("Intel i7 8th Gen", "cpu", "CPU conçu pour une efficacité énergétique optimale.", 199) };
-        controller.add(new Seller("Company 5", "5 AB street", "company5@email.com", "511-1111-1111", components5, "qwerty"));
+        controller.add(new Seller("Company 5", "5 AB street", "company5@email.com", "511-111-1111", components5, "qwerty"));
 
         controller.add(new User("randomUser1@email.com", "randomUser1", "111-111-1111", "qwerty"));
         controller.add(new User("randomUser2@email.com", "randomUser2", "121-111-1111", "qwerty"));
