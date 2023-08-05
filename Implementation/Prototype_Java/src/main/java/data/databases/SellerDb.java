@@ -1,7 +1,6 @@
 package data.databases;
 
 import data.Seller;
-import data.User;
 
 public class SellerDb extends Db<Seller>{
     public SellerDb(String path) {
