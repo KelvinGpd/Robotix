@@ -1,5 +1,8 @@
 package data;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 /**
@@ -9,6 +12,8 @@ public class Action {
 
     private String name;
     private String type;
+
+    private String value;
     private ArrayList<Tache> tasks;
 
     /**
@@ -17,10 +22,19 @@ public class Action {
      * @param type The type of the action.
      * @param name The name of the action.
      */
-    public Action (String type, String name) {
+    @JsonCreator
+    public Action (@JsonProperty("type") String type, @JsonProperty("name") String name) {
         this.type = type;
         this.name = name;
         tasks = new ArrayList<>();
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     /**

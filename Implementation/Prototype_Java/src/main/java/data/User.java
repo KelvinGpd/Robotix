@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,6 +18,7 @@ public class User extends Client {
     private ArrayList<Activity> activities;
     private ArrayList<String> interests;
 
+    private ArrayList<Tache> tasks;
     private ArrayList<Action> actions;
     private int points;
 
@@ -38,6 +38,7 @@ public class User extends Client {
         this.activities = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.actions = new ArrayList<>();
+        this.tasks = new ArrayList<>();
     }
 
 
@@ -63,7 +64,8 @@ public class User extends Client {
                 @JsonProperty("activities") ArrayList<Activity> activities,
                 @JsonProperty("interests") ArrayList<String> interests,
                 @JsonProperty("followers") ArrayList<String> followers,
-                @JsonProperty("points") int points
+                @JsonProperty("points") int points,
+                @JsonProperty("tasks") ArrayList<Tache> tasks
                 ) {
 
         super(name, email, phoneNumber, password);
@@ -74,8 +76,12 @@ public class User extends Client {
         this.activities = activities;
         this.interests = interests;
         this.points = points;
+        this.tasks = tasks;
 
+    }
 
+    public ArrayList<Tache> getTasks() {
+        return tasks;
     }
 
 

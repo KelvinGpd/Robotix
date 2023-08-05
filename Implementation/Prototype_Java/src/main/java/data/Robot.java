@@ -18,7 +18,7 @@ public class Robot {
     public String type;
     public int[] position = new int[] { 0, 0, 0 };
     public String name;
-    public ArrayList<String> taches = new ArrayList<String>();
+    public ArrayList<Tache> tasks = new ArrayList<>();
 
     /**
      * Constructs a new Robot with the given type and name. The UUID is generated automatically.
@@ -45,13 +45,14 @@ public class Robot {
      */
     @JsonCreator
     public Robot(@JsonProperty("type") String type, @JsonProperty("name") String name, @JsonProperty("parts") List<Pair<String, String>> parts, @JsonProperty("position") int[] position
-        ,@JsonProperty("uuid") UUID uuid
+        ,@JsonProperty("uuid") UUID uuid, @JsonProperty("taches") ArrayList<Tache> tasks
     ){
         this.type = type;
         this.name = name;
         this.uuid = uuid;
         this.parts = parts;
         this.position = position;
+        this.tasks = tasks;
     }
 
     /**

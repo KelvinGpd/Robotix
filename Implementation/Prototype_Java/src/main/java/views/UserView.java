@@ -1,12 +1,10 @@
-//UI for user
+package views;//UI for user
 
 import controllers.Controller;
 import controllers.ValidationController;
 import data.*;
 
 import java.util.*;
-
-import static java.lang.Integer.parseInt;
 
 /**
  * The user interface for regular users in the Robotix application.
@@ -21,7 +19,7 @@ public class UserView {
     ValidationController validationController;
 
     /**
-     * Constructor to create a new UserView instance with the specified controller.
+     * Constructor to create a new views.UserView instance with the specified controller.
      *
      * @param controller The Controller instance used for communication with the data and business logic.
      */
@@ -75,7 +73,7 @@ public class UserView {
 
         while (true && (this.currUser != null)) {
             System.out.println("Bienvenue à Robotix " + currUser.getName() + ". Veuillez choisir une option:");
-            System.out.println("0. Ajouter un robot\n1. Informations sur vos robots\n 2. Acheter des composantes\n" +
+            System.out.println("0. Ajouter un robot\n1. Informations sur vos robots\n2. Acheter des composantes\n" +
                     "3. Créer/modifier un action\n4. Participer/creer une activite\n" + //
                     "5. Creer/modifier une tache");
             try {
@@ -96,7 +94,7 @@ public class UserView {
                         interact();
                         break;
                     case 5:
-                        creerTache();
+                        manageTasks();
                         ;
                         break;
                 }
@@ -209,12 +207,9 @@ public class UserView {
         Robot robot = new Robot(type, name);
         robot.addPart(type, "Robotix");
 
-        controller.removeUser(currUser);
-
         currUser.addRobot(robot);
+        controller.update(currUser);
         System.out.println("Robot cree !");
-
-        controller.add(currUser);
     }
 
 
@@ -227,11 +222,17 @@ public class UserView {
         for (Robot robot : currUser.getRobots()) {
             System.out.println("Le robot:" + robot.name + "   ");
             System.out.println("    uuid: " + robot.getUUID());
-            System.out.println("   type: " + robot.type);
+            System.out.println("    type: " + robot.type);
             System.out.println("    " + "Composantes: ");
             for (Robot.Pair<String, String> pair  : robot.getParts()) {
-                System.out.println("    " + pair.getKey());
-                System.out.println("    " + pair.getValue());
+                System.out.print("      " + pair.getKey());
+                System.out.println("    Fournisseur:" + pair.getValue());
+            }
+            System.out.println("    taches courantes:");
+            for (Tache task  : robot.tasks) {
+                System.out.print("      " + task.getName());
+                System.out.println("    Continuelle: " + task.getRepeats());
+                System.out.println("    Heure: " + task.getTimeFormat());
             }
         }
     }
@@ -262,11 +263,17 @@ public class UserView {
                 i++;
             }
         }
+        if(controller.getSellers().size() == 0){
+            System.out.println("Il n'y a aucun vendeur pour l'instant.");
+        }
+        else{
+            int componentChoice = validationController.takeValidInput(i);
+            Component selectedComponent = componentMap.get(componentChoice);
 
-        int componentChoice = validationController.takeValidInput(i);
-        Component selectedComponent = componentMap.get(componentChoice);
+            currUser.getRobots().get(robotChoice).addPart(selectedComponent.getName(), selectedComponent.getType());
+            controller.update(currUser);
+        }
 
-        currUser.getRobots().get(robotChoice).addPart(selectedComponent.getName(), selectedComponent.getType());
 
         System.out.println("Done !");
     }
@@ -277,23 +284,23 @@ public class UserView {
      * Method to create a new task and associate it with one of the user's actions.
      * The user is prompted to enter the task description, and then the task is added to the chosen action's task list.
      */
-    private void creerTache() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("veuillez entrer une tache");
-        String task = scanner.nextLine();
+    private void manageTasks(){
+        System.out.println("0: Creer une tache\n1:Modifier une tache\n2:Assigner une tache");
+        TaskView actionView = new TaskView(currUser, controller);
 
-        System.out.println("A quelle action voulez vous assigner cette tache ?");
-        List<Action> actions = currUser.getActions();
-        for (int i = 0; i < currUser.getActions().size(); i++) {
-            System.out.println("Option " + i + ": " + actions.get(i));
+        switch (validationController.takeValidInput(2)) {
+            case 0:
+                actionView.createTask();
+                break;
+            case 1:
+                actionView.modifyTask();
+                break;
+            case 2:
+                actionView.assignTask();
+                break;
         }
-        int choice = validationController.takeValidInput(actions.size());
-
-        Tache tache = new Tache(task);
-        actions.get(choice).addTask(tache);
-
-        System.out.println("Done !");
     }
+
 
 
     /**
@@ -302,73 +309,18 @@ public class UserView {
      */
     private void manageActions() {
 
-        System.out.println("0: Creer une action\n 1:Modifier une action");
+        System.out.println("0: Creer une action\n1:Modifier une action");
+        ActionView actionView = new ActionView(currUser, controller);
 
         switch (validationController.takeValidInput(1)) {
             case 0:
-                createAction();
+               actionView.createAction();
+               break;
             case 1:
-                modifyAction();
+                actionView.modifyAction();
+                break;
         }
     }
-
-    /**
-     * Method to modify an existing action's tasks based on user input.
-     * It allows the user to choose an action and then select a task to modify or replace with a new one.
-     */
-    private void modifyAction() {
-        System.out.println("selectionnez une de vos actions a modifier: ");
-        List<Action> actions = currUser.getActions();
-        for (int i = 0; i < actions.size(); i++) {
-                System.out.println("Option " + i + ":");
-                System.out.println(actions.get(i).getName());
-            }
-
-        int choice = validationController.takeValidInput(actions.size()-1);
-
-        List<Tache> tasks = actions.get(choice).getTasks();
-
-        System.out.println("selectionner une tache a modifier: ");
-        for(int i = 0; i < tasks.size(); i++) {
-            System.out.println("Option " + i + ":");
-            System.out.println(tasks.get(i));
-        }
-
-        int taskChoice = validationController.takeValidInput(tasks.size());
-
-        System.out.println("rentrer votre nouvelle tache: ");
-        Scanner scanner = new Scanner(System.in);
-        Tache task = new Tache(scanner.nextLine());
-
-        tasks.remove(taskChoice);
-        tasks.add(taskChoice, task);
-
-        System.out.println("done!");
-    }
-
-    /**
-     * Method to create a new action based on user input.
-     * It prompts the user to choose a type for the action and enter a name for the action.
-     * The new action is created and added to the user's action list.
-     */
-    private void createAction() {
-        ArrayList<String> valableTypes = new ArrayList<>(Arrays.asList("mouvement", "son", "affichage"));
-
-        System.out.println("Choisissez quel type d'action vous voulez créer, voici une liste exhaustive de types...");
-        System.out.println("Les options sont: mouvement, son, affichage");
-
-        String type = validationController.validateActionType(valableTypes);
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("donnez un nom a votre action");
-
-        String name = scanner.nextLine();
-
-        Action action = new Action(type, name);
-        currUser.add(action);
-        System.out.println("action cree!");
-    }
-
 
     /**
      * Method to allow the user to participate in or create activities.
@@ -377,69 +329,18 @@ public class UserView {
     private void interact() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("voulez vous 1: participer a une activite, 2:creer une activite ?");
+        ActivityView activityView = new ActivityView(currUser, controller);
 
-        switch (scanner.nextLine()) {
-            case "1" : participateActivity();
-            case "2" : createActivity();
+        switch (validationController.takeValidInput(1)) {
+            case 0 :
+                activityView.participateActivity();
+                break;
+            case 1 :
+                activityView.createActivity();
+                break;
         }
         System.out.println("Choisissez l'activite a laquelle participer");
         System.out.println("1: faire un tache avec mes robots\n2: jouer/apprendre/eduquer avec un de mes robots \n");
     }
 
-
-
-    /**
-     * Method to allow the user to participate in an existing activity.
-     * It prompts the user to choose an activity to participate in, and then adds the user to the activity's participants list.
-     */
-    private void participateActivity() {
-        System.out.println("veuillez choisir une activte a laquelle participer");
-        List<Activity> activities = controller.getActvities();
-        for(int i = 0; i < activities.size(); i++) {
-            System.out.println("Option " + i + ":");
-            activities.get(i).getActivityinfo();
-            System.out.println();
-        }
-
-        int choice = validationController.takeValidInput(activities.size());
-        activities.get(choice).participate(currUser);
-
-        System.out.println("inscription reussie!");
-
-    }
-
-    /**
-     * Method to create a new activity based on user input.
-     * It prompts the user to enter information about the new activity, such as name, description, interests, and points.
-     * The new activity is created and added to the system through the controller.
-     */
-    private void createActivity() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Donnez un nom a votre activite");
-        String name = scanner.nextLine();
-
-        System.out.println("Donnez une description a votre activite");
-        String description = scanner.nextLine();
-
-        System.out.println("Donnez une liste d'interets associable a votre activite");
-        String[] interests = scanner.nextLine().split(",");
-
-        System.out.println("Incrivez la journee ou commence l'activite (DD/MM/YYYY)");
-        String startDate = scanner.nextLine();
-
-        System.out.println("Incrivez la fin de l'activite (DD/MM/YYYY)");
-        String endDate = scanner.nextLine();
-
-        System.out.println("combien de points seront attribuable a la completion de votre activite?");
-        int points = parseInt(scanner.nextLine());
-
-        Activity activity = new Activity(name, description, interests, startDate, endDate, points);
-
-        controller.add(activity);
-        currUser.addActivity(activity);
-        controller.update(currUser);
-
-        System.out.println("l'activite a ete cree.");
-    }
 }

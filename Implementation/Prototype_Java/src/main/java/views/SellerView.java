@@ -1,11 +1,11 @@
-//UI for seller
-
-import java.util.Scanner;
+package views;//UI for seller
 
 import controllers.Controller;
 import controllers.ValidationController;
-import data.Seller;
 import data.Component;
+import data.Seller;
+
+import java.util.Scanner;
 
 /**
  * The user interface for sellers in the Robotix application.
@@ -18,7 +18,7 @@ public class SellerView {
     Seller seller;
 
     /**
-     * Constructor to create a new SellerView instance with the specified controller.
+     * Constructor to create a new views.SellerView instance with the specified controller.
      *
      * @param controller The Controller instance used for communication with the data and business logic.
      */
