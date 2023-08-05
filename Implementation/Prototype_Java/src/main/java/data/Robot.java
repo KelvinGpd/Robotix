@@ -45,14 +45,18 @@ public class Robot {
         return parts;
     }
 
-    public static class Pair<K, V> {
-        private final K key;
-        private final V value;
 
-        public Pair(K key, V value) {
+    public static class Pair<K, V> {
+        private  K key;
+        private  V value;
+
+        @JsonCreator
+        public Pair(@JsonProperty("key") K key, @JsonProperty("value") V value) {
+
             this.key = key;
             this.value = value;
         }
+
 
         public K getKey() {
             return key;

@@ -29,13 +29,16 @@ public class UserView {
         String email = scanner.nextLine();
         System.out.print("Entrez votre password: ");
         String password = scanner.nextLine();
-
-        currUser = controller.authenticateUser(email, password);
-        if (currUser == null) {
-            System.out.println("Password ou email incorrect!");
-            return;
+        try {
+            currUser = controller.authenticateUser(email, password);
+            if (currUser == null) {
+                System.out.println("Password ou email incorrect!");
+                return;
+            }
         }
+        catch (Exception e){
 
+        }
     }
 
     public void run() {
@@ -177,8 +180,11 @@ public class UserView {
         Robot robot = new Robot(type, name);
         robot.addPart(type, "Robotix");
 
+        controller.removeUser(currUser);
+
         currUser.addRobot(robot);
         System.out.println("Robot cree !");
+
         controller.add(currUser);
     }
 
