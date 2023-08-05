@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class SellerView {
     ValidationController validationController;
     Controller controller;
-    Seller seller;
+    Seller currSeller;
+    Scanner scanner;
 
     /**
      * Constructor to create a new views.SellerView instance with the specified controller.
@@ -24,6 +25,8 @@ public class SellerView {
      */
     public SellerView(Controller controller) {
         this.controller = controller;
+        this.validationController = new ValidationController();
+        this.scanner = new Scanner(System.in);
     }
 
 
@@ -33,16 +36,20 @@ public class SellerView {
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("register, or login?");
+        System.out.println("1.register, or 2.login?");
 
         switch (scanner.nextLine()) {
-            case "register" : register();
-            case "login" : login();
-            default: run();
+            case "1" : register();
+                break;
+            case "2" : login();
+                break;
+            default:
+                System.out.println("invalid option, please try again");
+                run();
         }
 
         while (true) {
-            System.out.println("Bienvenue à Robotix " + seller.getName() + ". Veuillez choisir une option:");
+            System.out.println("Bienvenue à Robotix " + currSeller.getName() + ". Veuillez choisir une option:");
             System.out.println("0. Vendre des composantes 1. Voir vos composantes");
             switch (validationController.takeValidInput(1)) {
                 case 0:
@@ -52,6 +59,7 @@ public class SellerView {
                     viewComp();
                     break;
             }
+
             System.out.println("Voulez vous: \n0. Retourner au menu principal\n1. Quitter l'application");
             switch (validationController.takeValidInput(1)) {
                 case 0:
@@ -72,13 +80,13 @@ public class SellerView {
     public void login() {
 
         System.out.print("Entrez votre email: ");
-        Scanner scanner = new Scanner(System.in);
+
         String email = scanner.nextLine();
         System.out.print("Entrez votre password: ");
         String password = scanner.nextLine();
 
-        seller = controller.authenticateSeller(email, password);
-        if (seller == null) {
+        currSeller = controller.authenticateSeller(email, password);
+        if (currSeller == null) {
             System.out.println("Password ou email incorrect!");
             return;
         }
@@ -92,30 +100,41 @@ public class SellerView {
      *
      * @return The newly registered Seller instance.
      */
-    private Seller register() {
+    private void register() {
         String name, address, email, phone, password;
         Component[] components;
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Veuillez saisir les informations suivantes:");
-        System.out.print("Nom: ");
-        name = reader.nextLine();
-        System.out.print("Addresse: ");
-        address = reader.nextLine();
-        System.out.print("Email: ");
-        email = reader.nextLine();
-        System.out.print("Téléphone: ");
-        phone = reader.nextLine();
-        System.out.print("Choisissez un password: ");
-        password = reader.nextLine();
 
-        System.out.print("Nombre de composantes differents que vous produissez: ");
-        int numComp = Integer.parseInt(reader.nextLine());
+        System.out.println("Veuillez saisir les informations suivantes:");
+
+        //username
+        System.out.print("Nom: ");
+        name = validationController.validateUsername(scanner.nextLine());
+
+        //address
+        System.out.print("Addresse: ");
+        address = scanner.nextLine();
+
+        System.out.print("Email: ");
+        email = validationController.validateEmail(scanner.nextLine());
+
+        System.out.print("Téléphone: ");
+        phone = validationController.validatePhonenum(scanner.nextLine());
+
+        System.out.print("Choisissez un password: ");
+        password = scanner.nextLine();
+
+        System.out.print("Entrez Le Nombre de composantes differents que vous produissez: ");
+        System.out.println("(Vous pouvez rentrer 0 et rajouter vos composantes plus tard)");
+
+        int numComp = Integer.parseInt(scanner.nextLine());
+
         components = new Component[numComp];
         for(int i=0;i<numComp;i++){
             components[i] = newComp();
         }
-        
-        return new Seller(name, address, email, phone, components, password);
+
+        currSeller = new Seller(name, address, email, phone, components, password);
+        controller.add(currSeller);
     }
 
 
@@ -125,20 +144,20 @@ public class SellerView {
      * and the component is added to the seller's list of components.
      */
     private void sellComp() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez saisir les informations suivantes sur la composante que vous voulez vendre:");
         Component component = newComp();
-        seller.addComponent(component);
-        controller.update(seller);
+        currSeller.addComponent(component);
+        controller.update(currSeller);
         System.out.println("La composante \"" + component.getName() + "\" a été listé sur le marché.");
     }
+
     /**
      * Method to view the components that the seller is currently selling.
      * It displays the details of each listed component.
      */
     private void viewComp() {
         System.out.println("Vous vendez les composantes suivantes:");
-        for (Component component : seller.getComponents()) {
+        for (Component component : currSeller.getComponents()) {
             System.out.println(component + "\n");
         }
     }
@@ -151,17 +170,18 @@ public class SellerView {
      * @return The newly created Component instance.
      */
     private Component newComp() {
-        Scanner reader = new Scanner(System.in);
+        System.out.println("Entrez les informations pour votre composante: ");
+
         String nameComp, type, desc;
         int price;
         System.out.print("Nom du composante: ");
-        nameComp = reader.nextLine();
+        nameComp = scanner.nextLine();
         System.out.print("Type: ");
-        type = reader.nextLine();
+        type = scanner.nextLine();
         System.out.print("Description: ");
-        desc = reader.nextLine();
+        desc = scanner.nextLine();
         System.out.print("Prix: ");
-        price = Integer.parseInt(reader.nextLine());
+        price = Integer.parseInt(scanner.nextLine());
         return new Component(nameComp, type, desc, price);
     }
 }
