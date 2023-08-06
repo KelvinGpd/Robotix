@@ -173,4 +173,21 @@ public class Tests {
         assertEquals(serviceController.querySeller("company6@email.com", "2"), null);
     }
 
+    @Test
+    public void testAuthenticateSeller(){
+        assertEquals(loginController.authenticateSeller("", ""),null);
+        assertEquals(loginController.authenticateSeller("company1@email.com", "qwerty").getName(),"Company 1");
+        assertEquals(loginController.authenticateSeller("company1@email.com", "wrong"),null);
+        assertEquals(loginController.authenticateSeller("wrong@email.com", "qwerty"),null);
+    }
+
+    @Test
+    public void testAuthenticateUser(){
+        assertEquals(loginController.authenticateUser("", ""),null);
+        assertEquals(loginController.authenticateUser("randomUser1@email.com", "qwerty").getName(),"randomUser1");
+        assertEquals(loginController.authenticateUser("randomUser1@email.com", "wrong"),null);
+        assertEquals(loginController.authenticateUser("wrong@email.com", "qwerty"),null);
+    }
+
+
 }
