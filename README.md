@@ -12,7 +12,8 @@ nouveau compte est créé, ce compte sera reconnu même si l'application est fer
 2. Téléchargez le fichier JAR (Java Archive) du projet depuis notre dépôt GitHub ou le lien fourni.
 3. Naviguez jusqu'au répertoire où vous avez enregistré le fichier JAR à l'aide de la commande cd (change directory).
 4. Pour démarrer l'application, vous pouvez aller dans Implementation/out/artifacts/RobotixApp et cliquer sur RobotixApp.jar.
-5. Vous pouvez egalement lancer lapplication a partir de l'invite de commande
+5. Si cela ne marche pas, vous pouvez aller dans Implementation/Robotik_Backend/target et cliquer sur Prototype_Java-1.0-SNAPSHOT.jar.
+6. Vous pouvez egalement lancer lapplication a partir de l'invite de commande
 
 ## Utilisation
 
