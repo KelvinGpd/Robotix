@@ -9,14 +9,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
+/**
+ * The RobotManagerView class handles user interactions related to managing robots.
+ * It allows users to view information about their robots, add new robots to their fleet,
+ * and purchase components for their existing robots.
+ *
+ */
 public class RobotManagerView {
     ValidationController validationController = new ValidationController();
     ServiceController serviceController;
     User currUser;
+
+    /**
+     * Constructs a new RobotManagerView object with the provided User and ServiceController instances.
+     *
+     * @param currUser The currently logged-in User for whom robot management is performed.
+     * @param serviceController The ServiceController for data manipulation.
+     */
     public RobotManagerView(User currUser, ServiceController serviceController){
         this.serviceController = serviceController;
         this.currUser = currUser;
     }
+
     /**
      * Method to display information about the user's robots.
      * It lists the details of each robot, including its name, type, and components.
@@ -118,8 +133,6 @@ public class RobotManagerView {
             currUser.getRobots().get(robotChoice).addPart(selectedComponent.getName(), selectedComponent.getType());
             serviceController.update(currUser);
         }
-
-
         System.out.println("Done !");
     }
 }

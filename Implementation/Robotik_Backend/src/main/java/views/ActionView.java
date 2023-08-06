@@ -1,6 +1,5 @@
 package views;
 
-import controllers.ActionController;
 import controllers.ServiceController;
 import controllers.ValidationController;
 import data.Action;

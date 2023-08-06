@@ -80,8 +80,23 @@ public class User extends Client {
 
     }
 
+
+    /**
+     * Gets the list of tasks of the user.
+     *
+     * @return The list of tasks as an ArrayList of Tasks.
+     */
     public ArrayList<Tache> getTasks() {
         return tasks;
+    }
+
+
+
+    /**
+     * Adds a robot to the robots list.
+     */
+    public void addRobot(Robot r){
+        this.robots.add(r);
     }
 
 
@@ -90,12 +105,6 @@ public class User extends Client {
      *
      * @return The list of interests as an ArrayList of strings.
      */
-
-    public void addRobot(Robot r){
-        this.robots.add(r);
-    }
-    //Interests
-
     public ArrayList<String> getInterests(){
         return interests;
     }
@@ -222,6 +231,12 @@ public class User extends Client {
     }
 
 
+
+    /**
+     * Gets the list of activites of the user.
+     *
+     * @return The list of activites as an ArrayList of Activities.
+     */
     public List<Activity> getActvities() {
         return  activities;
     }

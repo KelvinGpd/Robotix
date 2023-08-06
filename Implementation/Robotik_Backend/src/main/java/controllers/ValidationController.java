@@ -7,8 +7,7 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 /**
- * The ValidationController class provides various methods for validating user input
- * and performing checks on email addresses, usernames, phone numbers, and action types.
+ * ValidationController provides various methods for validating user input
  */
 public class ValidationController {
     private Scanner scanner;
@@ -30,7 +29,6 @@ public class ValidationController {
      * @return The valid integer input entered by the user.
      */
     public int takeValidInput(int bar) {
-        //for taking valid int inputs from 0-bar
         int choice;
 
         try{

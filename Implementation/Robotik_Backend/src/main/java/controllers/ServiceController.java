@@ -9,6 +9,9 @@ import data.databases.UserDb;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service Controller defines core methods for services.
+ */
 public class ServiceController extends Controller{
 
     private data.databases.UserDb UserDb = new UserDb("src/main/resources/Json/Users.json");

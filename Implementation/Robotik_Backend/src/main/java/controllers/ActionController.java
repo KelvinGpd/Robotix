@@ -4,6 +4,9 @@ import data.Activity;
 
 import java.util.List;
 
+/**
+ * Action Controller defines core methods for Activities.
+ */
 public class ActionController extends Controller {
 
     /**
