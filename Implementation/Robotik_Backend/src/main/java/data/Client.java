@@ -21,43 +21,40 @@ public class Client {
         this.password=password;
     }
 
-
-    public Client() {
-
-    }
-
-
     /**
      * Gets the name of the client.
      *
-     * @return The name of the client.
+     * @return The name of the client as a String.
      */
     public String getName() {
         return name;
     }
 
+
     /**
      * Gets the email address of the client.
      *
-     * @return The email address of the client.
+     * @return The email address of the client as a String.
      */
     public String getEmail() {
         return email;
     }
 
+
     /**
      * Gets the phone number of the client.
      *
-     * @return The phone number of the client.
+     * @return The phone number of the client as a String.
      */
     public String getPhone() {
         return phone;
     }
 
+
     /**
      * Gets the password of the client.
      *
-     * @return The password of the client.
+     * @return The password of the client as a String.
      */
     public String getPassword() {
         return password;

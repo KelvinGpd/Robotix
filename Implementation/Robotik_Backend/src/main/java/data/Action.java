@@ -29,6 +29,8 @@ public class Action {
         this.value = value;
     }
 
+    //getters and setters
+
     public String getValue() {
         return value;
     }
@@ -45,12 +47,6 @@ public class Action {
         this.value = value;
     }
 
-
-    /**
-     * Gets the name of this action.
-     *
-     * @return The name of this action.
-     */
     public String getName() {
         return name;
     }

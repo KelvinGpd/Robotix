@@ -3,6 +3,10 @@ package controllers;
 import data.Seller;
 import data.User;
 
+
+/**
+ * Login Controller defines core methods for Client authentification.
+ */
 public class LoginController extends Controller {
 
 

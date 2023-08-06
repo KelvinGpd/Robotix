@@ -19,7 +19,6 @@ public class ActivityView {
 
     public ActivityView(User currUser, ServiceController serviceController){
         this.serviceController = serviceController;
-        this.actionController = actionController;
         this.currUser = currUser;
     }
     /**

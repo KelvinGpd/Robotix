@@ -16,7 +16,7 @@ import java.util.List;
  * The abstract Db class serves as a base class for specific database implementations.
  * It provides methods for reading, writing, adding, removing, and logging in users.
  *
- * @param <T> The generic type parameter representing the objects to be stored in the database.
+ * @param <T> The generic type parameter representing objects to be stored in database.
  */
 abstract class Db<T> {
     String path;

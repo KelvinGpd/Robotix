@@ -11,15 +11,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The TaskView class is responsible for handling user interactions related to tasks.
+ * It allows users to create, modify, and assign tasks to robots.
+ */
 public class TaskView {
     ServiceController serviceController;
     User currUser;
     ValidationController validationController = new ValidationController();
+
+    /**
+     * Constructs a new TaskView object with the provided User and ServiceController instances.
+     *
+     * @param currUser The currently logged-in User for whom tasks are managed.
+     * @param serviceController The ServiceController for data manipulation.
+     */
     public TaskView(User currUser, ServiceController serviceController){
         this.serviceController = serviceController;
         this.currUser = currUser;
     }
 
+    /**
+     * Creates a new task by taking input from the user for task name, actions, and schedule.
+     * The task is then associated with the current user and added to their task list.
+     */
     public void createTask() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez nommer cette tache:");
@@ -71,6 +86,12 @@ public class TaskView {
 
         System.out.println("Done !");
     }
+
+
+    /**
+     * Modifies an existing task selected by the user.
+     * The user can choose to add/remove actions or change the schedule of the task.
+     */
     public void modifyTask(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Quelle tache souhaitez vous modifier ?");
@@ -127,6 +148,12 @@ public class TaskView {
         System.out.println("Done !");
         serviceController.update(currUser);
     }
+
+
+    /**
+     * Assigns a task to a selected robot from the current user's robot list.
+     * The user can choose the task to assign from their task list.
+     */
     public void assignTask(){
         System.out.println("Pour quel robot voulez-vous assigner une tache ?");
         for (int i = 0; i < currUser.getRobots().size(); i++) {

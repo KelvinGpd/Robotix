@@ -65,6 +65,7 @@ public class Robot {
         parts.add(new Pair<>(partName, provider));
     }
 
+
     /**
      * Gets the UUID of the robot.
      *
@@ -84,10 +85,24 @@ public class Robot {
     }
 
 
+    /**
+     * The Pair class represents a simple key-value pair data structure.
+     * It is a static nested class used within other classes for storing and retrieving
+     * key-value associations.
+     *
+     * @param <K> The type of the key.
+     * @param <V> The type of the value.
+     */
     public static class Pair<K, V> {
         private  K key;
         private  V value;
 
+        /**
+         * Constructs a new Pair object with the given key and value.
+         *
+         * @param key   The key of the key-value pair.
+         * @param value The value associated with the key.
+         */
         @JsonCreator
         public Pair(@JsonProperty("key") K key, @JsonProperty("value") V value) {
 
@@ -96,10 +111,20 @@ public class Robot {
         }
 
 
+        /**
+         * Gets the key of the key-value pair.
+         *
+         * @return The key of the pair.
+         */
         public K getKey() {
             return key;
         }
 
+        /**
+         * Gets the value associated with the key-value pair.
+         *
+         * @return The value of the pair.
+         */
         public V getValue() {
             return value;
         }
