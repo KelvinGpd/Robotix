@@ -1,4 +1,6 @@
-import controllers.Controller;
+
+import controllers.LoginController;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import views.SellerView;
 import views.UserView;
@@ -17,10 +19,12 @@ public class Main {
      * @param args Command line arguments (not used in this application).
      */
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        ServiceController serviceController = new ServiceController();
         ValidationController validationController = new ValidationController();
-        UserView userView = new UserView(controller);
-        SellerView sellerView = new SellerView(controller);
+        LoginController loginController = new LoginController();
+
+        UserView userView = new UserView(serviceController, loginController);
+        SellerView sellerView = new SellerView(serviceController, loginController);
 
         while (true) {
             System.out.println("*** Robotix ***");

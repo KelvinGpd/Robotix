@@ -1,11 +1,9 @@
 package views;
 
-import controllers.Controller;
+import controllers.ActionController;
+import controllers.ServiceController;
 import controllers.ValidationController;
-import data.Activity;
-import data.Robot;
-import data.Tache;
-import data.User;
+import data.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +13,13 @@ import static java.lang.Integer.parseInt;
 
 public class ActivityView {
     ValidationController validationController = new ValidationController();
-    Controller controller;
+    ServiceController serviceController;
+    ActionController actionController = new ActionController();
     User currUser;
 
-    public ActivityView(User currUser, Controller controller){
-        this.controller = controller;
+    public ActivityView(User currUser, ServiceController serviceController){
+        this.serviceController = serviceController;
+        this.actionController = actionController;
         this.currUser = currUser;
     }
     /**
@@ -28,7 +28,7 @@ public class ActivityView {
      */
     public void participateActivity() {
         System.out.println("veuillez choisir une activte a laquelle participer");
-        List<Activity> activities = controller.getActvities();
+        List<Activity> activities = actionController.getActvities();
         for(int i = 0; i < activities.size(); i++) {
             System.out.println("Option " + i + ":");
             activities.get(i).getActivityinfo();
@@ -37,7 +37,7 @@ public class ActivityView {
 
         int choice = validationController.takeValidInput(activities.size());
         activities.get(choice).participate(currUser);
-        controller.update(currUser);
+        serviceController.update(currUser);
 
     }
 
@@ -117,7 +117,7 @@ public class ActivityView {
         Activity activity = new Activity(name, description, interests, startDate, endDate, points, (ArrayList<String>) null);
 
         currUser.addActivity(activity);
-        controller.update(currUser);
+        serviceController.update(currUser);
 
         System.out.println("l'activite est crée.");
     }
@@ -131,7 +131,7 @@ public class ActivityView {
         }
         int choice = validationController.takeValidInput(currUser.getActvities().size() - 1);
         currUser.getActvities().remove(choice);
-        controller.update(currUser);
+        serviceController.update(currUser);
         System.out.println("Done !");
     }
 }

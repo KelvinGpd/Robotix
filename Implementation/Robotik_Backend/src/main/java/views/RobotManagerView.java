@@ -1,6 +1,6 @@
 package views;
 
-import controllers.Controller;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import data.*;
 
@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class RobotManagerView {
     ValidationController validationController = new ValidationController();
-    Controller controller;
+    ServiceController serviceController;
     User currUser;
-    public RobotManagerView(User currUser, Controller controller){
-        this.controller = controller;
+    public RobotManagerView(User currUser, ServiceController serviceController){
+        this.serviceController = serviceController;
         this.currUser = currUser;
     }
     /**
@@ -78,7 +78,7 @@ public class RobotManagerView {
         robot.addPart("Cpu gen " + gen, "Robotix");
 
         currUser.addRobot(robot);
-        controller.update(currUser);
+        serviceController.update(currUser);
         System.out.println("Robot cree !");
     }
     /**
@@ -98,7 +98,7 @@ public class RobotManagerView {
         Map<Integer, Component> componentMap = new HashMap<>();
 
         int i = 0;
-        for (Seller seller : controller.getSellers()) {
+        for (Seller seller : serviceController.getSellers()) {
             ArrayList<Component> components = seller.getComponents();
             System.out.println("Fournisseur " + seller.getName() + ":");
             for (Component component : components) {
@@ -108,7 +108,7 @@ public class RobotManagerView {
                 i++;
             }
         }
-        if(controller.getSellers().size() == 0){
+        if(serviceController.getSellers().size() == 0){
             System.out.println("Il n'y a aucun vendeur pour l'instant.");
         }
         else{
@@ -116,7 +116,7 @@ public class RobotManagerView {
             Component selectedComponent = componentMap.get(componentChoice);
 
             currUser.getRobots().get(robotChoice).addPart(selectedComponent.getName(), selectedComponent.getType());
-            controller.update(currUser);
+            serviceController.update(currUser);
         }
 
 
