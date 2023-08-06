@@ -1,6 +1,7 @@
 package views;//UI for user
 
-import controllers.Controller;
+import controllers.LoginController;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import data.*;
 
@@ -15,17 +16,23 @@ public class UserView {
     private User currUser;
 
     //controllers
-    Controller controller;
-    ValidationController validationController = new ValidationController();
+    private ServiceController serviceController;
+    private LoginController loginController;
+    private ValidationController validationController;
+
+    //Scanner
+    Scanner scanner;
 
     /**
      * Constructor to create a new views.UserView instance with the specified controller.
      *
-     * @param controller The Controller instance used for communication with the data and business logic.
+     * @param serviceController The Controller instance used for communication with the data and business logic.
      */
-    public UserView(Controller controller) {
-        this.controller = controller;
+    public UserView(ServiceController serviceController, LoginController loginController) {
+        this.serviceController = serviceController;
+        this.loginController = loginController;
         this.validationController = new ValidationController();
+        this.scanner = new Scanner(System.in);
     }
 
 
@@ -34,7 +41,6 @@ public class UserView {
      * This method provides a menu for users to choose between different actions.
      */
     public void run() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1.register, or 2.login?");
         String choice = scanner.nextLine();
 
@@ -53,7 +59,7 @@ public class UserView {
             System.out.println("0. Ajouter un robot\n1. Informations sur vos robots\n2. Acheter des composantes\n" +
                     "3. Créer/modifier un action\n4. Participer/creer une activite\n" + //
                     "5. Creer/modifier/assigner une tache");
-            RobotManagerView managerView = new RobotManagerView(currUser, controller);
+            RobotManagerView managerView = new RobotManagerView(currUser, serviceController);
             try {
                 switch (validationController.takeValidInput(5)) {
                     case 0:
@@ -103,14 +109,12 @@ public class UserView {
      * If the login is successful, the user is assigned to the `currUser` variable for further actions.
      */
     public void login() {
-
         System.out.print("Entrez votre email: ");
-        Scanner scanner = new Scanner(System.in);
         String email = scanner.nextLine();
         System.out.print("Entrez votre password: ");
         String password = scanner.nextLine();
         try {
-            currUser = controller.authenticateUser(email, password);
+            currUser = loginController.authenticateUser(email, password);
             if (currUser == null) {
                 System.out.println("Password ou email incorrect!");
                 return;
@@ -129,8 +133,6 @@ public class UserView {
      * The new user is added to the system through the controller.
      */
     private void register() {
-        Scanner scanner = new Scanner(System.in);
-
         // Prompt for email
         System.out.print("Entrez votre email: ");
         String email = validationController.validateEmail(scanner.nextLine());
@@ -150,7 +152,7 @@ public class UserView {
         User user = new User(email, username, phoneNumber, password);
         currUser = user;
 
-        controller.add(user);
+        serviceController.add(user);
     }
 
     /**
@@ -159,7 +161,7 @@ public class UserView {
      */
     private void manageTasks(){
         System.out.println("0: Creer une tache\n1:Modifier une tache\n2:Assigner une tache");
-        TaskView actionView = new TaskView(currUser, controller);
+        TaskView actionView = new TaskView(currUser, serviceController);
 
         switch (validationController.takeValidInput(2)) {
             case 0:
@@ -183,7 +185,7 @@ public class UserView {
     private void manageActions() {
 
         System.out.println("0: Creer une action\n1:Modifier une action");
-        ActionView actionView = new ActionView(currUser, controller);
+        ActionView actionView = new ActionView(currUser, serviceController);
 
         switch (validationController.takeValidInput(1)) {
             case 0:
@@ -200,9 +202,8 @@ public class UserView {
      * It provides options to participate in existing activities or create new activities.
      */
     private void interact() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Voulez-vous:\n0: participer a une activite ?\n1:creer une activite ?\n2. Suprimer une activite");
-        ActivityView activityView = new ActivityView(currUser, controller);
+        ActivityView activityView = new ActivityView(currUser, serviceController);
 
         switch (validationController.takeValidInput(2)) {
             case 0 :

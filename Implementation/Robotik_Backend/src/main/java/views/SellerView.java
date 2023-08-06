@@ -1,6 +1,7 @@
 package views;//UI for seller
 
-import controllers.Controller;
+import controllers.LoginController;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import data.Component;
 import data.Seller;
@@ -13,18 +14,20 @@ import java.util.Scanner;
  * to sell components, view their listed components, and perform other actions.
  */
 public class SellerView {
-    ValidationController validationController;
-    Controller controller;
-    Seller currSeller;
-    Scanner scanner;
+    private ValidationController validationController;
+    private ServiceController serviceController;
+    private LoginController loginController;
+    private Seller currSeller;
+    private Scanner scanner;
 
     /**
      * Constructor to create a new views.SellerView instance with the specified controller.
      *
-     * @param controller The Controller instance used for communication with the data and business logic.
+     * @param serviceController The Controller instance used for communication with the data and business logic.
      */
-    public SellerView(Controller controller) {
-        this.controller = controller;
+    public SellerView(ServiceController serviceController, LoginController loginController) {
+        this.serviceController = serviceController;
+        this.loginController = loginController;
         this.validationController = new ValidationController();
         this.scanner = new Scanner(System.in);
     }
@@ -35,7 +38,6 @@ public class SellerView {
      * This method provides a menu for sellers to choose between different actions.
      */
     public void run() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("1.register, or 2.login?");
 
         switch (scanner.nextLine()) {
@@ -85,7 +87,7 @@ public class SellerView {
         System.out.print("Entrez votre password: ");
         String password = scanner.nextLine();
 
-        currSeller = controller.authenticateSeller(email, password);
+        currSeller = loginController.authenticateSeller(email, password);
         if (currSeller == null) {
             System.out.println("Password ou email incorrect!");
             return;
@@ -134,7 +136,7 @@ public class SellerView {
         }
 
         currSeller = new Seller(name, address, email, phone, components, password);
-        controller.add(currSeller);
+        serviceController.add(currSeller);
     }
 
 
@@ -147,7 +149,7 @@ public class SellerView {
         System.out.println("Veuillez saisir les informations suivantes sur la composante que vous voulez vendre:");
         Component component = newComp();
         currSeller.addComponent(component);
-        controller.update(currSeller);
+        serviceController.update(currSeller);
         System.out.println("La composante \"" + component.getName() + "\" a été listé sur le marché.");
     }
 

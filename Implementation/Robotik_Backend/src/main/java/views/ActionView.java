@@ -1,6 +1,7 @@
 package views;
 
-import controllers.Controller;
+import controllers.ActionController;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import data.Action;
 import data.User;
@@ -12,10 +13,12 @@ import java.util.Scanner;
 
 
 public class ActionView {
-    Controller controller;
-    User currUser;
-    public ActionView(User currUser, Controller controller){
-        this.controller = controller;
+    ServiceController serviceController;
+
+    private User currUser;
+
+    public ActionView(User currUser, ServiceController serviceController){
+        this.serviceController = serviceController;
         this.currUser = currUser;
     }
     ValidationController validationController = new ValidationController();
@@ -67,7 +70,7 @@ public class ActionView {
             }
         }
         System.out.println("done!");
-        controller.update(currUser);
+        serviceController.update(currUser);
     }
 
     /**
@@ -119,7 +122,7 @@ public class ActionView {
 
             Action action = new Action(type, name, value, vector);
             currUser.add(action);
-            controller.update(currUser);
+            serviceController.update(currUser);
 
             System.out.println("action cree!");
         }

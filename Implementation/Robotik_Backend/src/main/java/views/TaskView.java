@@ -1,6 +1,6 @@
 package views;
 
-import controllers.Controller;
+import controllers.ServiceController;
 import controllers.ValidationController;
 import data.Action;
 import data.Robot;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TaskView {
-    Controller controller;
+    ServiceController serviceController;
     User currUser;
     ValidationController validationController = new ValidationController();
-    public TaskView(User currUser, Controller controller){
-        this.controller = controller;
+    public TaskView(User currUser, ServiceController serviceController){
+        this.serviceController = serviceController;
         this.currUser = currUser;
     }
 
@@ -66,7 +66,7 @@ public class TaskView {
         }
         Tache newTask = new Tache(name, time, taskActions, repeats);
         currUser.getTasks().add(newTask);
-        controller.update(currUser);
+        serviceController.update(currUser);
 
 
         System.out.println("Done !");
@@ -125,7 +125,7 @@ public class TaskView {
             tache.setTimeFormat(time);
         }
         System.out.println("Done !");
-        controller.update(currUser);
+        serviceController.update(currUser);
     }
     public void assignTask(){
         System.out.println("Pour quel robot voulez-vous assigner une tache ?");
@@ -143,7 +143,7 @@ public class TaskView {
         }
         int choice = validationController.takeValidInput(actions.size()-1);
         robot.tasks.add(currUser.getTasks().get(choice));
-        controller.update(currUser);
+        serviceController.update(currUser);
         System.out.println("Done !");
     }
 
