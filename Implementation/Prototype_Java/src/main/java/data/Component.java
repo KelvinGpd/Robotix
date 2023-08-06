@@ -30,6 +30,14 @@ public class Component implements Serializable {
         this.price=price;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
     /**
      * Creates a new Component with the specified name and type.
      * This constructor is used during JSON deserialization with Jackson.

@@ -100,8 +100,10 @@ public class RobotManagerView {
         int i = 0;
         for (Seller seller : controller.getSellers()) {
             ArrayList<Component> components = seller.getComponents();
+            System.out.println("Fournisseur " + seller.getName() + ":");
             for (Component component : components) {
-                System.out.println(i + "." + component.getName() + " " + component.getType());
+                System.out.println("    " + i + ". Nom: " + component.getName() + " Type: " + component.getType() + " Prix: " + component.getPrice() + "$");
+                System.out.println("    Description: "  + component.getDesc());
                 componentMap.put(i, component);
                 i++;
             }
