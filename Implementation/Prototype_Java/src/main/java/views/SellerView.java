@@ -48,7 +48,7 @@ public class SellerView {
                 run();
         }
 
-        while (true) {
+        while (true && currSeller != null) {
             System.out.println("Bienvenue à Robotix " + currSeller.getName() + ". Veuillez choisir une option:");
             System.out.println("0. Vendre des composantes 1. Voir vos composantes");
             switch (validationController.takeValidInput(1)) {
@@ -158,7 +158,10 @@ public class SellerView {
     private void viewComp() {
         System.out.println("Vous vendez les composantes suivantes:");
         for (Component component : currSeller.getComponents()) {
-            System.out.println(component + "\n");
+            System.out.println("Nom: " + component.getName());
+            System.out.println("    type: " + component.getType());
+            System.out.println("    desc: " + component.getDesc());
+            System.out.println("    prix: " + component.getPrice());
         }
     }
 

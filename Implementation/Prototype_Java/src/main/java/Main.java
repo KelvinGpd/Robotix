@@ -37,8 +37,7 @@ public class Main {
                 }
             }
             catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Format incorrect !");
+                System.out.println("Input non correct!");
             }
         }
 
